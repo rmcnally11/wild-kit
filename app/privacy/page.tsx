@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         <li>We do not ask kids for an email, a birthday, or a home address.</li>
         <li>Sales, the menu, and the logo live in the phone&apos;s local storage. Not on our servers.</li>
         <li>Sharing uses the parent&apos;s own Messages, Mail, or share sheet. We do not post for you.</li>
-        <li>FedEx Office is a separate company. A parent opens their print site if they want a poster.</li>
+        <li>The logo and table sign are pictures on this phone. A parent can print them at home or at any shop down the street.</li>
         <li>When this is on the App Store, $10 and $25 will go through Apple. We will not sell kid data.</li>
       </ul>
       <p className="text-sm text-muted-foreground">Last updated September 2, 2026.</p>

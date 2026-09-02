@@ -21,5 +21,3 @@ export function mailLink(standName: string, body: string) {
   const subject = `${standName || "Lemonade stand"} is open`;
   return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
-
-export const FEDEX_PRINT_URL = "https://www.fedex.com/en-us/printing/online-printing.html";

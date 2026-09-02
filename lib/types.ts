@@ -1,6 +1,6 @@
 export type PaletteId = "citrus" | "strawberry" | "mint" | "blueberry" | "sunset";
 export type BadgeId = "circle" | "ticket" | "banner" | "diamond";
-export type MascotId = "lemon" | "cup" | "sun";
+export type MascotId = "lemon" | "cup" | "sun" | "bolt";
 
 export type MenuItem = {
   id: string;
@@ -37,43 +37,62 @@ export type Stand = {
 
 export const PALETTES: Record<
   PaletteId,
-  { name: string; ink: string; paper: string; pop: string; leaf: string }
+  { name: string; ink: string; paper: string; pop: string; leaf: string; shine: string }
 > = {
   citrus: {
     name: "Citrus",
     ink: "#2A2416",
-    paper: "#FFF4C2",
-    pop: "#F4C430",
-    leaf: "#3F7A1A",
+    paper: "#FFF6C8",
+    pop: "#FFD400",
+    leaf: "#2F7A14",
+    shine: "#FFFBE6",
   },
   strawberry: {
     name: "Strawberry",
     ink: "#3A1420",
     paper: "#FFE4EC",
-    pop: "#F06292",
+    pop: "#FF4F86",
     leaf: "#2E7D4F",
+    shine: "#FFEAF1",
   },
   mint: {
     name: "Mint",
     ink: "#14302A",
-    paper: "#D9F5E8",
-    pop: "#3DDC97",
+    paper: "#D4F8E8",
+    pop: "#1ED760",
     leaf: "#0B6B4F",
+    shine: "#ECFFF5",
   },
   blueberry: {
     name: "Blueberry",
     ink: "#142033",
     paper: "#D7E6FF",
-    pop: "#5B8DEF",
+    pop: "#3D7EFF",
     leaf: "#1F4E79",
+    shine: "#EEF4FF",
   },
   sunset: {
     name: "Sunset",
     ink: "#2C1A12",
     paper: "#FFE2C8",
-    pop: "#FF8A4C",
+    pop: "#FF6A1A",
     leaf: "#B5441A",
+    shine: "#FFF1E4",
   },
+};
+
+export const BADGE_LABELS: Record<BadgeId, string> = {
+  circle: "Sticker",
+  ticket: "Ticket",
+  banner: "Banner",
+  diamond: "Stamp",
+};
+
+export const MASCOT_LABELS: Record<MascotId, string> = {
+  lemon: "Lemon",
+  cup: "Cup",
+  sun: "Sun",
+  bolt: "Bolt",
 };
 
 export const DEFAULT_MENU: MenuItem[] = [

@@ -82,10 +82,16 @@
 }
 
 @media print {
-  header,
-  nav,
-  button,
-  a {
-    display: none !important;
+  body * {
+    visibility: hidden;
+  }
+  #table-sign,
+  #table-sign * {
+    visibility: visible;
+  }
+  #table-sign {
+    position: absolute;
+    inset: 0;
+    box-shadow: none;
   }
 }

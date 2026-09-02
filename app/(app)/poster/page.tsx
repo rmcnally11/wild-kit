@@ -1,34 +1,37 @@
 "use client";
 
-import { FEDEX_PRINT_URL } from "@/lib/copy";
 import { StandLogo } from "@/lib/logo";
 import { money, useStand } from "@/lib/stand-store";
 
-export default function PosterPage() {
-  const { stand, isPaid } = useStand();
+export default function TableSignPage() {
+  const { stand } = useStand();
   const live = stand.menu.filter((item) => !item.soldOut);
 
   return (
     <div className="grid gap-4">
-      <h2 className="font-display text-3xl">The poster</h2>
-      <p className="text-muted-foreground">
-        Print it from this phone. A parent can upload the PDF at FedEx Office. We do not charge
-        for the paper — they do.
-      </p>
+      <div>
+        <h2 className="font-display text-3xl">Tape it to the table</h2>
+        <p className="mt-1 text-muted-foreground">
+          Print this at home, or take the file to any print shop down the street. Staples,
+          the pharmacy, the copy place — whoever does posters. We just make the picture.
+        </p>
+      </div>
       <div
-        id="poster"
-        className="rounded-[1.5rem] bg-card p-6 text-center ring-1 ring-border print:rounded-none print:ring-0"
+        id="table-sign"
+        className="rounded-[1.5rem] bg-white p-6 text-center ring-1 ring-border print:rounded-none print:ring-0"
       >
         <StandLogo
           name={stand.standName}
           palette={stand.palette}
           badge={stand.badge}
           mascot={stand.mascot}
-          size={200}
+          size={220}
         />
-        <p className="font-display mt-4 text-5xl leading-none">{stand.standName || "Lemonade"}</p>
-        {stand.corner && <p className="mt-2 text-xl font-bold">{stand.corner}</p>}
-        <p className="mt-1 text-lg">Open today</p>
+        <p className="font-display mt-5 text-5xl leading-none">
+          {stand.standName || "Lemonade"}
+        </p>
+        <p className="mt-2 text-2xl font-extrabold tracking-wide uppercase">Open</p>
+        {stand.corner && <p className="mt-1 text-lg font-bold">{stand.corner}</p>}
         <div className="mx-auto mt-6 grid max-w-sm gap-2 text-left">
           {live.map((item) => (
             <div key={item.id} className="flex justify-between text-2xl font-extrabold">
@@ -38,25 +41,19 @@ export default function PosterPage() {
           ))}
         </div>
         <p className="mt-6 text-lg font-bold">
-          {stand.venmo ? `Cash or Venmo ${stand.venmo}` : "Bring cash"}
+          {stand.venmo ? `Cash or Venmo ${stand.venmo}` : "Cash is great"}
         </p>
       </div>
       <button
         type="button"
-        disabled={!isPaid}
         onClick={() => window.print()}
-        className="tap h-14 rounded-2xl bg-primary text-lg font-extrabold disabled:opacity-50"
+        className="tap h-14 rounded-2xl bg-primary text-lg font-extrabold"
       >
-        {isPaid ? "Print or save PDF" : "Parents unlock print"}
+        Print the table sign
       </button>
-      <a
-        href={isPaid ? FEDEX_PRINT_URL : "/parent"}
-        target={isPaid ? "_blank" : undefined}
-        rel="noreferrer"
-        className="tap grid h-14 place-items-center rounded-2xl bg-secondary text-lg font-extrabold"
-      >
-        {isPaid ? "Open FedEx Office print" : "Ask a parent for FedEx"}
-      </a>
+      <p className="text-center text-sm text-muted-foreground">
+        On a phone, Print usually means Save as PDF. Hand that to the shop.
+      </p>
     </div>
   );
 }
