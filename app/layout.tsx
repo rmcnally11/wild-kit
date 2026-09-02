@@ -1,15 +1,18 @@
-import type { Metadata } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Fredoka, Geist_Mono, Nunito } from "next/font/google";
 import type { ReactNode } from "react";
 
-import { Providers } from "@/components/providers";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { StandProvider } from "@/lib/stand-store";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const nunito = Nunito({
+  variable: "--font-nunito",
+  subsets: ["latin"],
+});
+
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
   subsets: ["latin"],
 });
 
@@ -18,32 +21,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: {
-    default: "Bite Window — Saltwater bite planner",
-    template: "%s · Bite Window",
+    default: "My Stand",
+    template: "%s · My Stand",
   },
   description:
-    "Know when the water will turn on. Live NOAA tides, weather, and species windows for inshore saltwater fishing.",
+    "A lemonade-stand kit for kids. Ring up cups, flip the menu to customers, make a logo, and hand Mom the post.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "My Stand",
+    statusBarStyle: "default",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#F0B429",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`dark ${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${nunito.variable} ${fredoka.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="tide-wash flex min-h-full flex-col">
-        <Providers>
-          <SiteHeader />
-          <main className="flex flex-1 flex-col">{children}</main>
-          <SiteFooter />
-        </Providers>
+      <body className="min-h-full">
+        <StandProvider>{children}</StandProvider>
       </body>
     </html>
   );

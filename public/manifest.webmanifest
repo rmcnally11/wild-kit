@@ -1,0 +1,10 @@
+{
+  "name": "My Stand",
+  "short_name": "My Stand",
+  "description": "Run a lemonade stand. Ring up cups, flip the menu, make a logo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8E8",
+  "theme_color": "#F0B429",
+  "orientation": "portrait"
+}
