@@ -9,11 +9,13 @@ import "./globals.css";
 const nunito = Nunito({
   variable: "--font-nunito",
   subsets: ["latin"],
+  weight: ["500", "600", "800"],
 });
 
 const fredoka = Fredoka({
   variable: "--font-fredoka",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -23,21 +25,25 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Family Time",
-    template: "%s · Family Time",
+    default: "Lemonade Stand by Wild Kit",
+    template: "%s · Wild Kit",
   },
   description:
-    "Saturday kits for a family. Lemonade stand, living room camp, and a shelf of real-world projects. Not a game.",
+    "Kids invent it. Parents print it. Saturday happens. Weekend projects for wild little kits.",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/rascal-icon.png",
+    apple: "/rascal-icon.png",
+  },
   appleWebApp: {
     capable: true,
-    title: "Family Time",
+    title: "Wild Kit",
     statusBarStyle: "default",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F0B429",
+  themeColor: "#F5C518",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,

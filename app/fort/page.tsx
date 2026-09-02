@@ -5,11 +5,12 @@ import { useState } from "react";
 import { FamilyChrome } from "@/components/family-chrome";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Rascal } from "@/lib/rascal";
 import { useStand } from "@/lib/stand-store";
 import { CAMP_PACK, CAMP_TRAIL, DEFAULT_CAMP } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-export default function CampPage() {
+export default function FortPage() {
   const { stand, save } = useStand();
   const camp = stand.camp ?? DEFAULT_CAMP;
   const [note, setNote] = useState("");
@@ -43,11 +44,11 @@ export default function CampPage() {
   }
 
   return (
-    <FamilyChrome eyebrow="Rainy day" title="Living Room Camp">
+    <FamilyChrome eyebrow="Blanket Fort by Wild Kit" title="Blanket Fort">
       <div className="grid gap-6">
+        <Rascal pose="scheme" size={88} line="When the house is full of raccoons, make a fort." />
         <p className="text-lg text-muted-foreground">
-          The living room is base camp. Pack from the house. Walk the trail. Write what you
-          heard. Lights out ends the day.
+          Pack from the house. Walk the trail. Write what you heard. Lights out ends the day.
         </p>
 
         <section>
@@ -106,8 +107,8 @@ export default function CampPage() {
         </section>
 
         <section>
-          <p className="text-sm font-extrabold uppercase">Camp log</p>
-          <p className="mt-1 text-sm text-muted-foreground">What you heard. What you ate. Who snored.</p>
+          <p className="text-sm font-extrabold uppercase">Fort log</p>
+          <p className="mt-1 text-sm text-muted-foreground">What you heard. What you ate.</p>
           <div className="mt-2 flex gap-2">
             <Input
               value={note}
@@ -135,7 +136,7 @@ export default function CampPage() {
             ))}
             {camp.notes.length === 0 && (
               <li className="rounded-2xl bg-secondary px-4 py-3 text-sm font-semibold text-muted-foreground">
-                Nothing in the log yet. Write the first thing you notice.
+                Write the first thing you notice.
               </li>
             )}
           </ul>
@@ -152,13 +153,8 @@ export default function CampPage() {
             variant={camp.lightsOut ? "secondary" : "default"}
             onClick={() => save({ camp: { ...camp, lightsOut: !camp.lightsOut } })}
           >
-            {camp.lightsOut ? "We camped." : "Lights out"}
+            {camp.lightsOut ? "You built the fort." : "Lights out"}
           </Button>
-          {camp.lightsOut && (
-            <p className="mt-3 text-center font-extrabold">
-              {stand.kidName || "You"} camped in the living room.
-            </p>
-          )}
         </section>
       </div>
     </FamilyChrome>

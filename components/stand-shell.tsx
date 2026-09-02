@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
@@ -34,18 +35,21 @@ export function StandShell({ children }: { children: ReactNode }) {
     <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col px-4 pb-28 pt-5 print:max-w-none print:px-0 print:pb-0 print:pt-0">
       <header className="mb-4 flex items-center justify-between gap-3 print:hidden">
         <div>
-          <Link href="/" className="text-sm font-semibold text-accent">
-            Family Time
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/rascal-icon.png" alt="" width={36} height={36} className="size-9 rounded-lg" />
+            <span>
+              <span className="block text-sm font-semibold text-accent">Wild Kit</span>
+              <span className="font-display block text-2xl leading-none">
+                {stand.standName || "Lemonade Stand"}
+              </span>
+            </span>
           </Link>
-          <h1 className="font-display text-2xl leading-none">
-            {stand.standName || "My Stand"}
-          </h1>
         </div>
         <Link
           href="/stand/parent"
           className="rounded-full bg-secondary px-3 py-1.5 text-sm font-semibold"
         >
-          Parents
+          Parent Desk
         </Link>
       </header>
       <div className="flex-1">{children}</div>

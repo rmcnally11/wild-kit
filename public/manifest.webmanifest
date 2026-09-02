@@ -1,10 +1,18 @@
 {
-  "name": "Family Time",
-  "short_name": "Family Time",
-  "description": "Saturday kits for a family. The stand, the camp, the wash — they happen in the real room.",
+  "name": "Lemonade Stand by Wild Kit",
+  "short_name": "Wild Kit",
+  "description": "Kids invent it. Parents print it. Saturday happens.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFF8E8",
-  "theme_color": "#F0B429",
-  "orientation": "portrait"
+  "background_color": "#FFF6E8",
+  "theme_color": "#F5C518",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/rascal-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }

@@ -198,11 +198,7 @@ export const StandPoster = forwardRef<SVGSVGElement, Props>(function StandPoster
         fontWeight="700"
         fontFamily="Nunito, sans-serif"
       >
-        {venmo
-          ? `Cash or Venmo ${venmo}`
-          : kidName
-            ? `Ask for ${kidName}`
-            : "Cash is great"}
+        {kidName ? `Ask for ${kidName}` : "Cash is great"}
       </text>
     </svg>
   );

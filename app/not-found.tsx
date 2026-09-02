@@ -6,7 +6,7 @@ export default function NotFound() {
       <h1 className="font-display text-4xl">Wrong corner.</h1>
       <p className="text-muted-foreground">That Saturday is not on the shelf.</p>
       <Link href="/" className="font-extrabold">
-        Back to Family Time
+        Back to Wild Kit
       </Link>
     </div>
   );

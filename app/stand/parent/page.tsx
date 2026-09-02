@@ -14,10 +14,9 @@ export default function ParentPage() {
 
   return (
     <div className="grid gap-4">
-      <h2 className="font-display text-3xl">Parents</h2>
+      <h2 className="font-display text-3xl">Parent Desk</h2>
       <p className="text-muted-foreground">
-        This side is for grown-ups. Kids run the Saturday. You put in an email and a zip so a
-        poster file can go to a printer.
+        You own the account. You hit print. You keep it safe. Kids invent the stand.
       </p>
 
       {!gateOpen && (
@@ -40,6 +39,9 @@ export default function ParentPage() {
           >
             I am the parent
           </Button>
+          {year.length === 4 && !adult && (
+            <p className="mt-2 font-extrabold text-[var(--raspberry)]">Ask a grown-up.</p>
+          )}
         </div>
       )}
 
@@ -86,16 +88,6 @@ export default function ParentPage() {
               className="h-12 rounded-2xl"
             />
           </label>
-          <label className="grid gap-1 text-sm font-bold">
-            Venmo, if you use it
-            <Input
-              value={stand.venmo}
-              onChange={(event) => save({ venmo: event.target.value })}
-              placeholder="@yourname"
-              className="h-12 rounded-2xl"
-            />
-          </label>
-
           <div className="grid gap-3 md:grid-cols-2">
             <PlanCard
               name="This summer"

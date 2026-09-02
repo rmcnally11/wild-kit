@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Rascal } from "@/lib/rascal";
 import { money, useStand } from "@/lib/stand-store";
 
 export default function SellPage() {
@@ -38,25 +39,29 @@ export default function SellPage() {
 
       {todayCups === 0 && (
         <div className="grid gap-2">
+          <Rascal pose="scheme" size={72} line="Make the sign. Set the price. Open." />
           <Link
             href="/stand/look"
             className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
           >
-            Make the logo you tape to the table →
+            Draw the logo →
           </Link>
           <Link
             href="/stand/poster"
             className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
           >
-            Draw the yard poster →
+            Grown-up runs the printer →
           </Link>
           <Link
             href="/stand/mix"
             className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
           >
-            Mix a special pitcher →
+            Go mix the lemonade →
           </Link>
         </div>
+      )}
+      {todayCups > 0 && (
+        <p className="text-center font-display text-xl">You opened the stand. That&apos;s the whole point.</p>
       )}
 
       {stand.todaysRecipe && (

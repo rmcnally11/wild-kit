@@ -42,7 +42,7 @@ export default function CustomerMenuPage() {
           )}
         </div>
         <p className="text-lg font-semibold">
-          {stand.venmo ? `Cash or Venmo ${stand.venmo}` : "Cash is great"}
+          Cash is great
         </p>
         {stand.kidName && <p className="text-muted-foreground">Ask for {stand.kidName}</p>}
         <Link

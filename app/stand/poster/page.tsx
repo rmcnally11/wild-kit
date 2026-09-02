@@ -117,7 +117,7 @@ export default function PosterPage() {
       if (result.city && result.state) setPlace(`${result.city}, ${result.state}`);
 
       if (result.sent) {
-        setStatus(`Sent to ${stand.parentEmail}. Forward that file to the shop. Ask them to fill the ${spec.short} sheet.`);
+        setStatus(`Poster's on the way. Go mix the lemonade.`);
         return;
       }
 
@@ -134,7 +134,7 @@ export default function PosterPage() {
         });
       window.location.href = `mailto:${encodeURIComponent(stand.parentEmail)}?subject=${encodeURIComponent(result.subject || `${stand.standName} poster for the printer`)}&body=${encodeURIComponent(body)}`;
       setStatus(
-        "Saved the picture and opened a mail draft. Attach the PNG if Mail did not keep it, then send it to the shop.",
+        "Saved the picture. Attach the PNG if Mail did not keep it. Then go mix the lemonade.",
       );
     } catch {
       setStatus("Could not build the file. Try Print this poster instead.");
@@ -281,7 +281,7 @@ export default function PosterPage() {
       )}
 
       <Button className="h-16 rounded-2xl text-xl font-extrabold" disabled={busy || !canPrint} onClick={printIt}>
-        {busy ? "Getting it ready…" : "Let's get this printed"}
+        {busy ? "Sending…" : "Send to printer"}
       </Button>
       <Button
         type="button"

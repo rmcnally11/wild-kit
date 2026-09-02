@@ -7,9 +7,7 @@ export function flyerCopy(stand: Stand, totalItems: number) {
     .map((item) => `${item.name} ${money(item.price)}`)
     .join(" · ");
   const where = stand.corner.trim() || "the corner";
-  const pay = stand.venmo.trim()
-    ? `Cash or Venmo ${stand.venmo}.`
-    : "Cash is perfect.";
+  const pay = "Cash is perfect.";
   return `${stand.standName || "Our lemonade stand"} is open at ${where}. ${drinks || "Come thirsty."} ${pay} ${stand.kidName ? `Ask for ${stand.kidName}.` : ""} We already sold ${totalItems} today.`.replace(/\s+/g, " ").trim();
 }
 

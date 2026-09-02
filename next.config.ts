@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
       { source: "/parent", destination: "/stand/parent", permanent: false },
       { source: "/poster", destination: "/stand/poster", permanent: false },
       { source: "/customer", destination: "/stand/customer", permanent: false },
+      { source: "/camp", destination: "/fort", permanent: false },
+      { source: "/kits/stand", destination: "/kits/lemonade", permanent: false },
+      { source: "/kits/camp", destination: "/kits/fort", permanent: false },
     ];
   },
 };

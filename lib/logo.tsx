@@ -149,7 +149,7 @@ export const StandSign = forwardRef<SVGSVGElement, SignProps>(function StandSign
         fontWeight="800"
         fontFamily="Nunito, sans-serif"
       >
-        {venmo ? `Cash or Venmo ${venmo}` : "Cash is great"}
+        Cash is great
       </text>
     </svg>
   );

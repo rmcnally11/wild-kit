@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
@@ -28,19 +29,20 @@ export function FamilyChrome({
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col px-4 pb-16 pt-5">
       <header className="mb-5 flex items-center justify-between gap-3">
-        <div>
-          <Link href="/" className="text-sm font-semibold text-accent">
-            {eyebrow || "Family Time"}
-          </Link>
-          <h1 className="font-display text-2xl leading-none">
-            {title || stand.kidName || "This Saturday"}
-          </h1>
-        </div>
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/rascal-icon.png" alt="" width={40} height={40} className="size-10 rounded-xl" />
+          <div>
+            <p className="text-sm font-semibold text-accent">{eyebrow || "Wild Kit"}</p>
+            <h1 className="font-display text-2xl leading-none">
+              {title || stand.kidName || "Saturday Jobs"}
+            </h1>
+          </div>
+        </Link>
         <Link
           href="/stand/parent"
           className="rounded-full bg-secondary px-3 py-1.5 text-sm font-semibold"
         >
-          Parents
+          Parent Desk
         </Link>
       </header>
       <div className="flex-1">{children}</div>

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { isEmail } from "@/lib/email";
 import { StandLogo } from "@/lib/logo";
+import { Rascal } from "@/lib/rascal";
 import { isZip } from "@/lib/shops";
 import { useStand } from "@/lib/stand-store";
 import { type PaletteId, type Stand } from "@/lib/types";
@@ -29,11 +30,11 @@ function SetupFlow({ stand }: { stand: Stand }) {
   if (step === "who") {
     return (
       <div className="mx-auto grid min-h-dvh max-w-lg content-center gap-5 px-5 py-10">
-        <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Family Time</p>
+        <Rascal pose="scheme" size={120} line="Kids invent it. Parents print it." />
+        <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Wild Kit</p>
         <h1 className="font-display text-5xl leading-none">Who&apos;s holding the phone?</h1>
         <p className="text-lg text-muted-foreground">
-          Mom or Dad starts. They put in an email and a zip so a poster can go to a real
-          printer. The kid picks a Saturday after that.
+          Parent buys. Kid uses. You own the account. They invent the stand.
         </p>
         <Button className="h-16 rounded-2xl text-xl font-extrabold" onClick={() => setStep("parent")}>
           I&apos;m the parent
@@ -46,7 +47,7 @@ function SetupFlow({ stand }: { stand: Stand }) {
           I&apos;m the kid
         </Button>
         <p className="text-sm text-muted-foreground">
-          Kids never type an email. If a kid starts, a parent can add the print stuff later.
+          Kids never type an email. If a kid starts, a parent can add print later.
         </p>
       </div>
     );
@@ -70,11 +71,11 @@ function ParentStart({ stand, onNext }: { stand: Stand; onNext: () => void }) {
 
   return (
     <div className="mx-auto grid min-h-dvh max-w-lg content-center gap-5 px-5 py-10">
-      <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Parents first</p>
-      <h1 className="font-display text-4xl leading-none">This side is yours.</h1>
+      <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Parent Desk</p>
+      <h1 className="font-display text-4xl leading-none">You hit print.</h1>
       <p className="text-muted-foreground">
-        Email gets the poster file. Zip finds a shop down the street. No street address. No kid
-        inbox.
+        Saturday. They&apos;re already in the cabinets. Give them a stand. Email gets the poster.
+        Zip finds a shop. No street address. No kid inbox.
       </p>
       <label className="grid gap-1 font-bold">
         What year were you born?
@@ -86,6 +87,9 @@ function ParentStart({ stand, onNext }: { stand: Stand; onNext: () => void }) {
           className="h-14 rounded-2xl text-lg"
         />
       </label>
+      {!adult && year.length === 4 && (
+        <p className="font-extrabold text-[var(--raspberry)]">Ask a grown-up.</p>
+      )}
       <label className="grid gap-1 font-bold">
         Your email
         <Input
@@ -103,7 +107,7 @@ function ParentStart({ stand, onNext }: { stand: Stand; onNext: () => void }) {
           inputMode="numeric"
           value={zip}
           onChange={(event) => setZip(event.target.value.replace(/\D/g, "").slice(0, 5))}
-          placeholder="78701"
+          placeholder="77006"
           className="h-14 rounded-2xl text-lg"
         />
       </label>
@@ -130,7 +134,7 @@ function ParentStart({ stand, onNext }: { stand: Stand; onNext: () => void }) {
           onNext();
         }}
       >
-        Next — the kid&apos;s turn
+        Next — they invent it
       </Button>
     </div>
   );
@@ -146,11 +150,10 @@ function KidStart({ stand }: { stand: Stand }) {
 
   return (
     <div className="mx-auto grid min-h-dvh max-w-lg content-center gap-5 px-5 py-10">
-      <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Family Time</p>
-      <h1 className="font-display text-5xl leading-none">First name only.</h1>
+      <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Kid Studio</p>
+      <h1 className="font-display text-5xl leading-none">You&apos;re the boss of this stand.</h1>
       <p className="text-lg text-muted-foreground">
-        No last names, no emails. This lives on this phone. Name a lemonade stand if you want
-        one today. You can skip it and still see the shelf.
+        First name only. Make the sign. Set the price. Grown-up runs the printer.
       </p>
       <label className="grid gap-1 font-bold">
         Your first name
@@ -167,7 +170,7 @@ function KidStart({ stand }: { stand: Stand }) {
         <Input
           value={standName}
           onChange={(event) => setStandName(event.target.value)}
-          placeholder="Sunny Sip"
+          placeholder={standName ? undefined : "The stand needs a name."}
           className="h-14 rounded-2xl text-lg"
         />
       </label>
@@ -182,7 +185,7 @@ function KidStart({ stand }: { stand: Stand }) {
           size={200}
         />
         <p className="font-display text-xl">
-          {(standName.trim() || "My Stand").toUpperCase()}
+          {(standName.trim() || "Lemonade Stand").toUpperCase()}
         </p>
       </div>
       <Button
@@ -198,11 +201,9 @@ function KidStart({ stand }: { stand: Stand }) {
           router.replace("/");
         }}
       >
-        See this Saturday
+        Open Saturday Jobs
       </Button>
-      <p className="text-center text-sm text-muted-foreground">
-        The stand is one Saturday. There is a rainy-day camp too.
-      </p>
+      <p className="text-center text-sm text-muted-foreground">Go outside.</p>
     </div>
   );
 }

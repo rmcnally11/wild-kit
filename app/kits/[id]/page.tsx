@@ -16,17 +16,18 @@ export default function KitPage() {
       <FamilyChrome title="That kit">
         <p className="text-lg text-muted-foreground">That Saturday is not on the shelf.</p>
         <Button asChild className="mt-4 h-14 rounded-2xl text-lg font-extrabold">
-          <Link href="/">Back to Family Time</Link>
+          <Link href="/">Back to Wild Kit</Link>
         </Button>
       </FamilyChrome>
     );
   }
 
   return (
-    <FamilyChrome eyebrow="Family Time" title={kit.name}>
+    <FamilyChrome eyebrow="Saturday Jobs" title={kit.name}>
       <div className="grid gap-5">
         <div>
-          <p className="text-sm font-extrabold uppercase text-accent">{kit.weatherLabel}</p>
+          <p className="text-sm font-extrabold uppercase text-[var(--raspberry)]">{kit.listing}</p>
+          <p className="mt-1 text-sm font-extrabold uppercase text-accent">{kit.seasonLabel}</p>
           <h2 className="font-display mt-1 text-4xl leading-none">{kit.name}</h2>
           <p className="mt-2 text-lg text-muted-foreground">{kit.line}</p>
           <p className="mt-1 text-sm font-semibold">{kit.hours}</p>
@@ -69,8 +70,8 @@ export default function KitPage() {
           </Button>
         ) : (
           <p className="rounded-[1.6rem] bg-secondary p-4 text-sm font-semibold">
-            You do not need the buttons to do this Saturday. The list is the kit. The phone
-            version opens next.
+            You do not need the buttons to do this Saturday. The list is the job. Lemonade
+            Stand is the first app. The rest wait for fifty real stands.
           </p>
         )}
       </div>

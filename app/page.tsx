@@ -4,38 +4,49 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { FamilyChrome } from "@/components/family-chrome";
-import { KITS, type Weather } from "@/lib/kits";
+import { Rascal } from "@/lib/rascal";
+import { KITS, type Season } from "@/lib/kits";
 import { useStand } from "@/lib/stand-store";
 import { cn } from "@/lib/utils";
 
-const FILTERS: { id: "all" | Weather; label: string }[] = [
+const FILTERS: { id: "all" | Season; label: string }[] = [
   { id: "all", label: "All" },
-  { id: "outside", label: "Outside" },
-  { id: "rainy", label: "Rainy day" },
-  { id: "either", label: "Either" },
+  { id: "summer", label: "Summer" },
+  { id: "spring", label: "Spring" },
+  { id: "fall", label: "Fall" },
+  { id: "rain", label: "Rain" },
+  { id: "anytime", label: "Anytime" },
 ];
 
-export default function FamilyHome() {
+export default function WildKitHome() {
   const { stand } = useStand();
   const [filter, setFilter] = useState<(typeof FILTERS)[number]["id"]>("all");
-  const kid = stand.kidName || "the kid";
   const visible = useMemo(
-    () => (filter === "all" ? KITS : KITS.filter((kit) => kit.weather === filter)),
+    () => (filter === "all" ? KITS : KITS.filter((kit) => kit.season === filter)),
     [filter],
   );
   const open = visible.filter((kit) => kit.status === "open");
   const next = visible.filter((kit) => kit.status === "next");
 
   return (
-    <FamilyChrome title={stand.kidName ? `${stand.kidName}'s Saturday` : "This Saturday"}>
+    <FamilyChrome title="Saturday Jobs">
       <div className="grid gap-5">
-        <div>
-          <h2 className="font-display text-4xl leading-none">Family Time</h2>
-          <p className="mt-2 text-lg text-muted-foreground">
-            Saturday projects that use the house, the driveway, and the kitchen. Not a game.{" "}
-            {kid} runs it. A grown-up stays nearby.
-          </p>
+        <div className="flex items-start gap-3">
+          <Rascal pose="boss" size={88} line="" />
+          <div>
+            <p className="text-sm font-extrabold uppercase tracking-wide text-[var(--raspberry)]">
+              Weekend projects for wild little kits
+            </p>
+            <h2 className="font-display mt-1 text-4xl leading-none">Wild Kit</h2>
+            <p className="mt-2 text-lg font-semibold">
+              Kids invent it. Parents print it. Saturday happens.
+            </p>
+          </div>
         </div>
+        <p className="text-muted-foreground">
+          {stand.kidName ? `${stand.kidName} invents the thing.` : "Kids invent the thing."} You
+          hit print. Then everybody goes outside.
+        </p>
 
         <div className="flex flex-wrap gap-2">
           {FILTERS.map((item) => (
@@ -54,26 +65,27 @@ export default function FamilyHome() {
         </div>
 
         <section className="grid gap-3">
-          <p className="text-sm font-extrabold uppercase tracking-wide text-accent">Open now</p>
+          <p className="text-sm font-extrabold uppercase tracking-wide text-accent">Open this weekend</p>
           {open.map((kit) => (
             <Link
               key={kit.id}
               href={kit.href || `/kits/${kit.id}`}
               className="tap rounded-[1.8rem] bg-primary px-5 py-5 text-primary-foreground"
             >
-              <p className="text-sm font-extrabold uppercase opacity-80">{kit.weatherLabel}</p>
+              <p className="text-sm font-extrabold uppercase opacity-80">{kit.seasonLabel}</p>
               <p className="font-display mt-1 text-3xl leading-none">{kit.name}</p>
+              <p className="mt-1 text-sm font-semibold">{kit.listing}</p>
               <p className="mt-2 font-semibold">{kit.line}</p>
-              <p className="mt-3 text-sm font-extrabold">Open this one →</p>
+              <p className="mt-3 text-sm font-extrabold">Open →</p>
             </Link>
           ))}
         </section>
 
         <section className="grid gap-3">
-          <p className="text-sm font-extrabold uppercase tracking-wide">The rest of the shelf</p>
+          <p className="text-sm font-extrabold uppercase tracking-wide">Saturday Jobs</p>
           <p className="text-sm text-muted-foreground">
-            Each one is a real Saturday. The list is the kit. The phone buttons come as we open
-            them.
+            Always titled [Job] by Wild Kit. The list is the job until the buttons land. Ship the
+            stand first.
           </p>
           {next.map((kit) => (
             <Link
@@ -81,7 +93,7 @@ export default function FamilyHome() {
               href={`/kits/${kit.id}`}
               className="tap rounded-[1.6rem] bg-card px-5 py-4 ring-1 ring-border"
             >
-              <p className="text-xs font-extrabold uppercase text-accent">{kit.weatherLabel}</p>
+              <p className="text-xs font-extrabold uppercase text-accent">{kit.seasonLabel}</p>
               <p className="font-display text-2xl leading-none">{kit.name}</p>
               <p className="mt-1 text-sm font-semibold text-muted-foreground">{kit.line}</p>
             </Link>
