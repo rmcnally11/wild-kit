@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { JobShelf } from "@/components/job-shelf";
 import { SiteChrome } from "@/components/site-chrome";
-import { hueOf } from "@/lib/hues";
-import { KITS } from "@/lib/kits";
 import { Rascal } from "@/lib/rascal";
 
 export const metadata: Metadata = {
@@ -35,9 +34,6 @@ const STEPS = [
 ];
 
 export default function BrandPage() {
-  const open = KITS.filter((kit) => kit.status === "open");
-  const next = KITS.filter((kit) => kit.status === "next");
-
   return (
     <SiteChrome overlay>
       <main>
@@ -103,60 +99,28 @@ export default function BrandPage() {
           </div>
         </section>
 
+        <section className="bg-ink text-cream">
+          <div className="mx-auto w-full max-w-6xl px-4 py-10 md:py-14">
+            <p className="text-sm font-extrabold tracking-wide uppercase opacity-80">The purpose</p>
+            <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">
+              This site is the studio door.
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg font-semibold leading-7">
+              About us. Why Saturday Jobs exist. The apps, where to get them, and what is coming.
+              The App Store listing is not live. Open the kits here until the badge is real.
+            </p>
+            <Link href="/about" className="mt-5 inline-block font-extrabold underline">
+              The full outline →
+            </Link>
+          </div>
+        </section>
+
         <section id="jobs" className="bg-cream">
           <div className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-            <p className="text-sm font-extrabold tracking-wide text-raspberry uppercase">
-              Always titled [Job] by Wild Kit
-            </p>
-            <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">
-              Saturday Jobs
-            </h2>
-            <p className="mt-3 max-w-2xl font-semibold text-muted-foreground">
-              Four are open on the phone today. The rest still happen with a marker and what is
-              already in the house.
-            </p>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {open.map((kit) => {
-                const hue = hueOf(kit.id);
-                return (
-                  <Link
-                    key={kit.id}
-                    href={kit.href || `/kits/${kit.id}`}
-                    className="tap rounded-[1.6rem] px-5 py-5"
-                    style={{ background: hue.bg, color: hue.ink }}
-                  >
-                    <p className="text-xs font-extrabold tracking-wide uppercase opacity-80">
-                      {kit.seasonLabel} · Open
-                    </p>
-                    <p className="font-display mt-1 text-3xl leading-none">{kit.name}</p>
-                    <p className="mt-2 font-semibold">{kit.line}</p>
-                    <p className="mt-4 text-sm font-extrabold">Open this weekend →</p>
-                  </Link>
-                );
-              })}
-            </div>
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {next.map((kit) => {
-                const hue = hueOf(kit.id);
-                return (
-                  <Link
-                    key={kit.id}
-                    href={`/kits/${kit.id}`}
-                    className="tap rounded-[1.3rem] px-4 py-4 ring-2"
-                    style={{
-                      background: hue.bg,
-                      color: hue.ink,
-                      boxShadow: "none",
-                    }}
-                  >
-                    <p className="text-[10px] font-extrabold uppercase opacity-80">{kit.seasonLabel}</p>
-                    <p className="font-display text-xl leading-none">{kit.name}</p>
-                  </Link>
-                );
-              })}
-            </div>
+            <JobShelf
+              heading="The apps"
+              intro="Four open on this phone. Eight coming soon. App Store first listing: Lemonade Stand by Wild Kit — coming."
+            />
           </div>
         </section>
 

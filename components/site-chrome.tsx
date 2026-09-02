@@ -38,13 +38,13 @@ export function SiteChrome({
             </span>
           </Link>
           <nav className="flex shrink-0 items-center gap-1 text-sm font-extrabold sm:gap-2">
-            <Link
-              href="/#jobs"
-              className="hidden rounded-full px-3 py-2 hover:bg-white/40 sm:inline"
-            >
-              Saturday Jobs
+            <Link href="/about" className="rounded-full px-2 py-2 hover:bg-white/40 sm:px-3">
+              About
             </Link>
-            <Link href="/parents" className="rounded-full px-3 py-2 hover:bg-white/40">
+            <Link href="/apps" className="hidden rounded-full px-3 py-2 hover:bg-white/40 sm:inline">
+              Apps
+            </Link>
+            <Link href="/parents" className="rounded-full px-2 py-2 hover:bg-white/40 sm:px-3">
               Parents
             </Link>
             <Link
@@ -68,14 +68,17 @@ export function SiteChrome({
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-6 text-sm font-semibold md:flex-row md:items-center md:justify-between">
           <p>Wild Kit Co. · Texas · Weekend projects for wild little kits.</p>
           <p className="flex flex-wrap gap-3">
+            <Link href="/about" className="underline">
+              About
+            </Link>
+            <Link href="/apps" className="underline">
+              Apps
+            </Link>
             <Link href="/parents" className="underline">
               Parents
             </Link>
             <Link href="/privacy" className="underline">
               Privacy
-            </Link>
-            <Link href="/app" className="underline">
-              Saturday Jobs
             </Link>
           </p>
         </div>

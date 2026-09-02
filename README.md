@@ -4,7 +4,7 @@ Weekend projects for wild little kits.
 
 **Kids invent it. Parents print it. Saturday happens.**
 
-Wild Kit Co. is a family studio. The website is the brand door. Saturday Jobs live in the kits. The first listing is **Lemonade Stand by Wild Kit**. Rascal is the face. He whispers one-breath hints on every kid screen — tap him for another. Always titled `[Job] by Wild Kit`.
+Wild Kit Co. is a family studio. The website is the studio door: about us, the purpose, the apps, where to get them, and what is coming. Saturday Jobs live in the kits. The first listing is **Lemonade Stand by Wild Kit**. Rascal is the face. Always titled `[Job] by Wild Kit`.
 
 The app is not the product. The driveway artifact is the product.
 
@@ -12,7 +12,9 @@ The app is not the product. The driveway artifact is the product.
 
 | Path | What it is |
 | --- | --- |
-| `/` | Brand page. Invent → Print → Open. Saturday Jobs. Rascal. For Parents. |
+| `/` | The door. Invent → Print → Open. Purpose. The apps. Rascal. Parents. |
+| `/about` | The full outline. Who we are, why, the goal, App Store plan, what we will not do. |
+| `/apps` | The apps. Open here. Coming soon. App Store — coming. |
 | `/parents` | The parent page. You hit print. |
 | `/privacy` | First name only. No kid inbox. |
 | `/app` | Saturday Jobs hub on the phone. |
