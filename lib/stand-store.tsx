@@ -5,7 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useSyncExternalStore,
+  useState,
   type ReactNode,
 } from "react";
 
@@ -49,26 +49,6 @@ if (typeof window !== "undefined") {
   hydrate();
 }
 
-function subscribe(listener: () => void) {
-  listeners.add(listener);
-  return () => listeners.delete(listener);
-}
-
-function getClientSnapshot() {
-  hydrate();
-  return memory;
-}
-
-const EMPTY = emptyStand();
-
-function getServerSnapshot() {
-  return EMPTY;
-}
-
-export function isServerStand(stand: Stand) {
-  return !hydrated && stand === EMPTY;
-}
-
 export function peekStand() {
   hydrate();
   return memory;
@@ -105,11 +85,16 @@ type Store = {
 const StandContext = createContext<Store | null>(null);
 
 export function StandProvider({ children }: { children: ReactNode }) {
-  const stand = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
+  const [stand, setStand] = useState<Stand>(emptyStand);
 
   useEffect(() => {
+    const sync = () => setStand(memory);
+    listeners.add(sync);
     hydrate();
-    emit();
+    sync();
+    return () => {
+      listeners.delete(sync);
+    };
   }, []);
 
   const todaySales = stand.sales.filter((sale) => sale.at.slice(0, 10) === todayKey());
