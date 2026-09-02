@@ -1,11 +1,14 @@
 export type SaveHow = "shared" | "downloaded" | "opened";
 
+export type PngSize = { width: number; height: number };
+
 export async function downloadSvgAsPng(
   svg: SVGSVGElement,
   filename: string,
+  size?: PngSize,
 ): Promise<SaveHow> {
   const file = filename.endsWith(".png") ? filename : `${filename}.png`;
-  const blob = await svgToPngBlob(svg);
+  const blob = await svgToPngBlob(svg, size);
   const imageFile = new File([blob], file, { type: "image/png" });
 
   if (canShareFile(imageFile)) {
@@ -38,7 +41,7 @@ export async function downloadSvgAsPng(
   return "downloaded";
 }
 
-export async function svgToPngBlob(svg: SVGSVGElement): Promise<Blob> {
+export async function svgToPngBlob(svg: SVGSVGElement, size?: PngSize): Promise<Blob> {
   await document.fonts.ready.catch(() => undefined);
 
   const clone = svg.cloneNode(true) as SVGSVGElement;
@@ -57,8 +60,8 @@ export async function svgToPngBlob(svg: SVGSVGElement): Promise<Blob> {
   });
 
   const view = svg.viewBox.baseVal;
-  const width = 2048;
-  const height = Math.round(2048 * (view.height / view.width || 1));
+  const width = size?.width ?? 2048;
+  const height = size?.height ?? Math.round(width * (view.height / view.width || 1));
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;

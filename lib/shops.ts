@@ -62,7 +62,7 @@ async function findShops(lat: number, lon: number, city: string, state: string) 
   return [
     {
       name: "Staples or Office Depot",
-      address: `${city}, ${state} — ask for a letter-size color print`,
+      address: `${city}, ${state} — ask them to fill the sheet, no extra white border`,
       maps: `https://maps.google.com/?q=${query}+staples`,
     },
     {

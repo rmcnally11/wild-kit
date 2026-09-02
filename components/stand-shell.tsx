@@ -40,8 +40,8 @@ export function StandShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col px-4 pb-28 pt-5">
-      <header className="mb-4 flex items-center justify-between gap-3">
+    <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col px-4 pb-28 pt-5 print:max-w-none print:px-0 print:pb-0 print:pt-0">
+      <header className="mb-4 flex items-center justify-between gap-3 print:hidden">
         <div>
           <p className="text-sm font-semibold text-accent">My Stand</p>
           <h1 className="font-display text-2xl leading-none">
@@ -56,7 +56,7 @@ export function StandShell({ children }: { children: ReactNode }) {
         </Link>
       </header>
       <div className="flex-1">{children}</div>
-      <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 px-3 pt-2 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur">
+      <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 px-3 pt-2 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur print:hidden">
         <div className="mx-auto grid max-w-lg grid-cols-5 gap-1.5">
           {TABS.map((tab) => {
             const active = pathname === tab.href || (tab.href === "/mix" && pathname.startsWith("/mix"));

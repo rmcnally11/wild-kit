@@ -35,7 +35,7 @@ Apple keeps 15–30%. You net about $7 and $17.50. That is fine.
 
 ## Poster print
 
-Mom or Dad enter an email and a zip on setup or the Parents page. The kid designs the yard poster. **Let's get this printed** saves a letter-size PNG and either:
+Mom or Dad enter an email and a zip on setup or the Parents page. The kid designs the yard poster — letter (8½ × 11) for the home printer, or 11 × 17 for the shop. **Let's get this printed** saves a full-sheet 300 dpi PNG and either:
 
 - emails it, if `RESEND_API_KEY` and `RESEND_FROM` are set, or
 - opens a mail draft and suggests Staples, the UPS Store, or a copy shop near that zip.

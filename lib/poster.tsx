@@ -5,9 +5,11 @@ import { forwardRef } from "react";
 import { money } from "@/lib/money";
 import {
   PAPERS,
+  SHEETS,
   type DecoId,
   type MenuItem,
   type PaperId,
+  type SheetId,
 } from "@/lib/types";
 
 type Props = {
@@ -17,41 +19,50 @@ type Props = {
   subhead: string;
   paper: PaperId;
   deco: DecoId;
+  sheet?: SheetId;
   corner?: string;
   venmo?: string;
   menu: MenuItem[];
-  width?: number;
 };
 
 export const StandPoster = forwardRef<SVGSVGElement, Props>(function StandPoster(
-  { name, kidName, headline, subhead, paper, deco, corner, venmo, menu, width = 320 },
+  { name, kidName, headline, subhead, paper, deco, sheet = "tabloid", corner, venmo, menu },
   ref,
 ) {
   const colors = PAPERS[paper];
+  const { w, h } = SHEETS[sheet].view;
   const title = (headline.trim() || name.trim() || "LEMONADE").toUpperCase();
   const line = subhead.trim() || "OPEN TODAY";
   const live = menu.filter((item) => !item.soldOut).slice(0, 5);
-  const titleSize = title.length > 14 ? 54 : title.length > 9 ? 68 : 84;
+  const scale = h / 1100;
+  const titleSize = (title.length > 14 ? 54 : title.length > 9 ? 68 : 84) * scale;
+  const cx = w / 2;
+  const y = (part: number) => part * h;
+
+  const menuTop = y(0.33);
+  const menuHeight = Math.max(y(0.22), 160 * scale + live.length * 52 * scale);
+  const row = 52 * scale;
 
   return (
     <svg
       ref={ref}
-      viewBox="0 0 850 1100"
-      width={width}
-      height={Math.round(width * (1100 / 850))}
+      viewBox={`0 0 ${w} ${h}`}
+      width="100%"
+      preserveAspectRatio="xMidYMid meet"
       role="img"
-      aria-label={`${title} yard poster`}
+      aria-label={`${title} yard poster, ${SHEETS[sheet].short}`}
+      className="block h-auto w-full print:h-full print:w-full"
     >
-      <rect width="850" height="1100" fill={colors.fill} />
+      <rect width={w} height={h} fill={colors.fill} />
       <path
-        d="M28 36 Q 40 22 70 30 H 780 Q 820 24 826 70 V 1030 Q 832 1074 790 1070 H 70 Q 28 1078 24 1034 V 70 Q 18 28 28 36 Z"
+        d={`M28 36 Q 40 22 70 30 H ${w - 70} Q ${w - 30} 24 ${w - 24} 70 V ${h - 70} Q ${w - 18} ${h - 26} ${w - 60} ${h - 30} H 70 Q 28 ${h - 22} 24 ${h - 66} V 70 Q 18 28 28 36 Z`}
         fill="none"
         stroke={colors.ink}
-        strokeWidth="8"
+        strokeWidth={8}
         strokeLinejoin="round"
       />
       <path
-        d="M48 56 H 802 V 1044 H 48 Z"
+        d={`M48 56 H ${w - 48} V ${h - 56} H 48 Z`}
         fill="none"
         stroke={colors.ink}
         strokeOpacity="0.25"
@@ -59,53 +70,78 @@ export const StandPoster = forwardRef<SVGSVGElement, Props>(function StandPoster
         strokeDasharray="10 12"
       />
 
-      <Decorations deco={deco} ink={colors.ink} />
+      <Decorations deco={deco} ink={colors.ink} w={w} h={h} />
 
       <text
-        x="425"
-        y="210"
+        x={cx}
+        y={y(0.19)}
         textAnchor="middle"
         fill={colors.ink}
         fontSize={titleSize}
         fontWeight="800"
         fontFamily="Fredoka, Nunito, sans-serif"
-        transform="rotate(-2 425 210)"
+        transform={`rotate(-2 ${cx} ${y(0.19)})`}
       >
         {title.length > 22 ? `${title.slice(0, 21)}…` : title}
       </text>
       <text
-        x="430"
-        y="300"
+        x={cx + 5}
+        y={y(0.275)}
         textAnchor="middle"
         fill={colors.ink}
-        fontSize="42"
+        fontSize={42 * scale}
         fontWeight="800"
         fontFamily="Fredoka, Nunito, sans-serif"
-        transform="rotate(1.5 430 300)"
+        transform={`rotate(1.5 ${cx + 5} ${y(0.275)})`}
       >
         {line.length > 28 ? `${line.slice(0, 27)}…` : line}
       </text>
 
-      <g transform="rotate(-1.5 425 620)">
-        <rect x="130" y="360" width="590" height={220 + live.length * 52} rx="8" fill="#fffdf6" />
+      <g transform={`rotate(-1.5 ${cx} ${menuTop + menuHeight / 2})`}>
         <rect
-          x="130"
-          y="360"
-          width="590"
-          height={220 + live.length * 52}
+          x={130}
+          y={menuTop}
+          width={590}
+          height={menuHeight}
+          rx="8"
+          fill="#fffdf6"
+        />
+        <rect
+          x={130}
+          y={menuTop}
+          width={590}
+          height={menuHeight}
           rx="8"
           fill="none"
           stroke={colors.ink}
           strokeWidth="6"
         />
-        <rect x="160" y="348" width="70" height="28" rx="3" fill="#f3e2a0" stroke={colors.ink} strokeWidth="3" />
-        <rect x="620" y="348" width="70" height="28" rx="3" fill="#f3e2a0" stroke={colors.ink} strokeWidth="3" />
+        <rect
+          x={160}
+          y={menuTop - 12}
+          width="70"
+          height="28"
+          rx="3"
+          fill="#f3e2a0"
+          stroke={colors.ink}
+          strokeWidth="3"
+        />
+        <rect
+          x={620}
+          y={menuTop - 12}
+          width="70"
+          height="28"
+          rx="3"
+          fill="#f3e2a0"
+          stroke={colors.ink}
+          strokeWidth="3"
+        />
         <text
-          x="425"
-          y="430"
+          x={cx}
+          y={menuTop + 70 * scale}
           textAnchor="middle"
           fill={colors.ink}
-          fontSize="36"
+          fontSize={36 * scale}
           fontWeight="800"
           fontFamily="Fredoka, Nunito, sans-serif"
         >
@@ -114,21 +150,21 @@ export const StandPoster = forwardRef<SVGSVGElement, Props>(function StandPoster
         {live.map((item, index) => (
           <g key={item.id}>
             <text
-              x="180"
-              y={500 + index * 52}
+              x={180}
+              y={menuTop + 140 * scale + index * row}
               fill={colors.ink}
-              fontSize="32"
+              fontSize={32 * scale}
               fontWeight="800"
               fontFamily="Nunito, sans-serif"
             >
               {item.name.length > 18 ? `${item.name.slice(0, 17)}…` : item.name}
             </text>
             <text
-              x="670"
-              y={500 + index * 52}
+              x={670}
+              y={menuTop + 140 * scale + index * row}
               textAnchor="end"
               fill={colors.ink}
-              fontSize="32"
+              fontSize={32 * scale}
               fontWeight="800"
               fontFamily="Fredoka, Nunito, sans-serif"
             >
@@ -138,37 +174,27 @@ export const StandPoster = forwardRef<SVGSVGElement, Props>(function StandPoster
         ))}
       </g>
 
-      {corner ? (
-        <text
-          x="425"
-          y="980"
-          textAnchor="middle"
-          fill={colors.ink}
-          fontSize="28"
-          fontWeight="800"
-          fontFamily="Nunito, sans-serif"
-        >
-          {corner.length > 40 ? `${corner.slice(0, 39)}…` : corner}
-        </text>
-      ) : (
-        <text
-          x="425"
-          y="980"
-          textAnchor="middle"
-          fill={colors.ink}
-          fontSize="28"
-          fontWeight="800"
-          fontFamily="Nunito, sans-serif"
-        >
-          Look for the table
-        </text>
-      )}
       <text
-        x="425"
-        y="1030"
+        x={cx}
+        y={y(0.89)}
         textAnchor="middle"
         fill={colors.ink}
-        fontSize="24"
+        fontSize={28 * scale}
+        fontWeight="800"
+        fontFamily="Nunito, sans-serif"
+      >
+        {corner
+          ? corner.length > 40
+            ? `${corner.slice(0, 39)}…`
+            : corner
+          : "Look for the table"}
+      </text>
+      <text
+        x={cx}
+        y={y(0.935)}
+        textAnchor="middle"
+        fill={colors.ink}
+        fontSize={24 * scale}
         fontWeight="700"
         fontFamily="Nunito, sans-serif"
       >
@@ -182,49 +208,59 @@ export const StandPoster = forwardRef<SVGSVGElement, Props>(function StandPoster
   );
 });
 
-function Decorations({ deco, ink }: { deco: DecoId; ink: string }) {
+function Decorations({
+  deco,
+  ink,
+  w,
+  h,
+}: {
+  deco: DecoId;
+  ink: string;
+  w: number;
+  h: number;
+}) {
   if (deco === "stars") {
     return (
       <g fill={ink}>
-        <Star x={90} y={120} />
-        <Star x={760} y={140} />
-        <Star x={80} y={860} />
-        <Star x={770} y={880} />
+        <Star x={90} y={h * 0.11} />
+        <Star x={w - 90} y={h * 0.13} />
+        <Star x={80} y={h * 0.78} />
+        <Star x={w - 80} y={h * 0.8} />
       </g>
     );
   }
   if (deco === "suns") {
     return (
       <g fill="none" stroke={ink} strokeWidth="6" strokeLinecap="round">
-        <Sun x={90} y={130} />
-        <Sun x={760} y={150} />
+        <Sun x={90} y={h * 0.12} />
+        <Sun x={w - 90} y={h * 0.14} />
       </g>
     );
   }
   if (deco === "arrows") {
     return (
       <g fill="none" stroke={ink} strokeWidth="8" strokeLinecap="round">
-        <path d="M80 920 L200 820 L80 800" />
-        <path d="M770 200 L650 280 L770 300" />
+        <path d={`M80 ${h * 0.84} L200 ${h * 0.74} L80 ${h * 0.73}`} />
+        <path d={`M${w - 80} ${h * 0.18} L${w - 200} ${h * 0.25} L${w - 80} ${h * 0.27}`} />
       </g>
     );
   }
   if (deco === "hearts") {
     return (
       <g fill={ink}>
-        <Heart x={90} y={140} />
-        <Heart x={760} y={160} />
-        <Heart x={90} y={900} />
-        <Heart x={760} y={900} />
+        <Heart x={90} y={h * 0.13} />
+        <Heart x={w - 90} y={h * 0.145} />
+        <Heart x={90} y={h * 0.82} />
+        <Heart x={w - 90} y={h * 0.82} />
       </g>
     );
   }
   return (
     <g fill="none" stroke={ink} strokeWidth="6" strokeLinecap="round">
-      <path d="M100 180 q 10 30 -6 50" />
-      <path d="M130 190 q 8 28 -4 46" />
-      <path d="M750 180 q -10 30 6 50" />
-      <path d="M720 190 q -8 28 4 46" />
+      <path d={`M100 ${h * 0.16} q 10 30 -6 50`} />
+      <path d={`M130 ${h * 0.17} q 8 28 -4 46`} />
+      <path d={`M${w - 100} ${h * 0.16} q -10 30 6 50`} />
+      <path d={`M${w - 130} ${h * 0.17} q -8 28 4 46`} />
     </g>
   );
 }

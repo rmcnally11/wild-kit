@@ -20,12 +20,14 @@ export type Sale = {
 export type Plan = "free" | "season" | "lifetime";
 export type PaperId = "yellow" | "pink" | "lime" | "sky" | "cream";
 export type DecoId = "stars" | "suns" | "arrows" | "hearts" | "drips";
+export type SheetId = "letter" | "tabloid";
 
 export type Poster = {
   paper: PaperId;
   headline: string;
   subhead: string;
   deco: DecoId;
+  sheet: SheetId;
 };
 
 export type Stand = {
@@ -130,11 +132,44 @@ export const DECO_LABELS: Record<DecoId, string> = {
   drips: "Drips",
 };
 
+export const SHEETS: Record<
+  SheetId,
+  {
+    name: string;
+    short: string;
+    ask: string;
+    view: { w: number; h: number };
+    inches: { w: number; h: number };
+    png: { width: number; height: number };
+    page: string;
+  }
+> = {
+  letter: {
+    name: "Letter — 8½ × 11",
+    short: "8½ × 11",
+    ask: "Ask for a letter-size (8½ by 11) color print. Fill the sheet. No extra white border.",
+    view: { w: 850, h: 1100 },
+    inches: { w: 8.5, h: 11 },
+    png: { width: 2550, height: 3300 },
+    page: "letter portrait",
+  },
+  tabloid: {
+    name: "Yard — 11 × 17",
+    short: "11 × 17",
+    ask: "Ask for an 11 by 17 color poster. Fill the sheet. No extra white border.",
+    view: { w: 850, h: 1314 },
+    inches: { w: 11, h: 17 },
+    png: { width: 3300, height: 5100 },
+    page: "11in 17in",
+  },
+};
+
 export const DEFAULT_POSTER: Poster = {
   paper: "yellow",
   headline: "",
   subhead: "",
   deco: "stars",
+  sheet: "tabloid",
 };
 
 export function emptyStand(): Stand {

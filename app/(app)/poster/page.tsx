@@ -10,7 +10,7 @@ import { isEmail, printMailBody } from "@/lib/email";
 import { StandPoster } from "@/lib/poster";
 import { isZip, type PrintShop } from "@/lib/shops";
 import { useStand } from "@/lib/stand-store";
-import { DECO_LABELS, PAPERS, type DecoId, type PaperId } from "@/lib/types";
+import { DECO_LABELS, PAPERS, SHEETS, type DecoId, type PaperId, type SheetId } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export default function PosterPage() {
@@ -21,6 +21,8 @@ export default function PosterPage() {
   const [shops, setShops] = useState<PrintShop[]>([]);
   const [place, setPlace] = useState("");
   const poster = stand.poster;
+  const sheet = poster.sheet in SHEETS ? poster.sheet : "tabloid";
+  const spec = SHEETS[sheet];
   const canPrint = isEmail(stand.parentEmail) && isZip(stand.zip);
 
   useEffect(() => {
@@ -45,7 +47,31 @@ export default function PosterPage() {
 
   async function getPng() {
     if (!posterRef.current) throw new Error("No poster");
-    return svgToPngBlob(posterRef.current);
+    return svgToPngBlob(posterRef.current, spec.png);
+  }
+
+  async function saveShopFile() {
+    if (!posterRef.current) return;
+    setBusy(true);
+    setStatus(null);
+    try {
+      const how = await downloadSvgAsPng(
+        posterRef.current,
+        fileName(stand.standName, "poster"),
+        spec.png,
+      );
+      setStatus(
+        how === "shared"
+          ? `Use the share sheet. The file is ${spec.short} at 300 dpi — the shop can print it edge to edge.`
+          : how === "opened"
+            ? `The picture opened. It is ${spec.short} at 300 dpi. Hold it and tap Add to Photos, then take it to the shop.`
+            : `Saved. ${spec.short} at 300 dpi. Take that file to the shop and ask them to fill the sheet.`,
+      );
+    } catch {
+      setStatus("Could not save the picture. Try Print this poster instead.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function printIt() {
@@ -73,6 +99,7 @@ export default function PosterPage() {
           kidName: stand.kidName,
           filename,
           image,
+          sheet,
         }),
       });
       const result = (await response.json()) as {
@@ -90,11 +117,11 @@ export default function PosterPage() {
       if (result.city && result.state) setPlace(`${result.city}, ${result.state}`);
 
       if (result.sent) {
-        setStatus(`Sent to ${stand.parentEmail}. Forward that file to the shop, or print it at home.`);
+        setStatus(`Sent to ${stand.parentEmail}. Forward that file to the shop. Ask them to fill the ${spec.short} sheet.`);
         return;
       }
 
-      await downloadSvgAsPng(posterRef.current, filename);
+      await downloadSvgAsPng(posterRef.current, filename, spec.png);
       const body =
         result.text ||
         printMailBody({
@@ -103,6 +130,7 @@ export default function PosterPage() {
           city: result.city,
           state: result.state,
           shops: result.shops || shops,
+          sheet,
         });
       window.location.href = `mailto:${encodeURIComponent(stand.parentEmail)}?subject=${encodeURIComponent(result.subject || `${stand.standName} poster for the printer`)}&body=${encodeURIComponent(body)}`;
       setStatus(
@@ -117,16 +145,40 @@ export default function PosterPage() {
 
   return (
     <div className="grid gap-4">
+      <style>{`@media print { @page { size: ${spec.page}; margin: 0; } }`}</style>
       <div>
         <h2 className="font-display text-3xl">The yard poster</h2>
         <p className="mt-1 text-muted-foreground">
-          Marker board. Crooked tape. The same kind you used to make on the kitchen table.
+          Marker board. Crooked tape. Sized to fill the sheet — home letter, or 11 by 17 at the shop.
         </p>
       </div>
 
+      <div>
+        <p className="mb-2 text-sm font-extrabold uppercase">Sheet</p>
+        <div className="grid grid-cols-2 gap-2">
+          {(Object.keys(SHEETS) as SheetId[]).map((id) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => updatePoster({ sheet: id })}
+              className={cn(
+                "tap rounded-2xl px-3 py-3 text-left ring-2",
+                sheet === id ? "bg-primary ring-foreground" : "bg-secondary ring-transparent",
+              )}
+            >
+              <span className="block text-sm font-extrabold">{SHEETS[id].name}</span>
+              <span className="block text-xs font-semibold text-muted-foreground">
+                {id === "tabloid" ? "The yard sign. Shop print." : "Home printer. Fills the page."}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div
-        id="table-sign"
-        className="overflow-hidden rounded-[1.5rem] bg-white p-2 ring-1 ring-border print:rounded-none print:p-0 print:ring-0"
+        id="yard-poster"
+        className="overflow-hidden rounded-[1.5rem] bg-white p-0 ring-1 ring-border print:rounded-none print:ring-0 print:aspect-auto"
+        style={{ aspectRatio: `${spec.view.w} / ${spec.view.h}` }}
       >
         <StandPoster
           ref={posterRef}
@@ -136,10 +188,10 @@ export default function PosterPage() {
           subhead={poster.subhead}
           paper={poster.paper}
           deco={poster.deco}
+          sheet={sheet}
           corner={stand.corner}
           venmo={stand.venmo}
           menu={stand.menu}
-          width={360}
         />
       </div>
 
@@ -203,6 +255,7 @@ export default function PosterPage() {
       {canPrint ? (
         <div className="rounded-[1.6rem] bg-card p-4 ring-1 ring-border">
           <p className="font-extrabold">Print shop near {place || stand.zip}</p>
+          <p className="mt-1 text-sm font-semibold text-muted-foreground">{spec.ask}</p>
           <ul className="mt-2 grid gap-2 text-sm">
             {shops.map((shop) => (
               <li key={shop.maps}>
@@ -230,6 +283,15 @@ export default function PosterPage() {
       <Button className="h-16 rounded-2xl text-xl font-extrabold" disabled={busy || !canPrint} onClick={printIt}>
         {busy ? "Getting it ready…" : "Let's get this printed"}
       </Button>
+      <Button
+        type="button"
+        variant="secondary"
+        className="h-14 rounded-2xl text-lg font-extrabold"
+        disabled={busy}
+        onClick={saveShopFile}
+      >
+        Save the shop file
+      </Button>
       {status && <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">{status}</p>}
       <Button
         type="button"
@@ -240,7 +302,7 @@ export default function PosterPage() {
         Print this poster
       </Button>
       <p className="text-center text-sm text-muted-foreground">
-        Letter-size color print. Tape it to a stake, or to the front of the table.
+        {spec.ask} Tape it to a stake, or to the front of the table.
       </p>
     </div>
   );

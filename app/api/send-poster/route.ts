@@ -3,6 +3,7 @@ import { Resend } from "resend";
 
 import { isEmail, printMailBody } from "@/lib/email";
 import { isZip, shopsNearZip } from "@/lib/shops";
+import { SHEETS, type SheetId } from "@/lib/types";
 
 export async function POST(request: Request) {
   const body = (await request.json()) as {
@@ -12,6 +13,7 @@ export async function POST(request: Request) {
     kidName?: string;
     filename?: string;
     image?: string;
+    sheet?: SheetId;
   };
 
   const email = (body.email || "").trim();
@@ -36,12 +38,14 @@ export async function POST(request: Request) {
   }
 
   const standName = (body.standName || "Lemonade stand").trim();
+  const sheet: SheetId = body.sheet && body.sheet in SHEETS ? body.sheet : "tabloid";
   const text = printMailBody({
     standName,
     kidName: (body.kidName || "").trim(),
     city,
     state,
     shops,
+    sheet,
   });
 
   const key = process.env.RESEND_API_KEY;
