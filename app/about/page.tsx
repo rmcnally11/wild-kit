@@ -83,7 +83,7 @@ export default function AboutPage() {
                 <li>Category: {APP_STORE.category}</li>
                 <li>Rating: {APP_STORE.rating}</li>
                 <li>Price: {APP_STORE.price}</li>
-                <li>Coming. Open it here until the listing is real.</li>
+                <li>App Store — coming. The badge goes up when the listing is real.</li>
               </ul>
             </div>
             <div>
