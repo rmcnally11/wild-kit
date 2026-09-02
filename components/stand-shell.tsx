@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 const TABS = [
   { href: "/", label: "Sell" },
   { href: "/menu", label: "Menu" },
+  { href: "/mix", label: "Mix" },
   { href: "/look", label: "Look" },
   { href: "/tell", label: "Tell" },
 ];
@@ -56,15 +57,15 @@ export function StandShell({ children }: { children: ReactNode }) {
       </header>
       <div className="flex-1">{children}</div>
       <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 px-3 pt-2 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur">
-        <div className="mx-auto grid max-w-lg grid-cols-4 gap-2">
+        <div className="mx-auto grid max-w-lg grid-cols-5 gap-1.5">
           {TABS.map((tab) => {
-            const active = pathname === tab.href;
+            const active = pathname === tab.href || (tab.href === "/mix" && pathname.startsWith("/mix"));
             return (
               <Link
                 key={tab.href}
                 href={tab.href}
                 className={cn(
-                  "tap rounded-2xl py-3 text-center text-base font-extrabold",
+                  "tap rounded-2xl py-3 text-center text-sm font-extrabold",
                   active ? "bg-primary text-primary-foreground" : "bg-secondary",
                 )}
               >

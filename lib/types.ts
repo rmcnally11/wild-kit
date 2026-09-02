@@ -45,6 +45,7 @@ export type Stand = {
   seasonEnds: string | null;
   parentYear: string;
   setupDone: boolean;
+  todaysRecipe: string;
 };
 
 export const PALETTES: Record<
@@ -154,5 +155,6 @@ export function emptyStand(): Stand {
     seasonEnds: null,
     parentYear: "",
     setupDone: false,
+    todaysRecipe: "",
   };
 }

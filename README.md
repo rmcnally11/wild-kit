@@ -2,7 +2,7 @@
 
 A lemonade-stand kit for a ten-year-old, with a parent door for the grown-up stuff.
 
-Kids ring up cups, flip the menu to the sidewalk, and make a sticker-style logo they can tape to the table. They also design a handmade yard poster. Mom or Dad starts the account with an email and a zip. Let's get this printed emails the file (when a Resend key is set) or opens a mail draft, and suggests a copy shop near that zip. Data stays on the phone.
+Kids ring up cups, flip the menu to the sidewalk, and make a sticker-style logo they can tape to the table. They also design a handmade yard poster. Mix is the Saturday kitchen: six simple lemonade recipes the kid and a grown-up make together, then put on the menu. Mom or Dad starts the account with an email and a zip. Let's get this printed emails the file (when a Resend key is set) or opens a mail draft, and suggests a copy shop near that zip. Data stays on the phone.
 
 ## Why this is a real App Store app
 
@@ -20,7 +20,7 @@ This repo is the product. It runs as a phone web app today (Add to Home Screen).
 
 | | |
 | --- | --- |
-| Free | Register, three menu items, logo, yard poster |
+| Free | Register, three menu items, logo, yard poster, recipes |
 | $10 this summer | Full menu, share pack |
 | $25 lifetime | Same, no season end. No subscription. |
 

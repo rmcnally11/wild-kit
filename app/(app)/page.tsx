@@ -50,9 +50,20 @@ export default function SellPage() {
           >
             Draw the yard poster →
           </Link>
+          <Link
+            href="/mix"
+            className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
+          >
+            Mix a special pitcher →
+          </Link>
         </div>
       )}
 
+      {stand.todaysRecipe && (
+        <p className="rounded-[1.6rem] bg-secondary px-5 py-3 text-center font-extrabold">
+          Today&apos;s pitcher is {stand.todaysRecipe}
+        </p>
+      )}
       <p className="text-center text-lg font-semibold">Tap what they bought</p>
       <div className="grid gap-3">
         {live.map((item) => {
@@ -62,7 +73,11 @@ export default function SellPage() {
               key={item.id}
               type="button"
               onClick={() => ringUp(item.id)}
-              className="tap rounded-[1.8rem] bg-card px-5 py-6 text-left shadow-sm ring-1 ring-border"
+              className={`tap rounded-[1.8rem] px-5 py-6 text-left shadow-sm ring-1 ${
+                stand.todaysRecipe === item.name
+                  ? "bg-primary ring-primary"
+                  : "bg-card ring-border"
+              }`}
             >
               <div className="flex items-center justify-between gap-3">
                 <span className="font-display text-3xl">{item.name}</span>

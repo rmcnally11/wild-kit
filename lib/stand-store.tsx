@@ -93,6 +93,7 @@ type Store = {
   todayCups: number;
   save: (next: Partial<Stand>) => void;
   addItem: () => void;
+  serveRecipe: (name: string, price: number) => "added" | "on" | "locked";
   updateItem: (id: string, patch: Partial<MenuItem>) => void;
   removeItem: (id: string) => void;
   sell: (itemId: string) => void;
@@ -126,6 +127,35 @@ export function StandProvider({ children }: { children: ReactNode }) {
         { id: `item-${Date.now()}`, name: "New drink", price: 1, soldOut: false },
       ],
     });
+  }, []);
+
+  const serveRecipe = useCallback((name: string, price: number) => {
+    const already = memory.menu.find(
+      (item) => item.name.toLowerCase() === name.toLowerCase(),
+    );
+    if (already) {
+      write({
+        ...memory,
+        todaysRecipe: name,
+        menu: memory.menu.map((item) =>
+          item.id === already.id ? { ...item, soldOut: false, price } : item,
+        ),
+      });
+      return "on";
+    }
+    const paid =
+      memory.plan === "lifetime" ||
+      (memory.plan === "season" && !!memory.seasonEnds && memory.seasonEnds >= todayKey());
+    if (!paid && memory.menu.length >= 3) return "locked";
+    write({
+      ...memory,
+      todaysRecipe: name,
+      menu: [
+        ...memory.menu,
+        { id: `item-${Date.now()}`, name, price, soldOut: false },
+      ],
+    });
+    return "added";
   }, []);
 
   const updateItem = useCallback((id: string, patch: Partial<MenuItem>) => {
@@ -182,6 +212,7 @@ export function StandProvider({ children }: { children: ReactNode }) {
     todayCups,
     save,
     addItem,
+    serveRecipe,
     updateItem,
     removeItem,
     sell,

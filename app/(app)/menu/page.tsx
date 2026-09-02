@@ -23,8 +23,12 @@ export default function MenuPage() {
         </Button>
       </div>
       <p className="text-muted-foreground">
-        Change names and prices. Flip the phone around when someone walks up.
+        Change names and prices. Flip the phone around when someone walks up. Want it to taste
+        like a secret? Open Mix.
       </p>
+      <Button asChild variant="secondary" className="h-12 rounded-2xl font-extrabold">
+        <Link href="/mix">Mix a special pitcher</Link>
+      </Button>
       <div className="grid gap-3">
         {stand.menu.map((item) => (
           <div key={item.id} className="rounded-3xl bg-card p-4 ring-1 ring-border">
