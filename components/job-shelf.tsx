@@ -54,7 +54,7 @@ export function JobShelf({
               <p className="text-[10px] font-extrabold uppercase opacity-80">
                 {kit.seasonLabel} · App Store — coming
               </p>
-              <p className="font-display text-xl leading-none">{kit.name}</p>
+              <p className="font-display text-xl leading-none">{kit.listing}</p>
               <p className="mt-1 text-sm font-semibold">{kit.line}</p>
               <p className="mt-3 text-sm font-extrabold">Read the brief →</p>
             </Link>

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { RascalBadge } from "@/lib/rascal";
 import { cn } from "@/lib/utils";
 
 export function SiteChrome({
@@ -23,13 +23,7 @@ export function SiteChrome({
       >
         <div className="mx-auto flex h-full w-full max-w-6xl items-center justify-between gap-3 px-4">
           <Link href="/" className="flex min-w-0 items-center gap-2">
-            <Image
-              src="/rascal-icon.png"
-              alt=""
-              width={36}
-              height={36}
-              className="size-9 shrink-0 rounded-lg"
-            />
+            <RascalBadge size={36} />
             <span className="min-w-0">
               <span className="hidden text-[10px] font-extrabold tracking-wide text-leaf uppercase sm:block">
                 Wild Kit Co.

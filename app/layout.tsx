@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     "Kids invent it. Parents print it. Saturday happens. Most family apps keep the Saturday on the phone. We print the one missing piece and send everybody outside.",
   manifest: "/manifest.webmanifest",
   icons: {
-    icon: "/rascal-icon.png",
-    apple: "/rascal-icon.png",
+    icon: "/icon.svg",
+    apple: "/icon.svg",
   },
   appleWebApp: {
     capable: true,
