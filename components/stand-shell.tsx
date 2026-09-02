@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 
-import { useStand } from "@/lib/stand-store";
+import { isServerStand, useStand } from "@/lib/stand-store";
 import { cn } from "@/lib/utils";
 
 const TABS = [
@@ -18,16 +18,16 @@ const TABS = [
 export function StandShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { stand, ready } = useStand();
+  const { stand } = useStand();
 
   useEffect(() => {
-    if (!ready) return;
+    if (isServerStand(stand)) return;
     if (!stand.setupDone && pathname !== "/setup") {
       router.replace("/setup");
     }
-  }, [ready, stand.setupDone, pathname, router]);
+  }, [stand, pathname, router]);
 
-  if (!ready) {
+  if (isServerStand(stand)) {
     return (
       <div className="grid min-h-dvh place-items-center text-lg text-muted-foreground">
         Opening the stand…

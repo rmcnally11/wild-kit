@@ -60,17 +60,8 @@ function getServerSnapshot() {
   return EMPTY;
 }
 
-function subscribeReady(listener: () => void) {
-  const id = window.setTimeout(listener, 0);
-  return () => window.clearTimeout(id);
-}
-
-function getReadyClient() {
-  return true;
-}
-
-function getReadyServer() {
-  return false;
+export function isServerStand(stand: Stand) {
+  return stand === EMPTY;
 }
 
 function write(next: Stand) {
@@ -87,7 +78,6 @@ function todayKey() {
 
 type Store = {
   stand: Stand;
-  ready: boolean;
   todaySales: Stand["sales"];
   todayTotal: number;
   todayCups: number;
@@ -106,7 +96,6 @@ const StandContext = createContext<Store | null>(null);
 
 export function StandProvider({ children }: { children: ReactNode }) {
   const stand = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
-  const ready = useSyncExternalStore(subscribeReady, getReadyClient, getReadyServer);
 
   const todaySales = stand.sales.filter((sale) => sale.at.slice(0, 10) === todayKey());
   const todayTotal = todaySales.reduce((sum, sale) => sum + sale.price, 0);
@@ -206,7 +195,6 @@ export function StandProvider({ children }: { children: ReactNode }) {
 
   const value: Store = {
     stand,
-    ready,
     todaySales,
     todayTotal,
     todayCups,

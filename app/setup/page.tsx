@@ -13,14 +13,7 @@ import { useStand } from "@/lib/stand-store";
 import { type PaletteId, type Stand } from "@/lib/types";
 
 export default function SetupPage() {
-  const { stand, ready } = useStand();
-  if (!ready) {
-    return (
-      <div className="grid min-h-dvh place-items-center text-lg text-muted-foreground">
-        Mixing the pitcher…
-      </div>
-    );
-  }
+  const { stand } = useStand();
   return <SetupFlow stand={stand} />;
 }
 
@@ -178,7 +171,7 @@ function KidStart({ stand }: { stand: Stand }) {
         />
       </label>
       <ColorDots value={palette} onChange={setPalette} />
-      <div className="grid place-items-center">
+      <div className="grid place-items-center gap-2">
         <StandLogo
           key={`${standName}-${palette}`}
           name={standName}
@@ -187,6 +180,9 @@ function KidStart({ stand }: { stand: Stand }) {
           mascot="lemon"
           size={200}
         />
+        <p className="font-display text-xl">
+          {(standName.trim() || "My Stand").toUpperCase()}
+        </p>
       </div>
       <Button
         disabled={!canOpen}

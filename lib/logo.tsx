@@ -199,6 +199,7 @@ function LogoMark({
         strokeLinejoin="round"
       />
       <text
+        key={label}
         x="160"
         y="264"
         textAnchor="middle"

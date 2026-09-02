@@ -6,14 +6,7 @@ import { StandLogo } from "@/lib/logo";
 import { money, useStand } from "@/lib/stand-store";
 
 export default function CustomerMenuPage() {
-  const { stand, ready } = useStand();
-  if (!ready) {
-    return (
-      <div className="grid min-h-dvh place-items-center text-muted-foreground">
-        Mixing the pitcher…
-      </div>
-    );
-  }
+  const { stand } = useStand();
   const live = stand.menu.filter((item) => !item.soldOut);
 
   return (
