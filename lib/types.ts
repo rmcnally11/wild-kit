@@ -18,6 +18,15 @@ export type Sale = {
 };
 
 export type Plan = "free" | "season" | "lifetime";
+export type PaperId = "yellow" | "pink" | "lime" | "sky" | "cream";
+export type DecoId = "stars" | "suns" | "arrows" | "hearts" | "drips";
+
+export type Poster = {
+  paper: PaperId;
+  headline: string;
+  subhead: string;
+  deco: DecoId;
+};
 
 export type Stand = {
   standName: string;
@@ -27,6 +36,9 @@ export type Stand = {
   mascot: MascotId;
   corner: string;
   venmo: string;
+  parentEmail: string;
+  zip: string;
+  poster: Poster;
   menu: MenuItem[];
   sales: Sale[];
   plan: Plan;
@@ -101,6 +113,29 @@ export const DEFAULT_MENU: MenuItem[] = [
   { id: "cookie", name: "Cookie", price: 1, soldOut: false },
 ];
 
+export const PAPERS: Record<PaperId, { name: string; fill: string; ink: string }> = {
+  yellow: { name: "Poster yellow", fill: "#FFE14A", ink: "#2A2416" },
+  pink: { name: "Construction pink", fill: "#FF8AB5", ink: "#3A1420" },
+  lime: { name: "Marker green", fill: "#8DFF4A", ink: "#143016" },
+  sky: { name: "Sky blue", fill: "#7EC8FF", ink: "#142033" },
+  cream: { name: "Notebook", fill: "#FFF4D2", ink: "#2A2416" },
+};
+
+export const DECO_LABELS: Record<DecoId, string> = {
+  stars: "Stars",
+  suns: "Suns",
+  arrows: "Arrows",
+  hearts: "Hearts",
+  drips: "Drips",
+};
+
+export const DEFAULT_POSTER: Poster = {
+  paper: "yellow",
+  headline: "",
+  subhead: "",
+  deco: "stars",
+};
+
 export function emptyStand(): Stand {
   return {
     standName: "",
@@ -110,6 +145,9 @@ export function emptyStand(): Stand {
     mascot: "lemon",
     corner: "",
     venmo: "",
+    parentEmail: "",
+    zip: "",
+    poster: DEFAULT_POSTER,
     menu: DEFAULT_MENU,
     sales: [],
     plan: "free",

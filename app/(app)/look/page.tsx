@@ -35,7 +35,7 @@ export default function LookPage() {
       const how = await downloadSvgAsPng(logoRef.current, fileName(stand.standName, "logo"));
       setStatus(SAVE_COPY[how]);
     } catch {
-      setStatus("Could not save the picture. Try Print a table sign instead.");
+      setStatus("Could not save the picture. Try the yard poster instead.");
     } finally {
       setSaving(false);
     }
@@ -93,7 +93,7 @@ export default function LookPage() {
       </Button>
       {status && <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">{status}</p>}
       <Button asChild variant="secondary" className="h-14 rounded-2xl text-lg font-extrabold">
-        <Link href="/poster">Print a table sign</Link>
+        <Link href="/poster">Make a yard poster</Link>
       </Button>
     </div>
   );

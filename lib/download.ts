@@ -38,7 +38,7 @@ export async function downloadSvgAsPng(
   return "downloaded";
 }
 
-async function svgToPngBlob(svg: SVGSVGElement): Promise<Blob> {
+export async function svgToPngBlob(svg: SVGSVGElement): Promise<Blob> {
   await document.fonts.ready.catch(() => undefined);
 
   const clone = svg.cloneNode(true) as SVGSVGElement;
@@ -120,7 +120,7 @@ function isAbort(error: unknown) {
   return error instanceof DOMException && error.name === "AbortError";
 }
 
-export function fileName(standName: string, kind: "logo" | "sign") {
+export function fileName(standName: string, kind: "logo" | "sign" | "poster") {
   const slug = (standName.trim() || "my-stand")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")

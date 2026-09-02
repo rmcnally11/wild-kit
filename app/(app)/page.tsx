@@ -37,12 +37,20 @@ export default function SellPage() {
       </section>
 
       {todayCups === 0 && (
-        <Link
-          href="/look"
-          className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
-        >
-          Make the logo you tape to the table →
-        </Link>
+        <div className="grid gap-2">
+          <Link
+            href="/look"
+            className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
+          >
+            Make the logo you tape to the table →
+          </Link>
+          <Link
+            href="/poster"
+            className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
+          >
+            Draw the yard poster →
+          </Link>
+        </div>
       )}
 
       <p className="text-center text-lg font-semibold">Tap what they bought</p>

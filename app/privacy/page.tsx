@@ -15,11 +15,11 @@ export default function PrivacyPage() {
         a social network.
       </p>
       <ul className="list-disc space-y-2 pl-5">
-        <li>We ask for a first name and a stand name. That stays on this device.</li>
+        <li>We ask kids for a first name and a stand name. That stays on this device.</li>
         <li>We do not ask kids for an email, a birthday, or a home address.</li>
-        <li>Sales, the menu, and the logo live in the phone&apos;s local storage. Not on our servers.</li>
+        <li>A parent may add their own email and a zip so we can email the poster file and suggest a print shop. Zip is not a street address.</li>
+        <li>Sales, the menu, the logo, and the poster live in the phone&apos;s local storage. Shop lookup uses the zip only.</li>
         <li>Sharing uses the parent&apos;s own Messages, Mail, or share sheet. We do not post for you.</li>
-        <li>The logo and table sign are pictures on this phone. A parent can print them at home or at any shop down the street.</li>
         <li>When this is on the App Store, $10 and $25 will go through Apple. We will not sell kid data.</li>
       </ul>
       <p className="text-sm text-muted-foreground">Last updated September 2, 2026.</p>

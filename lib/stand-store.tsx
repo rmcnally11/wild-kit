@@ -26,10 +26,12 @@ function readStored(): Stand {
     const raw = window.localStorage.getItem(KEY);
     if (!raw) return emptyStand();
     const parsed = JSON.parse(raw) as Stand;
+    const base = emptyStand();
     return {
-      ...emptyStand(),
+      ...base,
       ...parsed,
-      menu: parsed.menu?.length ? parsed.menu : emptyStand().menu,
+      menu: parsed.menu?.length ? parsed.menu : base.menu,
+      poster: { ...base.poster, ...parsed.poster },
     };
   } catch {
     return emptyStand();

@@ -16,8 +16,8 @@ export default function ParentPage() {
     <div className="grid gap-4">
       <h2 className="font-display text-3xl">Parents</h2>
       <p className="text-muted-foreground">
-        This side is for grown-ups. Kids keep the register and make the logo. You pay once and
-        post the corner.
+        This side is for grown-ups. Kids keep the register and draw the poster. You put in an
+        email and a zip so the file can go to a printer.
       </p>
 
       {!gateOpen && (
@@ -53,6 +53,30 @@ export default function ParentPage() {
               className="h-12 rounded-2xl"
             />
           </label>
+          <label className="grid gap-1 text-sm font-bold">
+            Your email
+            <Input
+              type="email"
+              value={stand.parentEmail}
+              onChange={(event) => save({ parentEmail: event.target.value })}
+              placeholder="you@email.com"
+              className="h-12 rounded-2xl"
+              autoComplete="email"
+            />
+          </label>
+          <label className="grid gap-1 text-sm font-bold">
+            Zip
+            <Input
+              inputMode="numeric"
+              value={stand.zip}
+              onChange={(event) => save({ zip: event.target.value.replace(/\D/g, "").slice(0, 5) })}
+              placeholder="78701"
+              className="h-12 rounded-2xl"
+            />
+          </label>
+          <p className="text-sm text-muted-foreground">
+            Email gets the poster file. Zip finds a print shop. Not a street address.
+          </p>
           <label className="grid gap-1 text-sm font-bold">
             Where is the stand?
             <Input
