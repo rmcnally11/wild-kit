@@ -14,7 +14,6 @@ import {
   MASTER,
   MISSING_PIECE,
   MONEY,
-  OTHER_COMPANY,
   PARENT_MOUTH,
   PATTERN,
   PROMO,
@@ -170,7 +169,6 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 font-semibold text-muted-foreground">{OTHER_COMPANY}</p>
             </div>
             <p className="flex flex-wrap gap-4 font-extrabold">
               <Link href="/parents" className="underline">
