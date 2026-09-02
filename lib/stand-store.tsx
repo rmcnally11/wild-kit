@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { money } from "@/lib/money";
 import { emptyStand, type MenuItem, type Plan, type Stand } from "@/lib/types";
 
 const KEY = "my-stand-v1";
@@ -185,10 +186,4 @@ export function useStand() {
   return store;
 }
 
-export function money(value: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: value % 1 === 0 ? 0 : 2,
-  }).format(value);
-}
+export { money };

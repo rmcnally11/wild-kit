@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { money, useStand } from "@/lib/stand-store";
 
+function snapPrice(value: number) {
+  return Math.round(value * 4) / 4;
+}
+
 export default function MenuPage() {
   const { stand, addItem, updateItem, removeItem, isPaid } = useStand();
   const canAdd = isPaid || stand.menu.length < 3;
@@ -19,22 +23,33 @@ export default function MenuPage() {
         </Button>
       </div>
       <p className="text-muted-foreground">
-        Change names and prices. Flip the screen around when someone walks up.
+        Change names and prices. Flip the phone around when someone walks up.
       </p>
       <div className="grid gap-3">
         {stand.menu.map((item) => (
           <div key={item.id} className="rounded-3xl bg-card p-4 ring-1 ring-border">
-            <div className="grid gap-2">
-              <Input
-                value={item.name}
-                onChange={(event) => updateItem(item.id, { name: event.target.value })}
-                className="h-12 rounded-2xl text-lg font-bold"
-                aria-label="Item name"
-              />
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-bold">$</span>
+            <Input
+              value={item.name}
+              onChange={(event) => updateItem(item.id, { name: event.target.value })}
+              className="h-12 rounded-2xl text-lg font-bold"
+              aria-label="Item name"
+            />
+            <div className="mt-3 flex items-center gap-2">
+              <button
+                type="button"
+                className="tap grid size-12 place-items-center rounded-2xl bg-secondary text-2xl font-extrabold"
+                onClick={() =>
+                  updateItem(item.id, { price: Math.max(0, snapPrice(item.price - 0.25)) })
+                }
+                aria-label="Lower price"
+              >
+                −
+              </button>
+              <div className="flex min-w-0 flex-1 items-center gap-2">
+                <span className="text-lg font-extrabold">$</span>
                 <Input
                   type="number"
+                  inputMode="decimal"
                   min="0"
                   step="0.25"
                   value={item.price}
@@ -45,7 +60,18 @@ export default function MenuPage() {
                   aria-label="Price"
                 />
               </div>
+              <button
+                type="button"
+                className="tap grid size-12 place-items-center rounded-2xl bg-secondary text-2xl font-extrabold"
+                onClick={() =>
+                  updateItem(item.id, { price: Math.min(99, snapPrice(item.price + 0.25)) })
+                }
+                aria-label="Raise price"
+              >
+                +
+              </button>
             </div>
+            <p className="mt-2 text-sm font-bold text-muted-foreground">{money(item.price)} a cup</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Button
                 type="button"
@@ -53,7 +79,7 @@ export default function MenuPage() {
                 className="rounded-full font-extrabold"
                 onClick={() => updateItem(item.id, { soldOut: !item.soldOut })}
               >
-                {item.soldOut ? "Sold out" : `${money(item.price)} · hide if gone`}
+                {item.soldOut ? "Sold out — tap to put back" : "On the menu"}
               </Button>
               {stand.menu.length > 1 && (
                 <Button
@@ -74,8 +100,8 @@ export default function MenuPage() {
           Add a drink or snack
         </Button>
       ) : (
-        <p className="rounded-3xl bg-secondary p-4 text-sm">
-          Free stands get three menu items. Parents can unlock more on the Parents page.
+        <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">
+          Free stands get three menu items. A parent can unlock more on the Parents page.
         </p>
       )}
     </div>

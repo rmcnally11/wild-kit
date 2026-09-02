@@ -1,4 +1,4 @@
-import { money } from "@/lib/stand-store";
+import { money } from "@/lib/money";
 import type { Stand } from "@/lib/types";
 
 export function flyerCopy(stand: Stand, totalItems: number) {

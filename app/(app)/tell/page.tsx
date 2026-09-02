@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { flyerCopy, mailLink, textLink } from "@/lib/copy";
 import { money, useStand } from "@/lib/stand-store";
@@ -7,6 +9,7 @@ import { money, useStand } from "@/lib/stand-store";
 export default function TellPage() {
   const { stand, todayCups, todayTotal, isPaid } = useStand();
   const body = flyerCopy(stand, todayCups);
+  const [copied, setCopied] = useState(false);
 
   async function shareNative() {
     const payload = { title: stand.standName || "Lemonade stand", text: body };
@@ -15,18 +18,19 @@ export default function TellPage() {
         await navigator.share(payload);
         return;
       } catch {
-        // user cancelled or share failed — fall through
+        // cancelled or failed — copy instead
       }
     }
     await navigator.clipboard.writeText(body);
-    alert("Copied. Paste it into Messages or Instagram.");
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2500);
   }
 
   return (
     <div className="grid gap-4">
       <h2 className="font-display text-3xl">Tell the block</h2>
       <p className="text-muted-foreground">
-        A ten-year-old does not log into Instagram. You write the words. Mom or Dad hits post.
+        A ten-year-old does not log into Instagram. You write the words. Mom or Dad hits send.
       </p>
       <div className="rounded-[2rem] bg-card p-5 ring-1 ring-border">
         <p className="text-sm font-extrabold uppercase text-accent">Today so far</p>
@@ -35,8 +39,13 @@ export default function TellPage() {
         <p className="mt-4 text-lg leading-7">{body}</p>
       </div>
       {!isPaid && (
-        <p className="rounded-3xl bg-secondary p-4 text-sm">
+        <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">
           Sharing is a parent unlock. Open Parents if you want the buttons to actually send.
+        </p>
+      )}
+      {copied && (
+        <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">
+          Copied. Paste it into Messages or Mail.
         </p>
       )}
       <div className="grid gap-3">

@@ -9,15 +9,15 @@ import { useStand } from "@/lib/stand-store";
 export default function ParentPage() {
   const { stand, save, unlock, isPaid } = useStand();
   const [year, setYear] = useState("");
-  const [gateOpen, setGateOpen] = useState(isPaid);
+  const [gateOpen, setGateOpen] = useState(isPaid || Boolean(stand.parentYear));
   const adult = Number(year) > 1900 && Number(year) <= new Date().getFullYear() - 18;
 
   return (
     <div className="grid gap-4">
       <h2 className="font-display text-3xl">Parents</h2>
       <p className="text-muted-foreground">
-        This side is for grown-ups. Kids keep the register and make the logo. You pay once
-        and post the corner.
+        This side is for grown-ups. Kids keep the register and make the logo. You pay once and
+        post the corner.
       </p>
 
       {!gateOpen && (
@@ -26,7 +26,7 @@ export default function ParentPage() {
           <Input
             inputMode="numeric"
             value={year}
-            onChange={(event) => setYear(event.target.value)}
+            onChange={(event) => setYear(event.target.value.replace(/\D/g, "").slice(0, 4))}
             placeholder="1990"
             className="mt-3 h-14 rounded-2xl text-lg"
           />
@@ -45,6 +45,14 @@ export default function ParentPage() {
 
       {gateOpen && (
         <>
+          <label className="grid gap-1 text-sm font-bold">
+            Kid&apos;s first name
+            <Input
+              value={stand.kidName}
+              onChange={(event) => save({ kidName: event.target.value })}
+              className="h-12 rounded-2xl"
+            />
+          </label>
           <label className="grid gap-1 text-sm font-bold">
             Where is the stand?
             <Input
@@ -68,7 +76,7 @@ export default function ParentPage() {
             <PlanCard
               name="This summer"
               price="$10"
-              note="About a hundred days. Apple will take their cut when this is in the store."
+              note="About a hundred days. Real money comes later. This just unlocks the phone."
               active={stand.plan === "season"}
               onPick={() => unlock("season")}
             />
@@ -82,12 +90,12 @@ export default function ParentPage() {
           </div>
           {isPaid && (
             <p className="rounded-3xl bg-secondary p-4 font-semibold">
-              Unlocked on this device. StoreKit receipts come when you put it on the App Store.
+              Unlocked on this device. Sharing is on. The menu can grow past three items.
             </p>
           )}
           <p className="text-sm leading-6 text-muted-foreground">
-            Kids do not create social accounts in here. Share uses the parent&apos;s Messages,
-            Mail, or share sheet. Nothing leaves this phone unless a grown-up taps it. Read the{" "}
+            Kids do not create social accounts in here. Share uses your Messages, Mail, or share
+            sheet. Nothing leaves this phone unless a grown-up taps it. Read the{" "}
             <a className="font-bold underline" href="/privacy">
               privacy page
             </a>

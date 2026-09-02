@@ -2,7 +2,7 @@
 
 A lemonade-stand kit for a ten-year-old, with a parent door for the grown-up stuff.
 
-Kids ring up cups, flip the menu to the sidewalk, and make a logo they can tape to the table. Save the picture, print a table sign at home, or take the file to the print shop down the street. Data stays on the phone.
+Kids ring up cups, flip the menu to the sidewalk, and make a sticker-style logo they can tape to the table. Save the picture to the phone (share sheet on iOS), print a letter-size table sign, or take the file to the shop down the street. Data stays on the phone.
 
 ## Why this is a real App Store app
 

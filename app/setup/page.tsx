@@ -3,11 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { ColorDots } from "@/components/color-dots";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { StandLogo } from "@/lib/logo";
 import { useStand } from "@/lib/stand-store";
-import { PALETTES, type PaletteId } from "@/lib/types";
+import { type PaletteId } from "@/lib/types";
 
 export default function SetupPage() {
   const router = useRouter();
@@ -31,6 +32,7 @@ export default function SetupPage() {
           onChange={(event) => setKidName(event.target.value)}
           placeholder="Sam"
           className="h-14 rounded-2xl text-lg"
+          autoComplete="given-name"
         />
       </label>
       <label className="grid gap-1 font-bold">
@@ -42,23 +44,9 @@ export default function SetupPage() {
           className="h-14 rounded-2xl text-lg"
         />
       </label>
-      <div className="flex flex-wrap gap-2">
-        {(Object.keys(PALETTES) as PaletteId[]).map((id) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => setPalette(id)}
-            className="tap size-10 rounded-full ring-2 ring-offset-2"
-            style={{
-              background: PALETTES[id].pop,
-              outlineColor: palette === id ? PALETTES[id].ink : "transparent",
-            }}
-            aria-label={PALETTES[id].name}
-          />
-        ))}
-      </div>
+      <ColorDots value={palette} onChange={setPalette} />
       <div className="grid place-items-center">
-        <StandLogo name={standName} palette={palette} badge="circle" mascot="lemon" size={180} />
+        <StandLogo name={standName} palette={palette} badge="circle" mascot="lemon" size={200} />
       </div>
       <Button
         disabled={!ready}
@@ -75,6 +63,7 @@ export default function SetupPage() {
       >
         Open the stand
       </Button>
+      <p className="text-center text-sm text-muted-foreground">You can change the look next.</p>
     </div>
   );
 }
