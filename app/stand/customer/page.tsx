@@ -46,7 +46,7 @@ export default function CustomerMenuPage() {
         </p>
         {stand.kidName && <p className="text-muted-foreground">Ask for {stand.kidName}</p>}
         <Link
-          href="/"
+          href="/stand"
           className="mt-6 text-xs font-bold tracking-wide text-muted-foreground uppercase"
         >
           Kid side

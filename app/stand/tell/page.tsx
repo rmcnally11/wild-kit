@@ -57,10 +57,10 @@ export default function TellPage() {
           Share this
         </Button>
         <Button asChild variant="secondary" className="h-14 rounded-2xl text-lg font-extrabold">
-          <a href={isPaid ? textLink(body) : "/parent"}>{isPaid ? "Text a parent" : "Ask a parent first"}</a>
+          <a href={isPaid ? textLink(body) : "/stand/parent"}>{isPaid ? "Text a parent" : "Ask a parent first"}</a>
         </Button>
         <Button asChild variant="secondary" className="h-14 rounded-2xl text-lg font-extrabold">
-          <a href={isPaid ? mailLink(stand.standName, body) : "/parent"}>
+          <a href={isPaid ? mailLink(stand.standName, body) : "/stand/parent"}>
             {isPaid ? "Email the street" : "Parents unlock email"}
           </a>
         </Button>

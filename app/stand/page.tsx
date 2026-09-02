@@ -39,19 +39,19 @@ export default function SellPage() {
       {todayCups === 0 && (
         <div className="grid gap-2">
           <Link
-            href="/look"
+            href="/stand/look"
             className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
           >
             Make the logo you tape to the table →
           </Link>
           <Link
-            href="/poster"
+            href="/stand/poster"
             className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
           >
             Draw the yard poster →
           </Link>
           <Link
-            href="/mix"
+            href="/stand/mix"
             className="rounded-[1.6rem] bg-secondary px-5 py-4 text-base font-extrabold"
           >
             Mix a special pitcher →
@@ -106,7 +106,7 @@ export default function SellPage() {
           Oops, undo
         </Button>
         <Button asChild className="h-14 rounded-2xl text-base font-extrabold">
-          <Link href="/customer">Show customers</Link>
+          <Link href="/stand/customer">Show customers</Link>
         </Button>
       </div>
     </div>

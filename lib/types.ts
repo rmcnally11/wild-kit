@@ -30,6 +30,18 @@ export type Poster = {
   sheet: SheetId;
 };
 
+export type CampNote = {
+  id: string;
+  text: string;
+};
+
+export type Camp = {
+  packed: string[];
+  trail: string[];
+  notes: CampNote[];
+  lightsOut: boolean;
+};
+
 export type Stand = {
   standName: string;
   kidName: string;
@@ -48,6 +60,7 @@ export type Stand = {
   parentYear: string;
   setupDone: boolean;
   todaysRecipe: string;
+  camp: Camp;
 };
 
 export const PALETTES: Record<
@@ -172,6 +185,30 @@ export const DEFAULT_POSTER: Poster = {
   sheet: "tabloid",
 };
 
+export const DEFAULT_CAMP: Camp = {
+  packed: [],
+  trail: [],
+  notes: [],
+  lightsOut: false,
+};
+
+export const CAMP_PACK = [
+  { id: "light", name: "Flashlight or phone light" },
+  { id: "pillows", name: "Pillows" },
+  { id: "blankets", name: "Blankets" },
+  { id: "water", name: "Water" },
+  { id: "snack", name: "A snack" },
+  { id: "book", name: "A book" },
+  { id: "friend", name: "One stuffed friend" },
+];
+
+export const CAMP_TRAIL = [
+  { id: "base", name: "Living room", note: "Base camp. Build the fort here." },
+  { id: "mess", name: "Kitchen", note: "Mess hall. Get the water and the snack." },
+  { id: "pass", name: "Hall", note: "The pass. Quiet feet." },
+  { id: "lookout", name: "Back door", note: "Lookout. Weather check. Come back in." },
+];
+
 export function emptyStand(): Stand {
   return {
     standName: "",
@@ -191,5 +228,6 @@ export function emptyStand(): Stand {
     parentYear: "",
     setupDone: false,
     todaysRecipe: "",
+    camp: DEFAULT_CAMP,
   };
 }

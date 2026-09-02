@@ -16,8 +16,8 @@ export default function ParentPage() {
     <div className="grid gap-4">
       <h2 className="font-display text-3xl">Parents</h2>
       <p className="text-muted-foreground">
-        This side is for grown-ups. Kids keep the register and draw the poster. You put in an
-        email and a zip so the file can go to a printer.
+        This side is for grown-ups. Kids run the Saturday. You put in an email and a zip so a
+        poster file can go to a printer.
       </p>
 
       {!gateOpen && (

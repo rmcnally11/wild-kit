@@ -1,7 +1,7 @@
 {
-  "name": "My Stand",
-  "short_name": "My Stand",
-  "description": "Run a lemonade stand. Ring up cups, flip the menu, make a logo.",
+  "name": "Family Time",
+  "short_name": "Family Time",
+  "description": "Saturday kits for a family. The stand, the camp, the wash — they happen in the real room.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFF8E8",

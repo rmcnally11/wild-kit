@@ -1,12 +1,37 @@
-# My Stand
+# Family Time
 
-A lemonade-stand kit for a ten-year-old, with a parent door for the grown-up stuff.
+Saturday kits for a family. Kids projects backed by the house, the driveway, and the kitchen. Not a game.
 
-Kids ring up cups, flip the menu to the sidewalk, and make a sticker-style logo they can tape to the table. They also design a handmade yard poster. Mix is the Saturday kitchen: six simple lemonade recipes the kid and a grown-up make together, then put on the menu. Mom or Dad starts the account with an email and a zip. Let's get this printed emails the file (when a Resend key is set) or opens a mail draft, and suggests a copy shop near that zip. Data stays on the phone.
+The house is **Family Time**. Each kit is a branch you can launch on a Saturday, a Sunday, or a rainy day. Two are open on the phone today. The rest are written as real Saturdays — the list is the kit until the buttons land.
 
-## Why this is a real App Store app
+## Open now
 
-It is a register, not a lemonade tycoon game. Apple will still want:
+| Kit | When | What it is |
+| --- | --- | --- |
+| **My Stand** | Outside Saturday | Lemonade table. Register, menu, mix, logo, yard poster that prints full-sheet. |
+| **Living Room Camp** | Rainy day | Pack a bag from the house, walk a four-stop trail, write the log, lights out. |
+
+## The rest of the shelf
+
+Each one is a Saturday you can do from the brief on the kit page.
+
+1. **Saturday Kitchen** — the kid runs one meal
+2. **Driveway Wash** — cars, bikes, or the dog
+3. **Yard Sale** — tags, a cash box, a sold pile
+4. **Block Paper** — one page, fridge circulation
+5. **Window Farm** — a pot, a seed, water days
+6. **Card Route** — five cards, walked to real people
+7. **Bike Shop** — air, chain, bell
+8. **Showtime** — living room tickets and a set list
+9. **Rock Shop** — painted rocks on the stoop
+10. **Repair Bench** — one broken thing
+11. **Cocoa Hut** — winter sister of the stand
+12. **Paper Derby** — hallway heats, paper trophy
+13. **Porch Library** — a basket of books and an index card
+
+## App Store
+
+One Family Time app. Kits are branches, not fifteen separate downloads. Apple will still want:
 
 - An Apple Developer account ($99/year)
 - In-app purchases for $10 / $25 — you cannot Venmo around the store
@@ -20,9 +45,9 @@ This repo is the product. It runs as a phone web app today (Add to Home Screen).
 
 | | |
 | --- | --- |
-| Free | Register, three menu items, logo, yard poster, recipes |
-| $10 this summer | Full menu, share pack |
-| $25 lifetime | Same, no season end. No subscription. |
+| Free | The shelf, My Stand (register, three items, logo, poster, recipes), Living Room Camp |
+| $10 this season | Full menu, share pack, later kits as they open |
+| $25 the house | Same, no season end. No subscription. |
 
 Apple keeps 15–30%. You net about $7 and $17.50. That is fine.
 
@@ -30,17 +55,14 @@ Apple keeps 15–30%. You net about $7 and $17.50. That is fine.
 
 - Kid Instagram logins
 - Last names, emails, or a home address on the kid side
-- A branded print-shop deal. We make the picture. They print it wherever.
+- A branded print-shop deal
 - Selling this next to On This Water. Different company.
 
-## Poster print
+## Poster print (My Stand)
 
-Mom or Dad enter an email and a zip on setup or the Parents page. The kid designs the yard poster — letter (8½ × 11) for the home printer, or 11 × 17 for the shop. **Let's get this printed** saves a full-sheet 300 dpi PNG and either:
+Mom or Dad enter an email and a zip on setup or the Parents page. The kid designs the yard poster — letter (8½ × 11) for the home printer, or 11 × 17 for the shop. **Let's get this printed** saves a full-sheet 300 dpi PNG.
 
-- emails it, if `RESEND_API_KEY` and `RESEND_FROM` are set, or
-- opens a mail draft and suggests Staples, the UPS Store, or a copy shop near that zip.
-
-Copy `.env.example` to `.env.local` to turn on real sending. Do not send My Stand mail from another company's domain.
+Copy `.env.example` to `.env.local` to turn on real sending. Do not send Family Time mail from another company's domain.
 
 ## Run it
 

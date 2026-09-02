@@ -19,7 +19,7 @@ export default function MenuPage() {
       <div className="flex items-center justify-between gap-3">
         <h2 className="font-display text-3xl">The menu</h2>
         <Button asChild className="rounded-full font-extrabold">
-          <Link href="/customer">Flip to customers</Link>
+          <Link href="/stand/customer">Flip to customers</Link>
         </Button>
       </div>
       <p className="text-muted-foreground">
@@ -27,7 +27,7 @@ export default function MenuPage() {
         like a secret? Open Mix.
       </p>
       <Button asChild variant="secondary" className="h-12 rounded-2xl font-extrabold">
-        <Link href="/mix">Mix a special pitcher</Link>
+        <Link href="/stand/mix">Mix a special pitcher</Link>
       </Button>
       <div className="grid gap-3">
         {stand.menu.map((item) => (

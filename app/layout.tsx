@@ -23,15 +23,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "My Stand",
-    template: "%s · My Stand",
+    default: "Family Time",
+    template: "%s · Family Time",
   },
   description:
-    "A lemonade-stand kit for kids. Ring up cups, flip the menu to customers, make a logo, and hand Mom the post.",
+    "Saturday kits for a family. Lemonade stand, living room camp, and a shelf of real-world projects. Not a game.",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
-    title: "My Stand",
+    title: "Family Time",
     statusBarStyle: "default",
   },
 };

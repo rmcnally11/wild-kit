@@ -93,7 +93,7 @@ export default function LookPage() {
       </Button>
       {status && <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">{status}</p>}
       <Button asChild variant="secondary" className="h-14 rounded-2xl text-lg font-extrabold">
-        <Link href="/poster">Make a yard poster</Link>
+        <Link href="/stand/poster">Make a yard poster</Link>
       </Button>
     </div>
   );

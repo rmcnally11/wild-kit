@@ -273,7 +273,7 @@ export default function PosterPage() {
       ) : (
         <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">
           A parent adds an email and a zip first. That&apos;s how the file leaves the phone.{" "}
-          <Link href="/parent" className="underline">
+          <Link href="/stand/parent" className="underline">
             Parents page
           </Link>
           .

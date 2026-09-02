@@ -29,11 +29,11 @@ function SetupFlow({ stand }: { stand: Stand }) {
   if (step === "who") {
     return (
       <div className="mx-auto grid min-h-dvh max-w-lg content-center gap-5 px-5 py-10">
-        <p className="text-sm font-extrabold tracking-wide text-accent uppercase">My Stand</p>
+        <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Family Time</p>
         <h1 className="font-display text-5xl leading-none">Who&apos;s holding the phone?</h1>
         <p className="text-lg text-muted-foreground">
-          Mom or Dad starts. They put in an email and a zip so the poster can go to a real
-          printer. The kid names the stand after that.
+          Mom or Dad starts. They put in an email and a zip so a poster can go to a real
+          printer. The kid picks a Saturday after that.
         </p>
         <Button className="h-16 rounded-2xl text-xl font-extrabold" onClick={() => setStep("parent")}>
           I&apos;m the parent
@@ -130,7 +130,7 @@ function ParentStart({ stand, onNext }: { stand: Stand; onNext: () => void }) {
           onNext();
         }}
       >
-        Next — name the stand
+        Next — the kid&apos;s turn
       </Button>
     </div>
   );
@@ -142,14 +142,15 @@ function KidStart({ stand }: { stand: Stand }) {
   const [kidName, setKidName] = useState(stand.kidName);
   const [standName, setStandName] = useState(stand.standName);
   const [palette, setPalette] = useState<PaletteId>(stand.palette);
-  const canOpen = kidName.trim().length > 0 && standName.trim().length > 1;
+  const canOpen = kidName.trim().length > 0;
 
   return (
     <div className="mx-auto grid min-h-dvh max-w-lg content-center gap-5 px-5 py-10">
-      <p className="text-sm font-extrabold tracking-wide text-accent uppercase">My Stand</p>
-      <h1 className="font-display text-5xl leading-none">Name the stand.</h1>
+      <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Family Time</p>
+      <h1 className="font-display text-5xl leading-none">First name only.</h1>
       <p className="text-lg text-muted-foreground">
-        First name only. No last names, no emails. This lives on this phone.
+        No last names, no emails. This lives on this phone. Name a lemonade stand if you want
+        one today. You can skip it and still see the shelf.
       </p>
       <label className="grid gap-1 font-bold">
         Your first name
@@ -197,10 +198,10 @@ function KidStart({ stand }: { stand: Stand }) {
           router.replace("/");
         }}
       >
-        Open the stand
+        See this Saturday
       </Button>
       <p className="text-center text-sm text-muted-foreground">
-        Next you can make a yard poster like the ones you used to draw.
+        The stand is one Saturday. There is a rainy-day camp too.
       </p>
     </div>
   );

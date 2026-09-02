@@ -33,6 +33,13 @@ function readStored(): Stand {
       ...parsed,
       menu: parsed.menu?.length ? parsed.menu : base.menu,
       poster: { ...base.poster, ...parsed.poster },
+      camp: {
+        ...base.camp,
+        ...parsed.camp,
+        packed: parsed.camp?.packed ?? [],
+        trail: parsed.camp?.trail ?? [],
+        notes: parsed.camp?.notes ?? [],
+      },
     };
   } catch {
     return emptyStand();
