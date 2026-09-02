@@ -42,6 +42,20 @@ export type Camp = {
   lightsOut: boolean;
 };
 
+export type CrewJob = {
+  id: string;
+  role: string;
+  who: string;
+};
+
+export type SideJob = {
+  name: string;
+  menu: MenuItem[];
+  sales: Sale[];
+  packed: string[];
+  closedAt: string | null;
+};
+
 export type Stand = {
   standName: string;
   kidName: string;
@@ -61,7 +75,14 @@ export type Stand = {
   setupDone: boolean;
   todaysRecipe: string;
   camp: Camp;
+  supplies: string[];
+  crew: CrewJob[];
+  closedAt: string | null;
+  bake: SideJob;
+  wash: SideJob;
 };
+
+export const MENU_CAP = 6;
 
 export const PALETTES: Record<
   PaletteId,
@@ -192,6 +213,72 @@ export const DEFAULT_CAMP: Camp = {
   lightsOut: false,
 };
 
+export const DEFAULT_CREW: CrewJob[] = [
+  { id: "boss", role: "Boss", who: "" },
+  { id: "pours", role: "Pours", who: "" },
+  { id: "talks", role: "Talks to the line", who: "" },
+];
+
+export const LEMON_SUPPLIES = [
+  { id: "table", name: "A table or a box" },
+  { id: "pitcher", name: "A pitcher and cups" },
+  { id: "lemons", name: "Lemons or a mix" },
+  { id: "ice", name: "Ice" },
+  { id: "marker", name: "A marker" },
+  { id: "chair", name: "A chair" },
+  { id: "jar", name: "A jar for cash" },
+];
+
+export const DEFAULT_BAKE: SideJob = {
+  name: "",
+  menu: [
+    { id: "cookies", name: "Cookies", price: 2, soldOut: false },
+    { id: "brownies", name: "Brownies", price: 2.5, soldOut: false },
+    { id: "muffins", name: "Muffins", price: 2, soldOut: false },
+  ],
+  sales: [],
+  packed: [],
+  closedAt: null,
+};
+
+export const BAKE_PACK = [
+  { id: "bake", name: "What you already bake" },
+  { id: "tray", name: "A tray" },
+  { id: "paper", name: "Paper for prices" },
+  { id: "table", name: "A table" },
+  { id: "oven", name: "A grown-up on the oven" },
+];
+
+export const DEFAULT_WASH: SideJob = {
+  name: "",
+  menu: [
+    { id: "car", name: "Car", price: 8, soldOut: false },
+    { id: "bike", name: "Bike", price: 3, soldOut: false },
+    { id: "rinse", name: "Extra rinse", price: 2, soldOut: false },
+  ],
+  sales: [],
+  packed: [],
+  closedAt: null,
+};
+
+export const WASH_PACK = [
+  { id: "hose", name: "A hose or two buckets" },
+  { id: "soap", name: "Soap that is allowed on the drive" },
+  { id: "rags", name: "Rags" },
+  { id: "cards", name: "Index cards" },
+  { id: "chair", name: "A chair" },
+];
+
+export function emptySideJob(base: SideJob): SideJob {
+  return {
+    ...base,
+    menu: base.menu.map((item) => ({ ...item })),
+    sales: [],
+    packed: [],
+    closedAt: null,
+  };
+}
+
 export const CAMP_PACK = [
   { id: "light", name: "Flashlight or phone light" },
   { id: "pillows", name: "Pillows" },
@@ -229,5 +316,10 @@ export function emptyStand(): Stand {
     setupDone: false,
     todaysRecipe: "",
     camp: DEFAULT_CAMP,
+    supplies: [],
+    crew: DEFAULT_CREW.map((job) => ({ ...job })),
+    closedAt: null,
+    bake: emptySideJob(DEFAULT_BAKE),
+    wash: emptySideJob(DEFAULT_WASH),
   };
 }

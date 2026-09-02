@@ -5,14 +5,15 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { money, useStand } from "@/lib/stand-store";
+import { MENU_CAP } from "@/lib/types";
 
 function snapPrice(value: number) {
   return Math.round(value * 4) / 4;
 }
 
 export default function MenuPage() {
-  const { stand, addItem, updateItem, removeItem, isPaid } = useStand();
-  const canAdd = isPaid || stand.menu.length < 3;
+  const { stand, addItem, updateItem, removeItem } = useStand();
+  const canAdd = stand.menu.length < MENU_CAP;
 
   return (
     <div className="grid gap-4">
@@ -105,7 +106,7 @@ export default function MenuPage() {
         </Button>
       ) : (
         <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">
-          Free stands get three menu items. A parent can unlock more on the Parents page.
+          Six things is a real menu. Sold out flips a card off the table.
         </p>
       )}
     </div>

@@ -97,14 +97,14 @@
     height: 100%;
     background: white !important;
   }
-  body * {
+  html:not([data-print="cards"]) body * {
     visibility: hidden;
   }
-  #yard-poster,
-  #yard-poster * {
+  html:not([data-print="cards"]) #yard-poster,
+  html:not([data-print="cards"]) #yard-poster * {
     visibility: visible;
   }
-  #yard-poster {
+  html:not([data-print="cards"]) #yard-poster {
     position: fixed !important;
     inset: 0 !important;
     width: 100% !important;
@@ -117,9 +117,29 @@
     box-shadow: none !important;
     background: white !important;
   }
-  #yard-poster svg {
+  html:not([data-print="cards"]) #yard-poster svg {
     display: block !important;
     width: 100% !important;
     height: 100% !important;
+  }
+
+  html[data-print="cards"] body * {
+    visibility: hidden;
+  }
+  html[data-print="cards"] #price-cards,
+  html[data-print="cards"] #price-cards * {
+    visibility: visible;
+  }
+  html[data-print="cards"] #price-cards {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
 }

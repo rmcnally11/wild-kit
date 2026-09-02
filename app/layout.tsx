@@ -25,7 +25,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lemonade Stand by Wild Kit",
+    default: "Wild Kit — Weekend projects for wild little kits",
     template: "%s · Wild Kit",
   },
   description:

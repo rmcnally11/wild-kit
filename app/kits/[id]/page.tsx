@@ -16,7 +16,7 @@ export default function KitPage() {
       <FamilyChrome title="That kit">
         <p className="text-lg text-muted-foreground">That Saturday is not on the shelf.</p>
         <Button asChild className="mt-4 h-14 rounded-2xl text-lg font-extrabold">
-          <Link href="/">Back to Wild Kit</Link>
+          <Link href="/app">Back to Saturday Jobs</Link>
         </Button>
       </FamilyChrome>
     );
@@ -70,8 +70,8 @@ export default function KitPage() {
           </Button>
         ) : (
           <p className="rounded-[1.6rem] bg-secondary p-4 text-sm font-semibold">
-            You do not need the buttons to do this Saturday. The list is the job. Lemonade
-            Stand is the first app. The rest wait for fifty real stands.
+            You do not need the buttons to do this Saturday. The list is the job. Print this
+            brief. Use what is already in the house.
           </p>
         )}
       </div>

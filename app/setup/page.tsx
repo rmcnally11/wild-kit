@@ -201,7 +201,7 @@ function KidStart({ stand }: { stand: Stand }) {
             palette,
             setupDone: true,
           });
-          router.replace("/");
+          router.replace("/app");
         }}
       >
         Open Saturday Jobs

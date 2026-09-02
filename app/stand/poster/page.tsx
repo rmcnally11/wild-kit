@@ -9,6 +9,7 @@ import { downloadSvgAsPng, fileName, svgToPngBlob } from "@/lib/download";
 import { isEmail, printMailBody } from "@/lib/email";
 import { StandPoster } from "@/lib/poster";
 import { isZip, type PrintShop } from "@/lib/shops";
+import { usePrintMode } from "@/lib/print-mode";
 import { useStand } from "@/lib/stand-store";
 import { DECO_LABELS, PAPERS, SHEETS, type DecoId, type PaperId, type SheetId } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -24,6 +25,7 @@ export default function PosterPage() {
   const sheet = poster.sheet in SHEETS ? poster.sheet : "tabloid";
   const spec = SHEETS[sheet];
   const canPrint = isEmail(stand.parentEmail) && isZip(stand.zip);
+  usePrintMode("poster");
 
   useEffect(() => {
     if (!isZip(stand.zip)) return;

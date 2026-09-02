@@ -4,15 +4,30 @@ Weekend projects for wild little kits.
 
 **Kids invent it. Parents print it. Saturday happens.**
 
-Wild Kit Co. is an App Store family studio. The first listing is **Lemonade Stand by Wild Kit**. Rascal is the face. He whispers one-breath hints on every kid screen — tap him for another. Saturday Jobs is the series. Always titled `[Job] by Wild Kit`.
+Wild Kit Co. is a family studio. The website is the brand door. Saturday Jobs live in the kits. The first listing is **Lemonade Stand by Wild Kit**. Rascal is the face. He whispers one-breath hints on every kid screen — tap him for another. Always titled `[Job] by Wild Kit`.
 
 The app is not the product. The driveway artifact is the product.
+
+## On this site
+
+| Path | What it is |
+| --- | --- |
+| `/` | Brand page. Invent → Print → Open. Saturday Jobs. Rascal. For Parents. |
+| `/parents` | The parent page. You hit print. |
+| `/privacy` | First name only. No kid inbox. |
+| `/app` | Saturday Jobs hub on the phone. |
+| `/stand` | Lemonade Stand by Wild Kit |
+| `/bake` | Bake Sale by Wild Kit |
+| `/wash` | Car Wash by Wild Kit |
+| `/fort` | Blanket Fort by Wild Kit |
 
 ## Open this weekend
 
 | Job | When | Spine |
 | --- | --- | --- |
-| **Lemonade Stand by Wild Kit** | Apr–Aug | Invent the logo and menu. Print the poster. Open the stand. |
+| **Lemonade Stand by Wild Kit** | Apr–Aug | Invent the logo and menu. Print the poster and price cards. Pack from the house. Crew. Close the day. |
+| **Bake Sale by Wild Kit** | Sep–Nov | One tray. Prices the kid chose. Cards on the table. |
+| **Car Wash by Wild Kit** | Spring / warm | Hose, buckets, tickets. Then you go outside. |
 | **Blanket Fort by Wild Kit** | Rain day | Pack from the house. Walk the trail. Lights out. |
 
 ## Saturday Jobs
@@ -30,7 +45,19 @@ The app is not the product. The driveway artifact is the product.
 11. Puppet Theater
 12. Backyard Olympics
 
-Individual project apps first. A hub later, after fifty real stands. Do not build app two as a separate listing until those photographs exist. The grid here is the studio shelf.
+The list is the job until the buttons land. Four jobs are open on the phone.
+
+## Lemonade Stand
+
+- Menu of three to six things
+- Mix a special pitcher
+- Logo sticker
+- Yard poster, letter or 11×17, fill the sheet
+- Price cards on a letter sheet
+- Supply checklist from the house
+- Crew: boss, pours, talks to the line
+- Till, tally, close the day
+- Parent Desk for print and zip
 
 ## App Store
 
@@ -45,7 +72,7 @@ This repo is the product on the phone today. App Store wrap is later.
 
 ## Money
 
-Free invent + print-your-own file. First dollar is the poster pack. Wild Kit Family ($4.99/mo or $29/yr) waits until jobs 2–12 exist. No ads. No kid payments in v1.
+Free invent + print-your-own file. First dollar is the poster pack. Wild Kit Family ($4.99/mo or $29/yr) waits. No ads. No kid payments in v1.
 
 ## What we will not do
 

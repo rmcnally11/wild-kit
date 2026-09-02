@@ -9,6 +9,7 @@ import { RascalHint } from "@/components/rascal-hint";
 import { kitById } from "@/lib/kits";
 import { roomFromPath } from "@/lib/rascal-hints";
 import { peekStand, useStand } from "@/lib/stand-store";
+import { isClosedToday } from "@/lib/today";
 
 export function FamilyChrome({
   children,
@@ -34,7 +35,7 @@ export function FamilyChrome({
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col px-4 pb-16 pt-5">
       <header className="mb-5 flex items-center justify-between gap-3">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/app" className="flex items-center gap-2">
           <Image src="/rascal-icon.png" alt="" width={40} height={40} className="size-10 rounded-xl" />
           <div>
             <p className="text-sm font-semibold text-accent">{eyebrow || "Wild Kit"}</p>
@@ -56,10 +57,21 @@ export function FamilyChrome({
           ctx={{
             kidName: stand.kidName,
             standName: stand.standName,
-            packed: stand.camp?.packed.length,
+            packed:
+              pathname === "/bake"
+                ? stand.bake?.packed.length
+                : pathname === "/wash"
+                  ? stand.wash?.packed.length
+                  : stand.camp?.packed.length,
             trail: stand.camp?.trail.length,
             lightsOut: stand.camp?.lightsOut,
             kitOpen: kitById(pathname.split("/")[2] || "")?.status === "open",
+            closed:
+              pathname === "/bake"
+                ? isClosedToday(stand.bake?.closedAt)
+                : pathname === "/wash"
+                  ? isClosedToday(stand.wash?.closedAt)
+                  : isClosedToday(stand.closedAt),
           }}
         />
       )}

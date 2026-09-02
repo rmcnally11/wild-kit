@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { SiteChrome } from "@/components/site-chrome";
+
 export const metadata: Metadata = {
   title: "Privacy",
 };
 
 export default function PrivacyPage() {
   return (
+    <SiteChrome>
     <article className="mx-auto grid max-w-2xl gap-4 px-5 py-10">
       <p className="text-sm font-extrabold text-accent uppercase">Wild Kit Co.</p>
       <h1 className="font-display text-4xl">Privacy</h1>
@@ -18,7 +21,7 @@ export default function PrivacyPage() {
         <li>We ask kids for a first name, and a stand name if they open Lemonade Stand. That stays on this device.</li>
         <li>We do not ask kids for an email, a birthday, or a home address.</li>
         <li>A parent may add their own email and a zip so a poster file can go to a printer. Zip is not a street address.</li>
-        <li>Sales, the menu, the logo, the poster, and the fort log live in the phone&apos;s local storage. Shop lookup uses the zip only.</li>
+        <li>Sales, the menu, the logo, the poster, the bake sale, the car wash, and the fort log live in the phone&apos;s local storage. Shop lookup uses the zip only.</li>
         <li>Sharing uses the parent&apos;s own Messages, Mail, or share sheet. We do not post for you.</li>
         <li>No ads. No kid data sold. Ever. Print and Parent Desk are gated.</li>
       </ul>
@@ -27,5 +30,6 @@ export default function PrivacyPage() {
         Back to Wild Kit
       </Link>
     </article>
+    </SiteChrome>
   );
 }

@@ -8,6 +8,7 @@ import { useEffect, type ReactNode } from "react";
 import { RascalHint } from "@/components/rascal-hint";
 import { roomFromPath } from "@/lib/rascal-hints";
 import { peekStand, useStand } from "@/lib/stand-store";
+import { isClosedToday } from "@/lib/today";
 import { cn } from "@/lib/utils";
 
 const TABS = [
@@ -38,7 +39,7 @@ export function StandShell({ children }: { children: ReactNode }) {
     <div className="mx-auto flex min-h-dvh w-full max-w-lg flex-col px-4 pb-28 pt-5 print:max-w-none print:px-0 print:pb-0 print:pt-0">
       <header className="mb-4 flex items-center justify-between gap-3 print:hidden">
         <div>
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/app" className="flex items-center gap-2">
             <Image src="/rascal-icon.png" alt="" width={36} height={36} className="size-9 rounded-lg" />
             <span>
               <span className="block text-sm font-semibold text-accent">Wild Kit</span>
@@ -64,6 +65,7 @@ export function StandShell({ children }: { children: ReactNode }) {
             cups: todayCups,
             soldOut: stand.menu.every((item) => item.soldOut),
             hasRecipe: Boolean(stand.todaysRecipe),
+            closed: isClosedToday(stand.closedAt),
           }}
         />
       )}

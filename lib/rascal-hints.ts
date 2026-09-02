@@ -8,6 +8,8 @@ export type RascalRoom =
   | "tell"
   | "poster"
   | "fort"
+  | "bake"
+  | "wash"
   | "setup"
   | "who";
 
@@ -21,6 +23,7 @@ export type HintCtx = {
   trail?: number;
   lightsOut?: boolean;
   kitOpen?: boolean;
+  closed?: boolean;
 };
 
 const POOL: Record<RascalRoom, string[]> = {
@@ -89,6 +92,18 @@ const POOL: Record<RascalRoom, string[]> = {
     "Write what you heard.",
     "Lights out ends the day.",
   ],
+  bake: [
+    "One kind of thing. Not a bakery.",
+    "You set the price.",
+    "Grown-up has the oven.",
+    "The tray is the product.",
+  ],
+  wash: [
+    "Price a car and a bike.",
+    "Grown-up runs the tap.",
+    "Cars in park.",
+    "The drive is not a pond.",
+  ],
 };
 
 export function rascalLines(room: RascalRoom, ctx: HintCtx = {}): string[] {
@@ -98,18 +113,31 @@ export function rascalLines(room: RascalRoom, ctx: HintCtx = {}): string[] {
 }
 
 export function rascalPose(room: RascalRoom): "boss" | "scheme" | "done" {
-  if (room === "sell" || room === "home") return "boss";
+  if (room === "sell" || room === "home" || room === "bake" || room === "wash") return "boss";
   if (room === "poster" || room === "tell" || room === "fort") return "done";
   return "scheme";
 }
 
 function priority(room: RascalRoom, ctx: HintCtx): string {
+  if (ctx.closed && (room === "sell" || room === "bake" || room === "wash")) {
+    return "You opened. That's the whole point.";
+  }
   if (room === "sell") {
     if (!ctx.standName) return "The stand needs a name.";
     if (ctx.soldOut) return "Menu. Turn something back on.";
     if (!ctx.cups) return "Tap what they bought.";
     if (ctx.cups >= 3) return "You already sold a few. Keep going.";
     return "Another cup. Go.";
+  }
+  if (room === "bake") {
+    if ((ctx.packed ?? 0) < 3) return "Pack from the house.";
+    if (!ctx.cups) return "Tap what they bought.";
+    return "The tray is the product.";
+  }
+  if (room === "wash") {
+    if ((ctx.packed ?? 0) < 3) return "Pack from the house.";
+    if (!ctx.cups) return "Tap what they bought.";
+    return "Cars in park.";
   }
   if (room === "menu" && !ctx.standName) return "The stand needs a name.";
   if (room === "mix" && ctx.hasRecipe) return "That's today's pitcher. Go sell it.";
@@ -127,8 +155,10 @@ function priority(room: RascalRoom, ctx: HintCtx): string {
 }
 
 export function roomFromPath(pathname: string): RascalRoom | null {
-  if (pathname === "/") return "home";
+  if (pathname === "/app") return "home";
   if (pathname === "/fort") return "fort";
+  if (pathname === "/bake") return "bake";
+  if (pathname === "/wash") return "wash";
   if (pathname.startsWith("/kits/")) return "kit";
   if (pathname === "/setup") return "setup";
   if (pathname === "/stand") return "sell";
@@ -137,5 +167,6 @@ export function roomFromPath(pathname: string): RascalRoom | null {
   if (pathname === "/stand/look") return "look";
   if (pathname === "/stand/tell") return "tell";
   if (pathname === "/stand/poster") return "poster";
+  if (pathname === "/stand/cards") return "poster";
   return null;
 }

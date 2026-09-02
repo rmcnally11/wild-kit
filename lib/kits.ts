@@ -67,7 +67,8 @@ export const KITS: Kit[] = [
     kid: "Name it. Set the price. Make the sign.",
     parent: "The oven. The print. The yes on every recipe.",
     done: "The tray is empty or the sun is gone.",
-    status: "next",
+    href: "/bake",
+    status: "open",
   },
   {
     id: "wash",
@@ -83,7 +84,8 @@ export const KITS: Kit[] = [
     kid: "Make the prices. Take the tickets. Wash what you can reach.",
     parent: "The hose at the tap. Cars in park.",
     done: "The buckets are empty and the drive is not a pond.",
-    status: "next",
+    href: "/wash",
+    status: "open",
   },
   {
     id: "birdhouse",

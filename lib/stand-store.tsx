@@ -10,7 +10,20 @@ import {
 } from "react";
 
 import { money } from "@/lib/money";
-import { emptyStand, type MenuItem, type Plan, type Stand } from "@/lib/types";
+import { todayKey, todaySalesOf, todayTotalOf } from "@/lib/today";
+import {
+  DEFAULT_BAKE,
+  DEFAULT_CAMP,
+  DEFAULT_CREW,
+  DEFAULT_WASH,
+  MENU_CAP,
+  emptyStand,
+  emptySideJob,
+  type MenuItem,
+  type Plan,
+  type SideJob,
+  type Stand,
+} from "@/lib/types";
 
 const KEY = "my-stand-v1";
 
@@ -34,16 +47,34 @@ function readStored(): Stand {
       menu: parsed.menu?.length ? parsed.menu : base.menu,
       poster: { ...base.poster, ...parsed.poster },
       camp: {
-        ...base.camp,
+        ...DEFAULT_CAMP,
         ...parsed.camp,
         packed: parsed.camp?.packed ?? [],
         trail: parsed.camp?.trail ?? [],
         notes: parsed.camp?.notes ?? [],
       },
+      supplies: parsed.supplies ?? [],
+      crew: parsed.crew?.length ? parsed.crew : DEFAULT_CREW.map((job) => ({ ...job })),
+      closedAt: parsed.closedAt ?? null,
+      bake: mergeSide(parsed.bake, DEFAULT_BAKE),
+      wash: mergeSide(parsed.wash, DEFAULT_WASH),
     };
   } catch {
     return emptyStand();
   }
+}
+
+function mergeSide(parsed: SideJob | undefined, fallback: SideJob): SideJob {
+  const base = emptySideJob(fallback);
+  if (!parsed) return base;
+  return {
+    ...base,
+    ...parsed,
+    menu: parsed.menu?.length ? parsed.menu : base.menu,
+    sales: parsed.sales ?? [],
+    packed: parsed.packed ?? [],
+    closedAt: parsed.closedAt ?? null,
+  };
 }
 
 function hydrate() {
@@ -69,8 +100,12 @@ function write(next: Stand) {
   emit();
 }
 
-function todayKey() {
-  return new Date().toISOString().slice(0, 10);
+function sideOf(stand: Stand, which: "bake" | "wash"): SideJob {
+  return stand[which] ?? emptySideJob(which === "bake" ? DEFAULT_BAKE : DEFAULT_WASH);
+}
+
+function writeSide(which: "bake" | "wash", next: SideJob) {
+  write({ ...memory, [which]: next });
 }
 
 type Store = {
@@ -85,6 +120,8 @@ type Store = {
   removeItem: (id: string) => void;
   sell: (itemId: string) => void;
   undo: () => void;
+  sellSide: (which: "bake" | "wash", itemId: string) => void;
+  undoSide: (which: "bake" | "wash") => void;
   unlock: (plan: Plan) => void;
   isPaid: boolean;
 };
@@ -104,8 +141,8 @@ export function StandProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const todaySales = stand.sales.filter((sale) => sale.at.slice(0, 10) === todayKey());
-  const todayTotal = todaySales.reduce((sum, sale) => sum + sale.price, 0);
+  const todaySales = todaySalesOf(stand.sales);
+  const todayTotal = todayTotalOf(stand.sales);
   const todayCups = todaySales.length;
   const isPaid =
     stand.plan === "lifetime" ||
@@ -142,7 +179,7 @@ export function StandProvider({ children }: { children: ReactNode }) {
     const paid =
       memory.plan === "lifetime" ||
       (memory.plan === "season" && !!memory.seasonEnds && memory.seasonEnds >= todayKey());
-    if (!paid && memory.menu.length >= 3) return "locked";
+    if (!paid && memory.menu.length >= MENU_CAP) return "locked";
     write({
       ...memory,
       todaysRecipe: name,
@@ -166,6 +203,7 @@ export function StandProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const sell = useCallback((itemId: string) => {
+    if (memory.closedAt === todayKey()) return;
     const item = memory.menu.find((row) => row.id === itemId);
     if (!item || item.soldOut) return;
     write({
@@ -184,9 +222,39 @@ export function StandProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const undo = useCallback(() => {
-    const firstToday = memory.sales.find((sale) => sale.at.slice(0, 10) === todayKey());
+    const firstToday = todaySalesOf(memory.sales)[0];
     if (!firstToday) return;
     write({ ...memory, sales: memory.sales.filter((sale) => sale.id !== firstToday.id) });
+  }, []);
+
+  const sellSide = useCallback((which: "bake" | "wash", itemId: string) => {
+    const job = sideOf(memory, which);
+    if (job.closedAt === todayKey()) return;
+    const item = job.menu.find((row) => row.id === itemId);
+    if (!item || item.soldOut) return;
+    writeSide(which, {
+      ...job,
+      sales: [
+        {
+          id: `sale-${Date.now()}`,
+          itemId: item.id,
+          itemName: item.name,
+          price: item.price,
+          at: new Date().toISOString(),
+        },
+        ...job.sales,
+      ],
+    });
+  }, []);
+
+  const undoSide = useCallback((which: "bake" | "wash") => {
+    const job = sideOf(memory, which);
+    const firstToday = todaySalesOf(job.sales)[0];
+    if (!firstToday) return;
+    writeSide(which, {
+      ...job,
+      sales: job.sales.filter((sale) => sale.id !== firstToday.id),
+    });
   }, []);
 
   const unlock = useCallback((plan: Plan) => {
@@ -212,6 +280,8 @@ export function StandProvider({ children }: { children: ReactNode }) {
     removeItem,
     sell,
     undo,
+    sellSide,
+    undoSide,
     unlock,
     isPaid,
   };
