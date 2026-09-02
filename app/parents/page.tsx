@@ -72,10 +72,10 @@ export default function ParentsPage() {
                 Fill the sheet
               </Link>
               <Link
-                href="/setup"
+                href="/apps"
                 className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink"
               >
-                Start as the parent
+                The apps
               </Link>
               <Link
                 href="/privacy"

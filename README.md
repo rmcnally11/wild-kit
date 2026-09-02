@@ -18,14 +18,10 @@ The poster is the product.
 | `/` | The one-pager. Invent → Print → Open. This / not this. First job. |
 | `/saturday` | This Saturday. Fill the sheet together first. |
 | `/about` | How to word it. App Store lift. Three mouths. The line that matters. |
-| `/apps` | Saturday Jobs. Open here. Coming soon. App Store — coming. |
+| `/apps` | Saturday Jobs. Store listings and briefs. App Store — coming. |
 | `/parents` | They're already in the cabinets. This gives them a stand. |
 | `/privacy` | Parent-owned account. First name only. No kid inbox. |
-| `/app` | Saturday Jobs hub on the phone. |
-| `/stand` | Lemonade Stand by Wild Kit |
-| `/bake` | Bake Sale by Wild Kit |
-| `/wash` | Car Wash by Wild Kit |
-| `/fort` | Blanket Fort by Wild Kit |
+| `/kits/[id]` | Saturday brief for that job. Not a playable app. |
 
 ## This
 
@@ -41,14 +37,11 @@ The poster is the product.
 - A payments app
 - Babysitter TV
 
-## Open this weekend
+## First listing
 
-| Job | When | Spine |
-| --- | --- | --- |
-| **Lemonade Stand by Wild Kit** | Apr–Aug | Design. Print. Open the stand. |
-| **Bake Sale by Wild Kit** | Sep–Nov | One tray. Prices the kid chose. Cards on the table. |
-| **Car Wash by Wild Kit** | Spring / warm | Hose, buckets, tickets. Then you go outside. |
-| **Blanket Fort by Wild Kit** | Rain day | Pack from the house. Walk the trail. Lights out. |
+**Lemonade Stand by Wild Kit.** App Store — coming. Lifestyle 4+. Not Kids. The badge goes up when the listing is real. No fake App Store button.
+
+The live site does not host the kits. It is the studio door: briefs, the Saturday sheet, pay, and (later) links to the App Store.
 
 ## Saturday Jobs
 
@@ -65,7 +58,7 @@ The poster is the product.
 11. Puppet Theater
 12. Backyard Olympics
 
-The list is the job until the buttons land. Four jobs are open on the phone.
+The list is the job. Briefs are on `/kits`. The apps open in the App Store, not here.
 
 ## App Store
 

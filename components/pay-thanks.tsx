@@ -25,7 +25,7 @@ export function PayThanks({ plan }: { plan: "pack" | "family" }) {
       </p>
       <div className="flex flex-col gap-3 sm:flex-row">
         <Link
-          href="/app"
+          href="/apps"
           className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 font-extrabold text-ink"
         >
           Saturday Jobs

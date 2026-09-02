@@ -26,6 +26,9 @@ export const GROWN_UP_FIRST = "Grown-up first. Then you invent it.";
 export const FIRST_NAME_ONLY = "First name only. No kid inbox.";
 export const PARENT_OWNED = "Parent-owned account";
 
+export const STORE_DOOR =
+  "The kits live in the App Store. This site is the door and the Saturday briefs. The badge goes up when the listing is real.";
+
 export const STEPS = [
   {
     title: "Invent",

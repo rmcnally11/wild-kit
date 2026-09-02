@@ -33,7 +33,6 @@ export const KITS: Kit[] = [
     kid: "You’re the boss of this stand. Make the sign. Set the price. Open.",
     parent: "Kids invent the logo and the prices. You hit print. Then you go outside.",
     done: "You opened. That’s the whole point.",
-    href: "/stand",
     status: "open",
   },
   {
@@ -50,8 +49,7 @@ export const KITS: Kit[] = [
     kid: "Pack the bag. Walk the trail. Write the log.",
     parent: "Move the breakable stuff. Stay nearby. Do not turn it into a party.",
     done: "Lights out is checked. The fort can stay until morning.",
-    href: "/fort",
-    status: "open",
+    status: "next",
   },
   {
     id: "bake",
@@ -67,8 +65,7 @@ export const KITS: Kit[] = [
     kid: "Name it. Set the price. Make the sign.",
     parent: "The oven. The print. The yes on every recipe.",
     done: "The tray is empty or the sun is gone.",
-    href: "/bake",
-    status: "open",
+    status: "next",
   },
   {
     id: "wash",
@@ -84,8 +81,7 @@ export const KITS: Kit[] = [
     kid: "Make the prices. Take the tickets. Wash what you can reach.",
     parent: "The hose at the tap. Cars in park.",
     done: "The buckets are empty and the drive is not a pond.",
-    href: "/wash",
-    status: "open",
+    status: "next",
   },
   {
     id: "birdhouse",

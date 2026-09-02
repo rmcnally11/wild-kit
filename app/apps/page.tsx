@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { JobShelf } from "@/components/job-shelf";
 import { SiteChrome } from "@/components/site-chrome";
-import { APP_STORE, FIRST_APP, MASTER, SUBTITLE } from "@/lib/brand";
+import { APP_STORE, FIRST_APP, MASTER, STORE_DOOR, SUBTITLE } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "The apps",
@@ -24,10 +24,7 @@ export default function AppsPage() {
           </div>
         </section>
         <div className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-          <JobShelf
-            heading="Saturday Jobs"
-            intro="Open the kits here. App Store wrap is later. Coming-soon jobs still have a Saturday brief."
-          />
+          <JobShelf heading="Saturday Jobs" intro={STORE_DOOR} />
         </div>
       </main>
     </SiteChrome>

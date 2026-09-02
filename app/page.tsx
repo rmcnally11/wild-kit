@@ -14,6 +14,7 @@ import {
   PARENT_OWNED,
   PROMO,
   STEPS,
+  STORE_DOOR,
   SUBTITLE,
   TAGLINE,
 } from "@/lib/brand";
@@ -42,10 +43,10 @@ export default function BrandPage() {
               </p>
               <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row">
                 <Link
-                  href="/stand"
+                  href="/kits/lemonade"
                   className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-5 text-base font-extrabold text-cream sm:h-14 sm:text-lg"
                 >
-                  Open Lemonade Stand
+                  Read the brief
                 </Link>
                 <Link
                   href="/saturday"
@@ -54,6 +55,9 @@ export default function BrandPage() {
                   This Saturday
                 </Link>
               </div>
+              <p className="mt-3 text-sm font-extrabold tracking-wide uppercase text-ink/70">
+                App Store — coming
+              </p>
             </div>
             <div className="hidden shrink-0 justify-items-center md:grid">
               <div className="grid place-items-center rounded-[2rem] bg-coral p-6 ring-4 ring-ink">
@@ -106,10 +110,10 @@ export default function BrandPage() {
               <p className="mt-3 text-lg font-semibold">{SUBTITLE}</p>
               <p className="mt-2 font-semibold">{PROMO}</p>
               <Link
-                href="/stand"
+                href="/kits/lemonade"
                 className="tap mt-6 inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-5 font-extrabold text-cream"
               >
-                Open the stand
+                Read the brief
               </Link>
             </div>
             <div className="rounded-[1.8rem] bg-ink p-6 text-cream">
@@ -129,10 +133,7 @@ export default function BrandPage() {
 
         <section id="jobs" className="bg-cream">
           <div className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-            <JobShelf
-              heading="Saturday Jobs"
-              intro="Four open on this phone. Eight coming. The list is the job until the buttons land."
-            />
+            <JobShelf heading="Saturday Jobs" intro={STORE_DOOR} />
           </div>
         </section>
 

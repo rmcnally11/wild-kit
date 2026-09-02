@@ -36,7 +36,9 @@ export default async function KitPage({ params }: Props) {
           <div className="mx-auto w-full max-w-3xl">
             <p className="text-sm font-extrabold uppercase opacity-80">{kit.listing}</p>
             <p className="mt-1 text-sm font-extrabold uppercase">
-              {kit.status === "open" ? `${kit.seasonLabel} · Open here` : `${kit.seasonLabel} · Coming soon`}
+              {kit.id === "lemonade"
+                ? `${kit.seasonLabel} · App Store — coming`
+                : `${kit.seasonLabel} · Coming to the App Store`}
             </p>
             <h1 className="font-display mt-2 text-[clamp(2.4rem,8vw,4rem)] leading-[0.92]">
               {kit.name}
@@ -78,19 +80,18 @@ export default async function KitPage({ params }: Props) {
             </div>
           </section>
 
-          {kit.status === "open" && kit.href ? (
-            <Link
-              href={kit.href}
-              className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-ink text-lg font-extrabold text-cream"
-            >
-              Open {kit.name}
-            </Link>
-          ) : (
-            <p className="rounded-[1.4rem] bg-ink px-5 py-4 font-semibold text-cream">
-              Coming soon as an app. You do not need the buttons. The list is the job. Pack from
-              the house. Then go.
-            </p>
-          )}
+          <p className="rounded-[1.4rem] bg-ink px-5 py-4 font-semibold text-cream">
+            {kit.id === "lemonade"
+              ? "App Store — coming. The badge goes up when the listing is real. Until then, the brief is the job."
+              : "Coming to the App Store. You do not need the buttons. The list is the job. Pack from the house. Then go."}
+          </p>
+
+          <Link
+            href="/saturday"
+            className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-coral text-lg font-extrabold text-ink"
+          >
+            This Saturday
+          </Link>
 
           <p className="flex flex-wrap gap-4 font-extrabold">
             <Link href="/apps" className="underline">
