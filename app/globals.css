@@ -27,6 +27,11 @@
   --color-destructive: var(--destructive);
   --color-raspberry: var(--raspberry);
   --color-sky: var(--sky);
+  --color-coral: var(--coral);
+  --color-leaf: var(--leaf);
+  --color-lemonade: var(--lemonade);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --radius-sm: 0.8rem;
@@ -57,6 +62,11 @@
   --ring: #f5c518;
   --raspberry: #e85d75;
   --sky: #4eb3e8;
+  --coral: #ff7a59;
+  --leaf: #3baf6a;
+  --lemonade: #f5c518;
+  --ink: #1c1a19;
+  --cream: #fff6e8;
   --radius: 1.4rem;
 }
 
@@ -65,10 +75,10 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply font-sans;
+    @apply font-sans overflow-x-clip;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-clip;
   }
   h1,
   h2,

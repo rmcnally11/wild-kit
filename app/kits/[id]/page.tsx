@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 
 import { FamilyChrome } from "@/components/family-chrome";
 import { Button } from "@/components/ui/button";
+import { hueOf } from "@/lib/hues";
 import { kitById } from "@/lib/kits";
 
 export default function KitPage() {
@@ -25,11 +26,14 @@ export default function KitPage() {
   return (
     <FamilyChrome eyebrow="Saturday Jobs" title={kit.name}>
       <div className="grid gap-5">
-        <div>
-          <p className="text-sm font-extrabold uppercase text-[var(--raspberry)]">{kit.listing}</p>
-          <p className="mt-1 text-sm font-extrabold uppercase text-accent">{kit.seasonLabel}</p>
+        <div
+          className="rounded-[1.6rem] px-5 py-5"
+          style={{ background: hueOf(kit.id).bg, color: hueOf(kit.id).ink }}
+        >
+          <p className="text-sm font-extrabold uppercase opacity-80">{kit.listing}</p>
+          <p className="mt-1 text-sm font-extrabold uppercase">{kit.seasonLabel}</p>
           <h2 className="font-display mt-1 text-4xl leading-none">{kit.name}</h2>
-          <p className="mt-2 text-lg text-muted-foreground">{kit.line}</p>
+          <p className="mt-2 text-lg font-semibold">{kit.line}</p>
           <p className="mt-1 text-sm font-semibold">{kit.hours}</p>
         </div>
 

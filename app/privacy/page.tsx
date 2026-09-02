@@ -10,8 +10,15 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <SiteChrome>
+    <div className="grid h-2 grid-cols-5">
+      <span className="bg-lemonade" />
+      <span className="bg-raspberry" />
+      <span className="bg-leaf" />
+      <span className="bg-sky" />
+      <span className="bg-coral" />
+    </div>
     <article className="mx-auto grid max-w-2xl gap-4 px-5 py-10">
-      <p className="text-sm font-extrabold text-accent uppercase">Wild Kit Co.</p>
+      <p className="text-sm font-extrabold text-leaf uppercase">Wild Kit Co.</p>
       <h1 className="font-display text-4xl">Privacy</h1>
       <p>
         Parent is the account holder. Kids invent the project. We treat this as if it were in
