@@ -146,6 +146,8 @@ export function StandProvider({ children }: { children: ReactNode }) {
   const todayCups = todaySales.length;
   const isPaid =
     stand.plan === "lifetime" ||
+    stand.plan === "family" ||
+    stand.plan === "pack" ||
     (stand.plan === "season" && !!stand.seasonEnds && stand.seasonEnds >= todayKey());
 
   const save = useCallback((next: Partial<Stand>) => {
@@ -178,6 +180,8 @@ export function StandProvider({ children }: { children: ReactNode }) {
     }
     const paid =
       memory.plan === "lifetime" ||
+      memory.plan === "family" ||
+      memory.plan === "pack" ||
       (memory.plan === "season" && !!memory.seasonEnds && memory.seasonEnds >= todayKey());
     if (!paid && memory.menu.length >= MENU_CAP) return "locked";
     write({
@@ -258,6 +262,7 @@ export function StandProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const unlock = useCallback((plan: Plan) => {
+    if (memory.plan === "family" && plan === "pack") return;
     write({
       ...memory,
       plan,

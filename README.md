@@ -14,6 +14,7 @@ The poster is the product.
 
 | Path | What it is |
 | --- | --- |
+| `/pay` | Grown-up pays. Print pack $9. Family $4.99 / $29. Stripe. |
 | `/` | The one-pager. Invent → Print → Open. This / not this. First job. |
 | `/saturday` | This Saturday. Fill the sheet together first. |
 | `/about` | How to word it. App Store lift. Three mouths. The line that matters. |
@@ -81,7 +82,7 @@ Lift-ready. Do not rewrite.
 
 ## Money
 
-App free. No ads. Ever. First dollar is the print pack. Wild Kit Family later: $4.99 / mo or $29 / yr. No Venmo in v1. No kid payments in v1.
+App free. No ads. Ever. First dollar is the print pack: $9 on `/pay`. Wild Kit Family: $4.99 / mo or $29 / yr. Grown-up pays on Stripe. No Venmo. No kid payments.
 
 ## What we will not do
 

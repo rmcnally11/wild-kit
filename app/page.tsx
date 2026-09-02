@@ -7,14 +7,12 @@ import { SiteChrome } from "@/components/site-chrome";
 import { ThisNotThis } from "@/components/this-not-this";
 import {
   FIRST_APP,
-  FIRST_NAME_ONLY,
   IF_HE_ASKS,
   MASTER,
   MISSING_PIECE,
   OPEN_WITH_SATURDAY,
   PARENT_OWNED,
   PROMO,
-  SITE,
   STEPS,
   SUBTITLE,
   TAGLINE,
@@ -115,10 +113,16 @@ export default function BrandPage() {
               </Link>
             </div>
             <div className="rounded-[1.8rem] bg-ink p-6 text-cream">
-              <p className="font-display text-2xl">Hand this to a parent</p>
+              <p className="font-display text-2xl">The first dollar</p>
               <p className="mt-3 font-semibold">
-                {SITE} · {PARENT_OWNED} · {FIRST_NAME_ONLY}
+                Print pack $9. You hit pay. They hit the driveway. {PARENT_OWNED}.
               </p>
+              <Link
+                href="/pay"
+                className="tap mt-5 inline-flex h-12 items-center justify-center rounded-2xl bg-coral px-5 font-extrabold text-ink"
+              >
+                Pay the pack
+              </Link>
             </div>
           </div>
         </section>

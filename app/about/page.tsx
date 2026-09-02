@@ -154,6 +154,9 @@ export default function AboutPage() {
                 <li>{MONEY.noVenmo}</li>
                 <li>The poster is the product.</li>
               </ul>
+              <Link href="/pay" className="mt-4 inline-block font-extrabold underline">
+                Pay →
+              </Link>
             </div>
             <div>
               <p className="text-sm font-extrabold tracking-wide text-raspberry uppercase">

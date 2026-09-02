@@ -51,10 +51,10 @@ export function SiteChrome({
               Parents
             </Link>
             <Link
-              href="/app"
-              className="rounded-full bg-ink px-3 py-2 text-cream sm:px-4"
+              href="/pay"
+              className="rounded-full bg-coral px-3 py-2 text-ink sm:px-4"
             >
-              Open
+              Pay
             </Link>
           </nav>
         </div>
@@ -71,6 +71,9 @@ export function SiteChrome({
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-6 text-sm font-semibold md:flex-row md:items-center md:justify-between">
           <p>Wild Kit Co. · getwildkit.com · Weekend projects for wild little kits.</p>
           <p className="flex flex-wrap gap-3">
+            <Link href="/pay" className="underline">
+              Pay
+            </Link>
             <Link href="/saturday" className="underline">
               This Saturday
             </Link>

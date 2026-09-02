@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { useStand } from "@/lib/stand-store";
 
 export default function ParentPage() {
-  const { stand, save, unlock, isPaid } = useStand();
+  const { stand, save, isPaid } = useStand();
   const [year, setYear] = useState("");
   const [gateOpen, setGateOpen] = useState(isPaid || Boolean(stand.parentYear));
   const adult = Number(year) > 1900 && Number(year) <= new Date().getFullYear() - 18;
@@ -88,26 +88,22 @@ export default function ParentPage() {
               className="h-12 rounded-2xl"
             />
           </label>
-          <div className="grid gap-3 md:grid-cols-2">
-            <PlanCard
-              name="This summer"
-              price="$10"
-              note="About a hundred days. Real money comes later. This just unlocks the phone."
-              active={stand.plan === "season"}
-              onPick={() => unlock("season")}
-            />
-            <PlanCard
-              name="Lifetime"
-              price="$25"
-              note="One stand, every summer after this. No subscription."
-              active={stand.plan === "lifetime"}
-              onPick={() => unlock("lifetime")}
-            />
-          </div>
-          {isPaid && (
+          {isPaid ? (
             <p className="rounded-3xl bg-secondary p-4 font-semibold">
-              Unlocked on this device. Sharing is on. The menu can grow past three items.
+              Paid on this phone. Sharing is on. You hit print.
             </p>
+          ) : (
+            <a
+              href="/pay"
+              className="tap rounded-[1.6rem] bg-lemonade p-5 text-ink"
+            >
+              <p className="text-sm font-extrabold tracking-wide uppercase">The first dollar</p>
+              <p className="font-display mt-1 text-3xl leading-none">Print pack $9</p>
+              <p className="mt-2 font-semibold">
+                Or Family $4.99 a month / $29 a year. Grown-up pays on Stripe. No fake unlock.
+              </p>
+              <p className="mt-4 text-sm font-extrabold">Pay →</p>
+            </a>
           )}
           <p className="text-sm leading-6 text-muted-foreground">
             Kids do not create social accounts in here. Share uses your Messages, Mail, or share
@@ -120,31 +116,5 @@ export default function ParentPage() {
         </>
       )}
     </div>
-  );
-}
-
-function PlanCard({
-  name,
-  price,
-  note,
-  active,
-  onPick,
-}: {
-  name: string;
-  price: string;
-  note: string;
-  active: boolean;
-  onPick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onPick}
-      className={`tap rounded-[1.6rem] p-5 text-left ring-1 ${active ? "bg-primary ring-primary" : "bg-card ring-border"}`}
-    >
-      <p className="text-sm font-bold">{name}</p>
-      <p className="font-display text-4xl">{price}</p>
-      <p className="mt-2 text-sm leading-5">{note}</p>
-    </button>
   );
 }

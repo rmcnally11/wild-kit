@@ -60,14 +60,20 @@ export default function ParentsPage() {
             </ol>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
-                href="/saturday"
+                href="/pay"
                 className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 text-lg font-extrabold text-ink"
+              >
+                Pay the pack
+              </Link>
+              <Link
+                href="/saturday"
+                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-coral px-6 text-lg font-extrabold text-ink"
               >
                 Fill the sheet
               </Link>
               <Link
                 href="/setup"
-                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-coral px-6 text-lg font-extrabold text-ink"
+                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink"
               >
                 Start as the parent
               </Link>

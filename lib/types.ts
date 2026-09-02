@@ -17,7 +17,7 @@ export type Sale = {
   at: string;
 };
 
-export type Plan = "free" | "season" | "lifetime";
+export type Plan = "free" | "pack" | "family" | "season" | "lifetime";
 export type PaperId = "yellow" | "pink" | "lime" | "sky" | "cream";
 export type DecoId = "stars" | "suns" | "arrows" | "hearts" | "drips";
 export type SheetId = "letter" | "tabloid";

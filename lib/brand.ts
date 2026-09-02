@@ -120,9 +120,9 @@ export const APP_STORE = {
 
 export const MONEY = {
   app: "App free. No ads. Ever.",
-  firstDollar: "First dollar is the print pack.",
-  family: "Wild Kit Family later: $4.99 / mo or $29 / yr.",
-  noVenmo: "No Venmo in v1. No kid payments in v1.",
+  firstDollar: "First dollar is the print pack. $9.",
+  family: "Wild Kit Family: $4.99 / mo or $29 / yr.",
+  noVenmo: "No Venmo. No kid payments.",
 };
 
 export const LEGAL_LINE =
