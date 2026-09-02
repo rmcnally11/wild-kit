@@ -4,34 +4,27 @@ import Link from "next/link";
 
 import { JobShelf } from "@/components/job-shelf";
 import { SiteChrome } from "@/components/site-chrome";
+import { ThisNotThis } from "@/components/this-not-this";
+import {
+  FIRST_APP,
+  FIRST_NAME_ONLY,
+  IF_HE_ASKS,
+  MASTER,
+  MISSING_PIECE,
+  OPEN_WITH_SATURDAY,
+  PARENT_OWNED,
+  PROMO,
+  SITE,
+  STEPS,
+  SUBTITLE,
+  TAGLINE,
+} from "@/lib/brand";
 import { Rascal } from "@/lib/rascal";
 
 export const metadata: Metadata = {
   title: "Wild Kit — Weekend projects for wild little kits",
-  description:
-    "Kids invent it. Parents print it. Saturday happens. Lemonade Stand, Bake Sale, Car Wash, Blanket Fort — Saturday Jobs by Wild Kit.",
+  description: `${MASTER} ${MISSING_PIECE}`,
 };
-
-const STEPS = [
-  {
-    title: "Invent",
-    line: "Name it. Price it. Draw the mark.",
-    bg: "bg-raspberry",
-    ink: "text-cream",
-  },
-  {
-    title: "Print",
-    line: "Grown-up hits print. Fill the sheet.",
-    bg: "bg-leaf",
-    ink: "text-cream",
-  },
-  {
-    title: "Open",
-    line: "Tape it. Pour one. Go outside.",
-    bg: "bg-sky",
-    ink: "text-ink",
-  },
-];
 
 export default function BrandPage() {
   return (
@@ -41,13 +34,13 @@ export default function BrandPage() {
           <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col justify-between gap-4 px-4 pt-16 pb-3 sm:pt-[4.25rem] md:flex-row md:items-center md:gap-10 md:pb-4">
             <div className="min-w-0 max-w-2xl">
               <p className="text-[11px] font-extrabold tracking-wide text-ink/70 uppercase sm:text-xs">
-                Weekend projects for wild little kits
+                {TAGLINE}
               </p>
               <h1 className="font-display mt-2 text-[clamp(2rem,8vw,4.75rem)] leading-[0.92]">
-                Kids invent it. Parents print it. Saturday happens.
+                {MASTER}
               </h1>
               <p className="mt-3 max-w-xl text-sm font-semibold sm:mt-4 sm:text-lg">
-                Wild Kit is a house of Saturday Jobs. Open Lemonade Stand this weekend.
+                {MISSING_PIECE}
               </p>
               <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row">
                 <Link
@@ -57,10 +50,10 @@ export default function BrandPage() {
                   Open Lemonade Stand
                 </Link>
                 <Link
-                  href="#jobs"
+                  href="/saturday"
                   className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-coral px-5 text-base font-extrabold text-ink sm:h-14 sm:text-lg"
                 >
-                  Saturday Jobs
+                  This Saturday
                 </Link>
               </div>
             </div>
@@ -75,7 +68,7 @@ export default function BrandPage() {
                   priority
                 />
               </div>
-              <p className="font-display mt-3 text-xl">Rascal. Tiny foreman.</p>
+              <p className="font-display mt-3 text-xl">{PROMO}</p>
             </div>
             <div className="flex items-center gap-3 md:hidden">
               <Image
@@ -86,7 +79,7 @@ export default function BrandPage() {
                 className="size-16 rounded-2xl ring-2 ring-ink"
                 priority
               />
-              <p className="font-display text-lg leading-tight">Rascal. Tiny foreman.</p>
+              <p className="font-display text-lg leading-tight">{PROMO}</p>
             </div>
           </div>
           <div className="grid shrink-0 grid-cols-3">
@@ -99,28 +92,71 @@ export default function BrandPage() {
           </div>
         </section>
 
-        <section className="bg-ink text-cream">
-          <div className="mx-auto w-full max-w-6xl px-4 py-10 md:py-14">
-            <p className="text-sm font-extrabold tracking-wide uppercase opacity-80">The purpose</p>
-            <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">
-              This site is the studio door.
-            </h2>
-            <p className="mt-4 max-w-2xl text-lg font-semibold leading-7">
-              About us. Why Saturday Jobs exist. The apps, where to get them, and what is coming.
-              The App Store listing is not live. Open the kits here until the badge is real.
-            </p>
-            <Link href="/about" className="mt-5 inline-block font-extrabold underline">
-              The full outline →
-            </Link>
+        <section className="bg-cream">
+          <div className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
+            <ThisNotThis />
+          </div>
+        </section>
+
+        <section className="bg-lemonade text-ink">
+          <div className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 py-12 md:grid-cols-[1.2fr_0.8fr] md:py-16">
+            <div>
+              <p className="text-sm font-extrabold tracking-wide uppercase">First job</p>
+              <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">
+                {FIRST_APP}
+              </h2>
+              <p className="mt-3 text-lg font-semibold">{SUBTITLE}</p>
+              <p className="mt-2 font-semibold">{PROMO}</p>
+              <Link
+                href="/stand"
+                className="tap mt-6 inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-5 font-extrabold text-cream"
+              >
+                Open the stand
+              </Link>
+            </div>
+            <div className="rounded-[1.8rem] bg-ink p-6 text-cream">
+              <p className="font-display text-2xl">Hand this to a parent</p>
+              <p className="mt-3 font-semibold">
+                {SITE} · {PARENT_OWNED} · {FIRST_NAME_ONLY}
+              </p>
+            </div>
           </div>
         </section>
 
         <section id="jobs" className="bg-cream">
           <div className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
             <JobShelf
-              heading="The apps"
-              intro="Four open on this phone. Eight coming soon. App Store first listing: Lemonade Stand by Wild Kit — coming."
+              heading="Saturday Jobs"
+              intro="Four open on this phone. Eight coming. The list is the job until the buttons land."
             />
+          </div>
+        </section>
+
+        <section className="bg-sky text-ink">
+          <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-12 md:grid-cols-[1.2fr_0.8fr] md:items-center md:py-16">
+            <div>
+              <p className="text-sm font-extrabold tracking-wide uppercase">For the driveway</p>
+              <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">
+                {OPEN_WITH_SATURDAY}
+              </h2>
+              <p className="mt-4 text-lg font-semibold leading-7">{IF_HE_ASKS}</p>
+              <Link href="/parents" className="mt-5 inline-block font-extrabold underline">
+                The parent page →
+              </Link>
+            </div>
+            <div className="rounded-[1.8rem] bg-cream p-6 text-ink">
+              <p className="font-display text-2xl">This Saturday</p>
+              <p className="mt-3 font-semibold">
+                Five minutes. No obligation. You keep the sheet. If the sheet is empty, do not open
+                the app and wander. Fill the sheet first.
+              </p>
+              <Link
+                href="/saturday"
+                className="tap mt-5 inline-flex h-12 items-center justify-center rounded-2xl bg-coral px-5 font-extrabold"
+              >
+                Fill the sheet
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -130,44 +166,12 @@ export default function BrandPage() {
               <p className="text-sm font-extrabold tracking-wide uppercase opacity-80">The face</p>
               <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">Rascal</h2>
               <p className="mt-4 text-lg font-semibold leading-7">
-                Tiny foreman. Crooked mask. Too-awake eyes. He whispers one-breath hints. Tap him
-                for another. He is not a trash-can joke. He is not a teacher.
+                Tiny foreman. Crooked mask. Too-awake eyes. One-breath hints. Never a teacher. Never
+                a trash-can joke.
               </p>
             </div>
             <div className="grid justify-items-center rounded-[2rem] bg-lemonade p-6 text-ink">
-              <Rascal pose="scheme" size={160} line="Draw it however you want." />
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-sky text-ink">
-          <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-12 md:grid-cols-[1.2fr_0.8fr] md:items-center md:py-16">
-            <div>
-              <p className="text-sm font-extrabold tracking-wide uppercase">For parents</p>
-              <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">
-                You hit print.
-              </h2>
-              <p className="mt-4 text-lg font-semibold leading-7">
-                You own the account. Kids invent the stand. First name only. No kid email. No kid
-                payments. No ads.
-              </p>
-              <Link href="/parents" className="mt-5 inline-block font-extrabold underline">
-                The parent page →
-              </Link>
-            </div>
-            <div className="rounded-[1.8rem] bg-cream p-6 text-ink">
-              <p className="font-display text-2xl">This weekend</p>
-              <ol className="mt-3 grid gap-2 font-semibold">
-                <li>1. Open Lemonade Stand on this phone.</li>
-                <li>2. Let them name it and draw the mark.</li>
-                <li>3. Print the poster. Tape it. Go outside.</li>
-              </ol>
-              <Link
-                href="/setup"
-                className="tap mt-5 inline-flex h-12 items-center justify-center rounded-2xl bg-coral px-5 font-extrabold"
-              >
-                Start as the parent
-              </Link>
+              <Rascal pose="scheme" size={160} line="The poster is the product." />
             </div>
           </div>
         </section>

@@ -35,10 +35,10 @@ export default function SaturdayJobsHub() {
           <p className="text-sm font-extrabold uppercase tracking-wide text-[var(--raspberry)]">
             Weekend projects for wild little kits
           </p>
-          <h2 className="font-display mt-1 text-4xl leading-none">Pick a job</h2>
+          <h2 className="font-display mt-1 text-4xl leading-none">Pick a job. Then go outside.</h2>
           <p className="mt-2 text-lg font-semibold">
-            {stand.kidName ? `${stand.kidName} invents the thing.` : "Kids invent the thing."} You
-            hit print. Then everybody goes outside.
+            {stand.kidName ? `${stand.kidName} invents it.` : "Kids invent it."} You hit print. Then
+            leave the phone.
           </p>
         </div>
 

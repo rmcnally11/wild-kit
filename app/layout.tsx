@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s · Wild Kit",
   },
   description:
-    "Kids invent it. Parents print it. Saturday happens. Weekend projects for wild little kits.",
+    "Kids invent it. Parents print it. Saturday happens. Most family apps keep the Saturday on the phone. We print the one missing piece and send everybody outside.",
   manifest: "/manifest.webmanifest",
   icons: {
     icon: "/rascal-icon.png",

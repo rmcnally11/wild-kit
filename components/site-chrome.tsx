@@ -44,6 +44,9 @@ export function SiteChrome({
             <Link href="/apps" className="hidden rounded-full px-3 py-2 hover:bg-white/40 sm:inline">
               Apps
             </Link>
+            <Link href="/saturday" className="hidden rounded-full px-3 py-2 hover:bg-white/40 md:inline">
+              Saturday
+            </Link>
             <Link href="/parents" className="rounded-full px-2 py-2 hover:bg-white/40 sm:px-3">
               Parents
             </Link>
@@ -66,8 +69,11 @@ export function SiteChrome({
           <span className="bg-coral" />
         </div>
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-6 text-sm font-semibold md:flex-row md:items-center md:justify-between">
-          <p>Wild Kit Co. · Texas · Weekend projects for wild little kits.</p>
+          <p>Wild Kit Co. · getwildkit.com · Weekend projects for wild little kits.</p>
           <p className="flex flex-wrap gap-3">
+            <Link href="/saturday" className="underline">
+              This Saturday
+            </Link>
             <Link href="/about" className="underline">
               About
             </Link>

@@ -87,8 +87,8 @@ export default async function KitPage({ params }: Props) {
             </Link>
           ) : (
             <p className="rounded-[1.4rem] bg-ink px-5 py-4 font-semibold text-cream">
-              Coming soon as an app. You do not need the buttons to do this Saturday. The list is
-              the job. Use what is already in the house.
+              Coming soon as an app. You do not need the buttons. The list is the job. Pack from
+              the house. Then go.
             </p>
           )}
 

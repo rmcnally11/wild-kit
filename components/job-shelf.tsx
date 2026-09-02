@@ -22,12 +22,12 @@ export function JobShelf({
       {intro && <p className="mt-3 max-w-2xl font-semibold text-muted-foreground">{intro}</p>}
 
       <div className="mt-6 rounded-[1.4rem] bg-ink px-5 py-5 text-cream">
-        <p className="text-xs font-extrabold tracking-wide uppercase opacity-80">Where to get them</p>
-        <p className="font-display mt-1 text-2xl leading-none">App Store — coming.</p>
+        <p className="text-xs font-extrabold tracking-wide uppercase opacity-80">App Store — coming</p>
+        <p className="font-display mt-1 text-2xl leading-none">Lemonade Stand by Wild Kit</p>
         <p className="mt-2 font-semibold">
-          Developer name: Wild Kit. First listing: Lemonade Stand by Wild Kit. Subtitle: Design.
-          Print. Open the stand. Lifestyle 4+. The badge goes up when the listing is real. Until
-          then, open the kits on this phone.
+          Design. Print. Open the stand. When the house is full of raccoons, make lemonade.
+          Lifestyle 4+. Not Kids. Free. The badge goes up when the listing is real. Until then, open
+          the kits on this phone.
         </p>
       </div>
 

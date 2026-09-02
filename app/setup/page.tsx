@@ -36,7 +36,7 @@ function SetupFlow({ stand }: { stand: Stand }) {
         <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Wild Kit</p>
         <h1 className="font-display text-5xl leading-none">Who&apos;s holding the phone?</h1>
         <p className="text-lg text-muted-foreground">
-          Parent buys. Kid uses. You own the account. They invent the stand.
+          Grown-up first. Then you invent it. First name only. No kid inbox.
         </p>
         <Button className="h-16 rounded-2xl text-xl font-extrabold" onClick={() => setStep("parent")}>
           I&apos;m the parent
@@ -76,8 +76,8 @@ function ParentStart({ stand, onNext }: { stand: Stand; onNext: () => void }) {
       <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Parent Desk</p>
       <h1 className="font-display text-4xl leading-none">You hit print.</h1>
       <p className="text-muted-foreground">
-        Saturday. They&apos;re already in the cabinets. Give them a stand. Email gets the poster.
-        Zip finds a shop. No street address. No kid inbox.
+        They&apos;re already in the cabinets. This gives them a stand. Email gets the poster. Zip
+        finds a shop. No street address. No kid inbox.
       </p>
       <label className="grid gap-1 font-bold">
         What year were you born?
