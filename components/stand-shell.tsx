@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 
-import { isServerStand, useStand } from "@/lib/stand-store";
+import { peekStand, useStand } from "@/lib/stand-store";
 import { cn } from "@/lib/utils";
 
 const TABS = [
@@ -21,19 +21,10 @@ export function StandShell({ children }: { children: ReactNode }) {
   const { stand } = useStand();
 
   useEffect(() => {
-    if (isServerStand(stand)) return;
-    if (!stand.setupDone && pathname !== "/setup") {
+    if (!peekStand().setupDone && pathname !== "/setup") {
       router.replace("/setup");
     }
-  }, [stand, pathname, router]);
-
-  if (isServerStand(stand)) {
-    return (
-      <div className="grid min-h-dvh place-items-center text-lg text-muted-foreground">
-        Opening the stand…
-      </div>
-    );
-  }
+  }, [stand.setupDone, pathname, router]);
 
   if (pathname === "/setup") {
     return <>{children}</>;

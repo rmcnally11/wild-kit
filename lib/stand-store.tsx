@@ -44,6 +44,10 @@ function hydrate() {
   hydrated = true;
 }
 
+if (typeof window !== "undefined") {
+  hydrate();
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener);
   return () => listeners.delete(listener);
@@ -61,7 +65,12 @@ function getServerSnapshot() {
 }
 
 export function isServerStand(stand: Stand) {
-  return stand === EMPTY;
+  return !hydrated && stand === EMPTY;
+}
+
+export function peekStand() {
+  hydrate();
+  return memory;
 }
 
 function write(next: Stand) {
