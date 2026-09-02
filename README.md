@@ -4,7 +4,7 @@ Weekend projects for wild little kits.
 
 **Kids invent it. Parents print it. Saturday happens.**
 
-Wild Kit Co. is an App Store family studio. The first listing is **Lemonade Stand by Wild Kit**. Rascal is the face. Saturday Jobs is the series. Always titled `[Job] by Wild Kit`.
+Wild Kit Co. is an App Store family studio. The first listing is **Lemonade Stand by Wild Kit**. Rascal is the face. He whispers one-breath hints on every kid screen — tap him for another. Saturday Jobs is the series. Always titled `[Job] by Wild Kit`.
 
 The app is not the product. The driveway artifact is the product.
 

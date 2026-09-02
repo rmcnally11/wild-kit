@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { FamilyChrome } from "@/components/family-chrome";
-import { Rascal } from "@/lib/rascal";
 import { KITS, type Season } from "@/lib/kits";
 import { useStand } from "@/lib/stand-store";
 import { cn } from "@/lib/utils";
@@ -31,17 +30,14 @@ export default function WildKitHome() {
   return (
     <FamilyChrome title="Saturday Jobs">
       <div className="grid gap-5">
-        <div className="flex items-start gap-3">
-          <Rascal pose="boss" size={88} line="" />
-          <div>
-            <p className="text-sm font-extrabold uppercase tracking-wide text-[var(--raspberry)]">
-              Weekend projects for wild little kits
-            </p>
-            <h2 className="font-display mt-1 text-4xl leading-none">Wild Kit</h2>
-            <p className="mt-2 text-lg font-semibold">
-              Kids invent it. Parents print it. Saturday happens.
-            </p>
-          </div>
+        <div>
+          <p className="text-sm font-extrabold uppercase tracking-wide text-[var(--raspberry)]">
+            Weekend projects for wild little kits
+          </p>
+          <h2 className="font-display mt-1 text-4xl leading-none">Wild Kit</h2>
+          <p className="mt-2 text-lg font-semibold">
+            Kids invent it. Parents print it. Saturday happens.
+          </p>
         </div>
         <p className="text-muted-foreground">
           {stand.kidName ? `${stand.kidName} invents the thing.` : "Kids invent the thing."} You

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 
+import { RascalHint } from "@/components/rascal-hint";
+import { roomFromPath } from "@/lib/rascal-hints";
 import { peekStand, useStand } from "@/lib/stand-store";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +21,8 @@ const TABS = [
 export function StandShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { stand } = useStand();
+  const { stand, todayCups } = useStand();
+  const room = roomFromPath(pathname);
 
   useEffect(() => {
     if (!peekStand().setupDone && pathname !== "/setup") {
@@ -52,6 +55,18 @@ export function StandShell({ children }: { children: ReactNode }) {
           Parent Desk
         </Link>
       </header>
+      {pathname !== "/stand/parent" && room && (
+        <RascalHint
+          room={room}
+          ctx={{
+            kidName: stand.kidName,
+            standName: stand.standName,
+            cups: todayCups,
+            soldOut: stand.menu.every((item) => item.soldOut),
+            hasRecipe: Boolean(stand.todaysRecipe),
+          }}
+        />
+      )}
       <div className="flex-1">{children}</div>
       <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 px-3 pt-2 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur print:hidden">
         <div className="mx-auto grid max-w-lg grid-cols-5 gap-1.5">

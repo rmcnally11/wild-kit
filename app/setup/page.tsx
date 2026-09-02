@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { ColorDots } from "@/components/color-dots";
+import { RascalHint } from "@/components/rascal-hint";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { isEmail } from "@/lib/email";
@@ -30,7 +31,8 @@ function SetupFlow({ stand }: { stand: Stand }) {
   if (step === "who") {
     return (
       <div className="mx-auto grid min-h-dvh max-w-lg content-center gap-5 px-5 py-10">
-        <Rascal pose="scheme" size={120} line="Kids invent it. Parents print it." />
+        <Rascal pose="scheme" size={120} line="" />
+        <RascalHint room="who" />
         <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Wild Kit</p>
         <h1 className="font-display text-5xl leading-none">Who&apos;s holding the phone?</h1>
         <p className="text-lg text-muted-foreground">
@@ -150,6 +152,7 @@ function KidStart({ stand }: { stand: Stand }) {
 
   return (
     <div className="mx-auto grid min-h-dvh max-w-lg content-center gap-5 px-5 py-10">
+      <RascalHint room="setup" ctx={{ standName, kidName }} />
       <p className="text-sm font-extrabold tracking-wide text-accent uppercase">Kid Studio</p>
       <h1 className="font-display text-5xl leading-none">You&apos;re the boss of this stand.</h1>
       <p className="text-lg text-muted-foreground">

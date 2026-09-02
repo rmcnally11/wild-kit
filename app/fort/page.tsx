@@ -5,7 +5,6 @@ import { useState } from "react";
 import { FamilyChrome } from "@/components/family-chrome";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Rascal } from "@/lib/rascal";
 import { useStand } from "@/lib/stand-store";
 import { CAMP_PACK, CAMP_TRAIL, DEFAULT_CAMP } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -46,7 +45,6 @@ export default function FortPage() {
   return (
     <FamilyChrome eyebrow="Blanket Fort by Wild Kit" title="Blanket Fort">
       <div className="grid gap-6">
-        <Rascal pose="scheme" size={88} line="When the house is full of raccoons, make a fort." />
         <p className="text-lg text-muted-foreground">
           Pack from the house. Walk the trail. Write what you heard. Lights out ends the day.
         </p>

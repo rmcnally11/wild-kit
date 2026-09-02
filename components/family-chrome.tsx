@@ -5,6 +5,9 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 
+import { RascalHint } from "@/components/rascal-hint";
+import { kitById } from "@/lib/kits";
+import { roomFromPath } from "@/lib/rascal-hints";
 import { peekStand, useStand } from "@/lib/stand-store";
 
 export function FamilyChrome({
@@ -19,6 +22,8 @@ export function FamilyChrome({
   const pathname = usePathname();
   const router = useRouter();
   const { stand } = useStand();
+
+  const room = roomFromPath(pathname);
 
   useEffect(() => {
     if (!peekStand().setupDone && pathname !== "/setup") {
@@ -45,6 +50,19 @@ export function FamilyChrome({
           Parent Desk
         </Link>
       </header>
+      {room && (
+        <RascalHint
+          room={room}
+          ctx={{
+            kidName: stand.kidName,
+            standName: stand.standName,
+            packed: stand.camp?.packed.length,
+            trail: stand.camp?.trail.length,
+            lightsOut: stand.camp?.lightsOut,
+            kitOpen: kitById(pathname.split("/")[2] || "")?.status === "open",
+          }}
+        />
+      )}
       <div className="flex-1">{children}</div>
     </div>
   );
