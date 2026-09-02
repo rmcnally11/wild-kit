@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
@@ -105,6 +106,11 @@ const StandContext = createContext<Store | null>(null);
 
 export function StandProvider({ children }: { children: ReactNode }) {
   const stand = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
+
+  useEffect(() => {
+    hydrate();
+    emit();
+  }, []);
 
   const todaySales = stand.sales.filter((sale) => sale.at.slice(0, 10) === todayKey());
   const todayTotal = todaySales.reduce((sum, sale) => sum + sale.price, 0);
