@@ -8,15 +8,27 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { StandLogo } from "@/lib/logo";
 import { useStand } from "@/lib/stand-store";
-import { type PaletteId } from "@/lib/types";
+import { type PaletteId, type Stand } from "@/lib/types";
 
 export default function SetupPage() {
+  const { stand, ready } = useStand();
+  if (!ready) {
+    return (
+      <div className="grid min-h-dvh place-items-center text-lg text-muted-foreground">
+        Mixing the pitcher…
+      </div>
+    );
+  }
+  return <SetupForm stand={stand} />;
+}
+
+function SetupForm({ stand }: { stand: Stand }) {
   const router = useRouter();
-  const { stand, save } = useStand();
+  const { save } = useStand();
   const [kidName, setKidName] = useState(stand.kidName);
   const [standName, setStandName] = useState(stand.standName);
   const [palette, setPalette] = useState<PaletteId>(stand.palette);
-  const ready = kidName.trim().length > 0 && standName.trim().length > 1;
+  const canOpen = kidName.trim().length > 0 && standName.trim().length > 1;
 
   return (
     <div className="mx-auto grid min-h-dvh max-w-lg content-center gap-5 px-5 py-10">
@@ -46,10 +58,17 @@ export default function SetupPage() {
       </label>
       <ColorDots value={palette} onChange={setPalette} />
       <div className="grid place-items-center">
-        <StandLogo name={standName} palette={palette} badge="circle" mascot="lemon" size={200} />
+        <StandLogo
+          key={`${standName}-${palette}`}
+          name={standName}
+          palette={palette}
+          badge="circle"
+          mascot="lemon"
+          size={200}
+        />
       </div>
       <Button
-        disabled={!ready}
+        disabled={!canOpen}
         className="h-16 rounded-2xl text-xl font-extrabold"
         onClick={() => {
           save({
