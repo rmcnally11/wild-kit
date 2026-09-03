@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# expo / native apps
+apps/*/.expo/
+apps/*/dist/
+apps/*/ios/
+apps/*/android/

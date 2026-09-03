@@ -1,3 +1,14 @@
+# Wild Kit
+
+Two workstreams. Read `docs/README.md` before editing.
+
+1. **Website** — getwildkit.com — `app/(website)/` — [docs/PURPOSE.md](docs/PURPOSE.md)
+2. **Apps** — Saturday Jobs — `apps/lemonade` first — [docs/APPS.md](docs/APPS.md)
+
+The live site does not host the kits. Do not add a playable job to a public website route. Do not rewrite locked lines in `lib/brand.ts` or `apps/lemonade/src/brand.ts`.
+
+LLC + App Store enrollment: [docs/APPLE_DEVELOPER_LLC.md](docs/APPLE_DEVELOPER_LLC.md).
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know

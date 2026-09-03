@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 
+/** The live site is the studio door. Playable kits ship from apps/, not these URLs. */
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["127.0.0.1", "localhost"],
   async redirects() {

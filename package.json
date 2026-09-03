@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 43143 --hostname 0.0.0.0",
+    "dev:web": "next dev --port 43143 --hostname 0.0.0.0",
+    "dev:lemonade": "npm run start --prefix apps/lemonade",
     "build": "next build",
     "start": "next start --port 43143 --hostname 0.0.0.0",
     "lint": "eslint"
