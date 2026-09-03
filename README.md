@@ -6,11 +6,27 @@ Weekend projects for wild little kits.
 
 Most family apps keep the Saturday on the phone. We print the one missing piece and send everybody outside.
 
-Wild Kit Co. First listing: **Lemonade Stand by Wild Kit**. Rascal is the face. Always titled `[Job] by Wild Kit`. Site we want: getwildkit.com.
+Wild Kit Co. First listing: **Lemonade Stand by Wild Kit**. Rascal is the face. Always titled `[Job] by Wild Kit`. Site: getwildkit.com.
 
 The poster is the product.
 
-## On this site
+## Two workstreams
+
+This repo is one company and two jobs. Read [`docs/README.md`](docs/README.md) before you edit.
+
+| | Website | Apps |
+| --- | --- | --- |
+| Purpose | Studio door. Briefs, Saturday sheet, pay. | Saturday Jobs. Real products. |
+| Code | `app/(website)/` | `apps/lemonade` first, then the rest of the shelf |
+| Ships to | getwildkit.com | App Store |
+| How to run | `npm run dev` | `cd apps/lemonade && npx expo start` |
+| Guide | [docs/PURPOSE.md](docs/PURPOSE.md) | [docs/APPS.md](docs/APPS.md) |
+
+The live site does not host the kits. Old web prototypes sit in `app/(jobs)/` and redirect to briefs. Put serious app work in `apps/`.
+
+LLC + Apple Developer organization setup: **[docs/APPLE_DEVELOPER_LLC.md](docs/APPLE_DEVELOPER_LLC.md)**.
+
+## On the website
 
 | Path | What it is |
 | --- | --- |
@@ -40,8 +56,6 @@ The poster is the product.
 ## First listing
 
 **Lemonade Stand by Wild Kit.** App Store — coming. Lifestyle 4+. Not Kids. The badge goes up when the listing is real. No fake App Store button.
-
-The live site does not host the kits. It is the studio door: briefs, the Saturday sheet, pay, and (later) links to the App Store.
 
 ## Saturday Jobs
 
@@ -92,6 +106,8 @@ Copy `.env.example` to `.env.local` for Resend. Do not send Wild Kit mail from a
 
 ## Run it
 
+Website:
+
 ```bash
 npm install
 npm run dev
@@ -99,6 +115,16 @@ npm run dev
 
 [http://localhost:43143](http://localhost:43143)
 
+Lemonade Stand (native):
+
+```bash
+cd apps/lemonade
+npm install
+npx expo start
+```
+
 ## Stack
 
-Next.js, TypeScript, Tailwind, shadcn/ui. Local storage only. Fredoka display · Nunito body. Cream #FFF6E8, Lemonade #F5C518, Mask Ink #1C1A19.
+Website: Next.js, TypeScript, Tailwind, shadcn/ui. Local storage only. Fredoka display · Nunito body. Cream #FFF6E8, Lemonade #F5C518, Mask Ink #1C1A19.
+
+Apps: Expo / React Native. Same brand. Parent-first. Local-first. See `apps/lemonade`.
