@@ -175,7 +175,7 @@ export default function InventScreen() {
         ))}
 
         <Pressable style={styles.next} onPress={() => router.replace("/print")}>
-          <Text style={styles.nextText}>Grown-up runs the printer →</Text>
+          <Text style={styles.nextText}>Draw the poster →</Text>
         </Pressable>
       </ScrollView>
     </JobChrome>

@@ -10,6 +10,7 @@ import {
 } from "react";
 
 import { DEFAULT_CREW, DEFAULT_MENU, MENU_CAP, type TemplateId } from "@/brand";
+import { emptyPoster, hydratePoster, type Poster, type Sticker, type Stroke } from "@/poster";
 
 const KEY = "wild-kit-lemonade-v1";
 
@@ -46,6 +47,7 @@ export type Stand = {
   todaysRecipe: string;
   supplies: string[];
   crew: CrewJob[];
+  poster: Poster;
 };
 
 export function emptyStand(): Stand {
@@ -62,6 +64,7 @@ export function emptyStand(): Stand {
     todaysRecipe: "",
     supplies: [],
     crew: DEFAULT_CREW.map((job) => ({ ...job })),
+    poster: emptyPoster(),
   };
 }
 
@@ -105,6 +108,7 @@ function hydrate(raw: string): Stand {
     todaysRecipe: String(parsed.todaysRecipe ?? ""),
     closedAt: parsed.closedAt ?? null,
     setupDone: Boolean(parsed.setupDone),
+    poster: hydratePoster(parsed.poster),
   };
 }
 
@@ -120,6 +124,11 @@ const StandContext = createContext<{
   toggleSupply: (id: string) => void;
   setCrew: (id: string, who: string) => void;
   putPitcherOnMenu: (name: string, price: number) => void;
+  savePoster: (poster: Poster) => void;
+  addStroke: (stroke: Stroke) => void;
+  addSticker: (sticker: Sticker) => void;
+  undoPoster: () => void;
+  clearPoster: () => void;
   resetSaturday: () => void;
   todaySales: Sale[];
   todayTotal: number;
@@ -243,6 +252,62 @@ export function StandProvider({ children }: { children: ReactNode }) {
     [persist, stand],
   );
 
+  const savePoster = useCallback(
+    (poster: Poster) => {
+      persist({ ...stand, poster });
+    },
+    [persist, stand],
+  );
+
+  const addStroke = useCallback(
+    (stroke: Stroke) => {
+      persist({
+        ...stand,
+        poster: {
+          ...stand.poster,
+          strokes: [...stand.poster.strokes, stroke].slice(-160),
+          history: [...stand.poster.history, "stroke" as const].slice(-160),
+        },
+      });
+    },
+    [persist, stand],
+  );
+
+  const addSticker = useCallback(
+    (sticker: Sticker) => {
+      persist({
+        ...stand,
+        poster: {
+          ...stand.poster,
+          stickers: [...stand.poster.stickers, sticker].slice(-80),
+          history: [...stand.poster.history, "sticker" as const].slice(-160),
+        },
+      });
+    },
+    [persist, stand],
+  );
+
+  const undoPoster = useCallback(() => {
+    const last = stand.poster.history[stand.poster.history.length - 1];
+    if (!last) return;
+    persist({
+      ...stand,
+      poster: {
+        ...stand.poster,
+        strokes: last === "stroke" ? stand.poster.strokes.slice(0, -1) : stand.poster.strokes,
+        stickers: last === "sticker" ? stand.poster.stickers.slice(0, -1) : stand.poster.stickers,
+        history: stand.poster.history.slice(0, -1),
+      },
+    });
+  }, [persist, stand]);
+
+  const clearPoster = useCallback(() => {
+    persist({
+      ...stand,
+      poster: { ...stand.poster, strokes: [], stickers: [], history: [] },
+    });
+  }, [persist, stand]);
+
   const resetSaturday = useCallback(() => {
     const kept = emptyStand();
     persist({
@@ -271,6 +336,11 @@ export function StandProvider({ children }: { children: ReactNode }) {
       toggleSupply,
       setCrew,
       putPitcherOnMenu,
+      savePoster,
+      addStroke,
+      addSticker,
+      undoPoster,
+      clearPoster,
       resetSaturday,
       todaySales,
       todayTotal,
@@ -280,11 +350,15 @@ export function StandProvider({ children }: { children: ReactNode }) {
     }),
     [
       addItem,
+      addSticker,
+      addStroke,
+      clearPoster,
       putPitcherOnMenu,
       ready,
       removeItem,
       resetSaturday,
       save,
+      savePoster,
       sell,
       setCrew,
       stand,
@@ -292,6 +366,7 @@ export function StandProvider({ children }: { children: ReactNode }) {
       todayTotal,
       toggleSupply,
       undo,
+      undoPoster,
       updateItem,
     ],
   );

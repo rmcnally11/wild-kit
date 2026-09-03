@@ -10,7 +10,7 @@ Serious work on the first Saturday Job happens here. The old web prototype in `a
 
 1. **Setup** — Grown-up first. Birth year 18+. Parent email. Then first name only.
 2. **Invent** — Name, field, menu, one pitcher, pack from the house, crew.
-3. **Print** — Grown-up runs the printer. Poster, menu, price cards. Share the PDF.
+3. **Print** — Draw the poster like a paint board. Stickers. Print on 14×22, 22×28, or 28×44 poster board — or letter at home.
 4. **Open** — Tap what they bought. Then leave the phone.
 
 Parent desk stays a grown-up room. Pay and the Saturday sheet live on getwildkit.com. No ads. No kid inbox. No zip.

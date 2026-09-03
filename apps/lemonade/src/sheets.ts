@@ -5,6 +5,7 @@ import {
   SITE,
   fieldColor,
 } from "@/brand";
+import { BOARDS, drawingSvg } from "@/poster";
 import { money, type Stand } from "@/store";
 
 export type SheetKind = "poster" | "menu" | "cards";
@@ -17,7 +18,7 @@ function esc(value: string) {
     .replace(/"/g, "&quot;");
 }
 
-function wrap(body: string, paper: string, ink = COLORS.ink) {
+function wrap(body: string, paper: string, ink = COLORS.ink, page = "letter portrait") {
   return `<!doctype html>
 <html>
 <head>
@@ -26,11 +27,12 @@ function wrap(body: string, paper: string, ink = COLORS.ink) {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet" />
   <style>
-    @page { size: letter portrait; margin: 0; }
+    @page { size: ${page}; margin: 0; }
     html, body { margin: 0; background: ${paper}; color: ${ink}; }
     body { font-family: Nunito, system-ui, sans-serif; }
     h1, h2 { font-family: Fredoka, system-ui, sans-serif; font-weight: 700; margin: 0; }
-    .sheet { min-height: 100vh; box-sizing: border-box; padding: 0.55in; }
+    html, body { width: 100%; height: 100%; }
+    .sheet { min-height: 100vh; width: 100%; height: 100%; box-sizing: border-box; padding: 0.55in; position: relative; overflow: hidden; }
     .kicker { font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px; margin: 0 0 8px; }
     .line { font-weight: 600; font-size: 18px; margin: 8px 0 0; }
     .row { display: flex; justify-content: space-between; gap: 16px; border-bottom: 2px solid ${ink}; padding: 10px 0; font-weight: 800; font-size: 22px; }
@@ -70,6 +72,8 @@ export function buildSheet(kind: SheetKind, stand: Stand) {
   const crew = stand.crew.filter((job) => job.who.trim());
 
   if (kind === "poster") {
+    const board = BOARDS[stand.poster.board];
+    const page = `${board.inches.w}in ${board.inches.h}in`;
     const rows = items
       .map((item) => `<div class="row"><span>${esc(item.name)}</span><span>${money(item.price)}</span></div>`)
       .join("");
@@ -79,26 +83,23 @@ export function buildSheet(kind: SheetKind, stand: Stand) {
     const recipe = stand.todaysRecipe
       ? `<p class="line">Today's pitcher: ${esc(stand.todaysRecipe)}</p>`
       : "";
-    const mark =
-      stand.template === "berry"
-        ? `<div class="mark ticket"><div class="pip"></div></div>`
-        : stand.template === "sky"
-          ? `<div class="mark banner"></div>`
-          : `<div class="mark lemon"><div class="leaf"></div><div class="shine"></div></div>`;
+    const art = drawingSvg(stand.poster, 1000, Math.round(1000 * (board.inches.h / board.inches.w)), field, stand.template);
     return wrap(
-      `<div class="hero">
+      `${art}
+       <div class="hero" style="position:relative;z-index:1">
          <div>
-           <p class="kicker">This Saturday</p>
+           <p class="kicker">This Saturday · ${board.short}</p>
            <h1 style="font-size: 64px; line-height: 0.95;">${name}</h1>
            <p class="line">${kid} invents it. You make it real.</p>
          </div>
-         ${mark}
        </div>
        ${recipe}
        ${rows}
        ${people}
-       <p class="foot">Wild Kit · ${SITE} · Ask for the whole sheet.</p>`,
+       <p class="foot">${board.ask} Wild Kit · ${SITE}</p>`,
       field,
+      COLORS.ink,
+      page,
     );
   }
 
@@ -157,7 +158,7 @@ export function buildSheet(kind: SheetKind, stand: Stand) {
 }
 
 export const SHEET_COPY: Record<SheetKind, { title: string; line: string }> = {
-  poster: { title: "Poster", line: "The name. The mark. Tape it to the table." },
+  poster: { title: "Poster", line: "Draw it. Print it on poster board. Tape it to the table." },
   menu: { title: "Menu", line: "What you sell. Prices the kid set." },
   cards: { title: "Price cards", line: "One card per cup. Crooked is fine." },
 };

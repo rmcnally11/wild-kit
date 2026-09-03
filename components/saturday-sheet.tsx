@@ -87,9 +87,11 @@ export function SaturdaySheet() {
         <p className="text-xs font-extrabold tracking-wide uppercase">4 · Print?</p>
         <div className="mt-3 grid gap-2">
           {[
-            "Yes — poster + menu + cards",
+            "Yes — 22 × 28 poster board",
+            "Half board — 14 × 22",
+            "Yard board — 28 × 44",
+            "Letter at home — 8½ × 11",
             "Hand-letter it",
-            "PDF now, shop later",
           ].map((choice) => (
             <button
               key={choice}

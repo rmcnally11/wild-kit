@@ -28,7 +28,7 @@ export const KITS: Kit[] = [
     hours: "A warm afternoon. Done by dinner.",
     line: "Design. Print. Open the stand.",
     saturday:
-      "Name the stand. Pick a field. Set the prices. Pack from the house. Grown-up runs the printer. Tape it to the table. Then leave the phone.",
+      "Name the stand. Pick a field. Draw the poster. Pack from the house. Grown-up runs the printer — 14×22, 22×28, or 28×44 poster board. Tape it to the table. Then leave the phone.",
     need: [
       "A table or a box",
       "A pitcher and cups",
@@ -39,7 +39,7 @@ export const KITS: Kit[] = [
       "A jar for cash",
     ],
     kid: "You’re the boss of this stand. Make the sign. Set the price. Open.",
-    parent: "You make it real. Grown-up runs the printer. Then you go outside.",
+    parent: "You make it real. Grown-up runs the printer. Ask for the whole board. Then you go outside.",
     done: "You opened. That’s the whole point.",
     status: "open",
   },
