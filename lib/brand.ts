@@ -7,20 +7,23 @@ export const FIRST_APP = "Lemonade Stand by Wild Kit";
 export const SERIES = "Saturday Jobs";
 export const PATTERN = "[Job] by Wild Kit";
 
-export const MASTER = "Kids invent it. Parents print it. Saturday happens.";
-export const TAGLINE = "Weekend projects for wild little kits.";
+export const FACE_LINE = "Wild kids. Hands-on parents.";
+export const MASTER = "Kids invent it. Parents make it real. Saturday happens.";
+export const TAGLINE = FACE_LINE;
+export const STUDIO = "Weekend projects for wild little kits.";
 export const PROMO = "When the house is full of raccoons, make lemonade.";
 export const SUBTITLE = "Design. Print. Open the stand.";
+export const STEP_SPINE = "Invent. Make it real. Open.";
 
 export const SITE = "getwildkit.com";
 export const HANDLE = "@getwildkit";
 
 export const MISSING_PIECE =
-  "Most family apps keep the Saturday on the phone. We print the one missing piece and send everybody outside.";
+  "Most family apps keep the Saturday on the phone. We hand you the missing piece and send everybody outside.";
 
 export const OPEN_WITH_SATURDAY = "They're already in the cabinets. This gives them a stand.";
 export const IF_HE_ASKS =
-  "Kids invent the logo and the prices. You hit print. Then you go outside.";
+  "Kids invent the name and the prices. You make it real. Then you go outside.";
 
 export const GROWN_UP_FIRST = "Grown-up first. Then you invent it.";
 export const FIRST_NAME_ONLY = "First name only. No kid inbox.";
@@ -37,14 +40,14 @@ export const STEPS = [
     ink: "text-cream",
   },
   {
-    title: "Print",
-    line: "Grown-up runs the printer. Poster, menu, price cards. PDF first.",
+    title: "Make it real",
+    line: "Grown-up brings the missing piece. Printer, oven, hose, blankets. Changes by job.",
     bg: "bg-leaf",
     ink: "text-cream",
   },
   {
     title: "Open",
-    line: "Tape it to the table. Then leave the phone.",
+    line: "Set it out. Then leave the phone.",
     bg: "bg-sky",
     ink: "text-ink",
   },
@@ -52,8 +55,8 @@ export const STEPS = [
 
 export const THIS = [
   "A Saturday job you finish",
-  "Kid invents. Parent prints.",
-  "The poster is the product",
+  "Kid invents. Parent makes it real.",
+  "Then you leave the phone",
   "No ads. First name only.",
 ];
 
@@ -79,12 +82,14 @@ export const SAY = [
   "tape",
   "grown-up",
   "first name",
+  "make it real",
+  "hands-on",
 ];
 
 export const PARENT_MOUTH = [
   "Saturday. Four kids. One pitcher. Go.",
   "They're already in the cabinets. Give them a stand.",
-  "You hit print. They hit the driveway.",
+  "You make it real. They hit the driveway.",
   "When the house is full of raccoons, make lemonade.",
 ];
 
@@ -92,7 +97,7 @@ export const KID_MOUTH = [
   "You're the boss of this stand.",
   "Make the sign. Set the price. Open.",
   "Draw it however you want.",
-  "Grown-up runs the printer.",
+  "Grown-up brings the rest.",
 ];
 
 export const RASCAL_MOUTH = [

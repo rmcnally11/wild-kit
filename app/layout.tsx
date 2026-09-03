@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fredoka, Geist_Mono, Nunito } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { FACE_LINE, MASTER, MISSING_PIECE } from "@/lib/brand";
 import { StandProvider } from "@/lib/stand-store";
 
 import "./globals.css";
@@ -25,11 +26,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Wild Kit — Weekend projects for wild little kits",
+    default: `Wild Kit — ${FACE_LINE}`,
     template: "%s · Wild Kit",
   },
-  description:
-    "Kids invent it. Parents print it. Saturday happens. Most family apps keep the Saturday on the phone. We print the one missing piece and send everybody outside.",
+  description: `${MASTER} ${MISSING_PIECE}`,
   manifest: "/manifest.webmanifest",
   icons: {
     icon: "/icon.svg",
