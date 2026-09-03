@@ -12,7 +12,7 @@ import {
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { COLORS } from "@/brand";
 import { StandProvider } from "@/store";
@@ -20,19 +20,25 @@ import { StandProvider } from "@/store";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [fredoka] = useFredoka({ Fredoka_600SemiBold, Fredoka_700Bold });
-  const [nunito] = useNunito({
+  const [fredoka, fredokaError] = useFredoka({ Fredoka_600SemiBold, Fredoka_700Bold });
+  const [nunito, nunitoError] = useNunito({
     Nunito_500Medium,
     Nunito_600SemiBold,
     Nunito_800ExtraBold,
   });
-  const ready = fredoka && nunito;
+  const [giveUp, setGiveUp] = useState(false);
+  const ready = (fredoka || Boolean(fredokaError)) && (nunito || Boolean(nunitoError));
 
   useEffect(() => {
-    if (ready) SplashScreen.hideAsync();
-  }, [ready]);
+    const timer = setTimeout(() => setGiveUp(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  if (!ready) return null;
+  useEffect(() => {
+    if (ready || giveUp) SplashScreen.hideAsync();
+  }, [giveUp, ready]);
+
+  if (!ready && !giveUp) return null;
 
   return (
     <StandProvider>

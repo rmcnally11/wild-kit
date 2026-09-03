@@ -41,6 +41,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web --port 43147 --host lan",
+    "export:web": "expo export --platform web --output-dir dist",
+    "preview": "npm run export:web && python3 scripts/preview-web.py",
     "typecheck": "tsc --noEmit",
     "lint": "expo lint"
   },
