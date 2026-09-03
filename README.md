@@ -90,7 +90,19 @@ Grown-up runs the printer. Poster, menu, price cards. PDF first. Letter or 11×1
 
 Copy `.env.example` to `.env.local` for Resend. Do not send Wild Kit mail from another company’s domain.
 
-## Run it
+## The app
+
+Lemonade Stand lives in `apps/lemonade`. That is the product. This folder is the studio door.
+
+```bash
+cd apps/lemonade
+npm install
+npx expo start
+```
+
+Web preview: `npm run web` on port 43147. A Mac archives for TestFlight. See `apps/lemonade/README.md`.
+
+## Run the site
 
 ```bash
 npm install
@@ -101,4 +113,4 @@ npm run dev
 
 ## Stack
 
-Next.js, TypeScript, Tailwind, shadcn/ui. Local storage only. Fredoka display · Nunito body. Cream #FFF6E8, Lemonade #F5C518, Mask Ink #1C1A19.
+Site: Next.js, TypeScript, Tailwind, shadcn/ui. App: Expo. Fredoka display · Nunito body. Cream #FFF6E8, Lemonade #F5C518, Mask Ink #1C1A19.
