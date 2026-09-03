@@ -86,19 +86,26 @@ export default async function KitPage({ params }: Props) {
               : "Coming to the App Store. You do not need the buttons. The list is the job. Pack from the house. Then go."}
           </p>
 
-          <Link
-            href="/saturday"
-            className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-coral text-lg font-extrabold text-ink"
-          >
-            This Saturday
-          </Link>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/saturday"
+              className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-lemonade px-6 text-lg font-extrabold text-ink"
+            >
+              This Saturday
+            </Link>
+            {kit.id === "lemonade" ? (
+              <Link
+                href="/pay"
+                className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-card px-6 text-lg font-extrabold text-ink ring-1 ring-border"
+              >
+                Pay the pack
+              </Link>
+            ) : null}
+          </div>
 
           <p className="flex flex-wrap gap-4 font-extrabold">
-            <Link href="/apps" className="underline">
-              All apps
-            </Link>
-            <Link href="/about" className="underline">
-              About
+            <Link href="/parents" className="underline">
+              Parents
             </Link>
           </p>
         </div>

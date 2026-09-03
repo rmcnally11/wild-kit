@@ -15,10 +15,10 @@ The poster is the product.
 | Path | What it is |
 | --- | --- |
 | `/pay` | Grown-up pays. Print pack $9. Family $4.99 / $29. Stripe. |
-| `/` | The one-pager. Invent → Make it real → Open. This / not this. First job. |
+| `/` | The door. Face, master, three bars. This / not this. Lemonade Stand. |
 | `/saturday` | This Saturday. Fill the sheet together first. |
-| `/about` | How to word it. App Store lift. Three mouths. The line that matters. |
-| `/apps` | Saturday Jobs. Store listings and briefs. App Store — coming. |
+| `/about` | What it is. How Saturday works. Rascal. The privacy line. |
+| `/apps` | Saturday Jobs catalog. Hidden from the nav until two listings exist. |
 | `/parents` | They're already in the cabinets. This gives them a stand. |
 | `/privacy` | Parent-owned account. First name only. No kid inbox. |
 | `/kits/[id]` | Saturday brief for that job. Not a playable app. |
@@ -26,7 +26,7 @@ The poster is the product.
 ## This
 
 - A Saturday job you finish
-- Kid invents. Parent prints.
+- Kid invents. Parent makes it real.
 - The poster is the product
 - No ads. First name only.
 

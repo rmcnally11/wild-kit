@@ -13,8 +13,8 @@ export function ThisNotThis() {
           ))}
         </ul>
       </article>
-      <article className="rounded-[1.6rem] bg-ink px-5 py-6 text-cream">
-        <p className="text-xs font-extrabold tracking-wide uppercase opacity-80">Not this</p>
+      <article className="rounded-[1.6rem] bg-card px-5 py-6 text-ink ring-1 ring-border">
+        <p className="text-xs font-extrabold tracking-wide uppercase text-muted-foreground">Not this</p>
         <ul className="mt-3 grid gap-2">
           {NOT_THIS.map((line) => (
             <li key={line} className="font-semibold">

@@ -67,19 +67,13 @@ export default function ParentsPage() {
               </Link>
               <Link
                 href="/saturday"
-                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-coral px-6 text-lg font-extrabold text-ink"
+                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink ring-1 ring-border"
               >
                 Fill the sheet
               </Link>
               <Link
-                href="/apps"
-                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink"
-              >
-                The apps
-              </Link>
-              <Link
                 href="/privacy"
-                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink"
+                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink ring-1 ring-border"
               >
                 Privacy
               </Link>
