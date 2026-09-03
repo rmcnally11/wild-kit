@@ -14,7 +14,7 @@ Rascal: already written in lib/rascal-hints.ts. Do not get cuter than that.
 
 ## Spine — keep these
 
-Kids invent it. Parents print it. Saturday happens.
+Kids invent it. Parents make it real. Saturday happens.
 Weekend projects for wild little kits.
 The poster is the product.
 Grown-up first. Then you invent it.
@@ -33,7 +33,7 @@ Tape it to the table.
 Fill the sheet.
 The house is full of raccoons.
 Open it. Then leave the phone.
-Invent. Print. Open.
+Invent. Make it real. Open.
 The list is the job.
 Ask for the whole sheet.
 Cash is perfect.

@@ -21,6 +21,7 @@ import {
   RASCAL_MOUTH,
   SERIES,
   SITE,
+  STEP_SPINE,
   STEPS,
   SUBTITLE,
   TAGLINE,
@@ -53,7 +54,7 @@ export default function AboutPage() {
         <section className="bg-coral text-ink">
           <div className="mx-auto w-full max-w-3xl px-4 py-12">
             <p className="text-sm font-extrabold tracking-wide uppercase">How a Saturday works</p>
-            <h2 className="font-display mt-2 text-4xl leading-none">Invent. Print. Open.</h2>
+            <h2 className="font-display mt-2 text-4xl leading-none">{STEP_SPINE}</h2>
             <ol className="mt-5 grid gap-4">
               {STEPS.map((step, index) => (
                 <li key={step.title}>

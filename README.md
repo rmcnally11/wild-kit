@@ -2,9 +2,9 @@
 
 Weekend projects for wild little kits.
 
-**Kids invent it. Parents print it. Saturday happens.**
+**Kids invent it. Parents make it real. Saturday happens.**
 
-Most family apps keep the Saturday on the phone. We print the one missing piece and send everybody outside.
+Most family apps keep the Saturday on the phone. We hand you the missing piece and send everybody outside.
 
 Wild Kit Co. First listing: **Lemonade Stand by Wild Kit**. Rascal is the face. Always titled `[Job] by Wild Kit`. Site we want: getwildkit.com.
 
@@ -15,7 +15,7 @@ The poster is the product.
 | Path | What it is |
 | --- | --- |
 | `/pay` | Grown-up pays. Print pack $9. Family $4.99 / $29. Stripe. |
-| `/` | The one-pager. Invent → Print → Open. This / not this. First job. |
+| `/` | The one-pager. Invent → Make it real → Open. This / not this. First job. |
 | `/saturday` | This Saturday. Fill the sheet together first. |
 | `/about` | How to word it. App Store lift. Three mouths. The line that matters. |
 | `/apps` | Saturday Jobs. Store listings and briefs. App Store — coming. |

@@ -7,7 +7,7 @@ Print `booklet.html` to PDF. Drop the folder zip in Drive: **Wild Kit — Market
 | File | What it is |
 | --- | --- |
 | `BRAND_NOTES.md` | One-screen lock. Color, type, spine. |
-| `00_ONE_PAGER.md` | The flyer. Invent. Print. Open. |
+| `00_ONE_PAGER.md` | The flyer. Invent. Make it real. Open. |
 | `01_LANGUAGE_KIT.md` | How to word it. Parent, kid, Rascal, driveway. |
 | `02_APP_STORE.md` | Name, subtitle, promo, keywords, description. |
 | `03_SOCIAL.md` | X, email, screenshot captions. |

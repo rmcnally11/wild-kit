@@ -37,7 +37,7 @@ Rascal himself stays grey / black / cream. Job color is the field or the scarf. 
 - Never Comic Sans. Never a script. Never all-caps paragraphs.
 
 ## Spine lines (do not rewrite)
-- Kids invent it. Parents print it. Saturday happens.
+- Kids invent it. Parents make it real. Saturday happens.
 - Weekend projects for wild little kits.
 - The app is not the product. The driveway artifact is the product.
 - Always titled [Job] by Wild Kit.

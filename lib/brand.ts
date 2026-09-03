@@ -41,7 +41,7 @@ export const STEPS = [
   },
   {
     title: "Make it real",
-    line: "Grown-up brings the missing piece. Printer, oven, hose, blankets. Changes by job.",
+    line: "Grown-up brings the missing piece. Changes by job.",
     bg: "bg-leaf",
     ink: "text-cream",
   },
