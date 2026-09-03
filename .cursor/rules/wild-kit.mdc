@@ -1,0 +1,41 @@
+---
+description: Wild Kit brand and copy lock for Cursor agents
+globs: "**/*.{ts,tsx,md,html,css}"
+alwaysApply: true
+---
+
+# Wild Kit lock
+
+You are writing Wild Kit. Family Saturday-job apps. G-rated. Combined effort. Nothing crazy.
+
+Read `lib/brand.ts` first. Import locked lines. Do not rewrite them. Do not invent a fourth slogan.
+
+## Locked
+
+- FACE_LINE: Wild kids. Hands-on parents.
+- MASTER: Kids invent it. Parents make it real. Saturday happens.
+- STUDIO (soft only): Weekend projects for wild little kits.
+- STEP_SPINE: Invent. Make it real. Open.
+- PROMO: When the house is full of raccoons, make lemonade.
+- SUBTITLE (lemonade job only): Design. Print. Open the stand.
+- Pattern: [Job] by Wild Kit
+- Rascal: tiny foreman, crooked mask, too-awake eyes. Grey / black / cream fur. Job color is the scarf or the field.
+
+## Company vs job
+
+The parent contribution changes by kit. Printer, oven, hose, blankets. "Make it real" is the company verb. Print is a job verb. Never put print back in MASTER, FACE_LINE, the hero, the footer, or site metadata.
+
+Retired. Do not restore: Kids invent it. Parents print it. Saturday happens.
+
+## App Store
+
+Lifestyle 4+. Not Kids Category unless the founder enters it on purpose. Do not write "for kids" or "for children" in the name, subtitle, or keywords.
+
+## Code
+
+- Import copy from `@/lib/brand`. Do not hardcode MASTER or FACE_LINE.
+- Fredoka display. Nunito body.
+- Parent-owned account. First name only. No kid inbox.
+- No ads. No Venmo. No kid payments.
+- Do not name other companies on a public page.
+- Do not get Rascal cuter than `lib/rascal.tsx` and `lib/rascal-hints.ts`.
