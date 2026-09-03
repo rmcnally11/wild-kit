@@ -35,7 +35,18 @@ function wrap(body: string, paper: string, ink = COLORS.ink) {
     .line { font-weight: 600; font-size: 18px; margin: 8px 0 0; }
     .row { display: flex; justify-content: space-between; gap: 16px; border-bottom: 2px solid ${ink}; padding: 10px 0; font-weight: 800; font-size: 22px; }
     .foot { margin-top: 28px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .mark { width: 120px; height: 120px; border-radius: 999px; border: 6px solid ${ink}; margin: 18px 0; background: ${COLORS.cream}; }
+    .hero { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; }
+    .mark { flex: 0 0 auto; }
+    .lemon { width: 140px; height: 140px; border-radius: 999px; border: 7px solid ${ink}; background: ${COLORS.cream}; position: relative; }
+    .lemon .leaf { position: absolute; top: 14px; left: 52px; width: 28px; height: 16px; border-radius: 10px; background: ${COLORS.leaf}; transform: rotate(-18deg); }
+    .lemon .shine { position: absolute; top: 52px; left: 52px; width: 28px; height: 28px; border-radius: 999px; background: ${COLORS.lemonade}; }
+    .ticket { width: 168px; height: 104px; border-radius: 18px; border: 7px solid ${ink}; background: ${COLORS.cream}; position: relative; }
+    .ticket:before, .ticket:after { content: ""; position: absolute; top: 36px; width: 26px; height: 26px; border-radius: 999px; background: ${paper}; border: 6px solid ${ink}; }
+    .ticket:before { left: -16px; }
+    .ticket:after { right: -16px; }
+    .ticket .pip { position: absolute; top: 36px; left: 68px; width: 22px; height: 22px; border-radius: 999px; background: ${COLORS.raspberry}; border: 4px solid ${ink}; }
+    .banner { width: 150px; height: 64px; border: 7px solid ${ink}; background: ${COLORS.cream}; border-radius: 8px; position: relative; }
+    .banner:after { content: ""; position: absolute; right: 8px; bottom: -22px; border-left: 18px solid transparent; border-right: 18px solid transparent; border-top: 20px solid ${ink}; }
     .no-print { margin: 0 0 16px; }
     .btn { font-family: Nunito, system-ui, sans-serif; font-weight: 800; font-size: 16px; background: ${COLORS.lemonade}; color: ${ink}; border: 0; border-radius: 14px; padding: 12px 18px; }
     @media print { .no-print { display: none; } }
@@ -68,15 +79,25 @@ export function buildSheet(kind: SheetKind, stand: Stand) {
     const recipe = stand.todaysRecipe
       ? `<p class="line">Today's pitcher: ${esc(stand.todaysRecipe)}</p>`
       : "";
+    const mark =
+      stand.template === "berry"
+        ? `<div class="mark ticket"><div class="pip"></div></div>`
+        : stand.template === "sky"
+          ? `<div class="mark banner"></div>`
+          : `<div class="mark lemon"><div class="leaf"></div><div class="shine"></div></div>`;
     return wrap(
-      `<p class="kicker">This Saturday</p>
-       <h1 style="font-size: 64px; line-height: 0.95;">${name}</h1>
-       <p class="line">${kid} invents it. You make it real.</p>
-       <div class="mark"></div>
+      `<div class="hero">
+         <div>
+           <p class="kicker">This Saturday</p>
+           <h1 style="font-size: 64px; line-height: 0.95;">${name}</h1>
+           <p class="line">${kid} invents it. You make it real.</p>
+         </div>
+         ${mark}
+       </div>
        ${recipe}
        ${rows}
        ${people}
-       <p class="foot">Wild Kit · ${SITE}</p>`,
+       <p class="foot">Wild Kit · ${SITE} · Ask for the whole sheet.</p>`,
       field,
     );
   }

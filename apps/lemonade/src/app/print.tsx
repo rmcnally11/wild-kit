@@ -5,6 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { COLORS, fieldColor } from "@/brand";
 import { Hint } from "@/components/hint";
 import { JobChrome } from "@/components/job-chrome";
+import { StandMark } from "@/components/stand-mark";
 import { printSheet, shareSheet } from "@/print";
 import { SHEET_COPY, type SheetKind } from "@/sheets";
 import { money, useStand } from "@/store";
@@ -40,11 +41,16 @@ export default function PrintScreen() {
         </Text>
 
         <View style={[styles.poster, { backgroundColor: field }]}>
-          <Text style={styles.posterKicker}>This Saturday</Text>
-          <Text style={styles.posterName}>{stand.standName || "Lemonade Stand"}</Text>
-          <Text style={styles.posterKid}>
-            {stand.kidName ? `${stand.kidName} invents it.` : "Kids invent it."} You make it real.
-          </Text>
+          <View style={styles.posterTop}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.posterKicker}>This Saturday</Text>
+              <Text style={styles.posterName}>{stand.standName || "Lemonade Stand"}</Text>
+              <Text style={styles.posterKid}>
+                {stand.kidName ? `${stand.kidName} invents it.` : "Kids invent it."} You make it real.
+              </Text>
+            </View>
+            <StandMark template={stand.template} size={88} />
+          </View>
           {stand.todaysRecipe ? (
             <Text style={styles.posterKid}>Today&apos;s pitcher: {stand.todaysRecipe}</Text>
           ) : null}
@@ -101,6 +107,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: COLORS.ink,
   },
+  posterTop: { flexDirection: "row", alignItems: "flex-start", gap: 12 },
   posterKicker: { fontFamily: "Nunito_800ExtraBold", fontSize: 12, textTransform: "uppercase", color: COLORS.ink },
   posterName: { fontFamily: "Fredoka_700Bold", fontSize: 36, lineHeight: 36, color: COLORS.ink },
   posterKid: { fontFamily: "Nunito_600SemiBold", fontSize: 16, color: COLORS.ink },

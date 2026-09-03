@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { SATURDAY_JOBS } from "@/lib/brand";
+import { LEMON_SUPPLIES } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export function SaturdaySheet() {
@@ -14,6 +15,7 @@ export function SaturdaySheet() {
   const [print, setPrint] = useState("");
   const [have, setHave] = useState("");
   const [need, setNeed] = useState("");
+  const [packed, setPacked] = useState<string[]>([]);
   const [where, setWhere] = useState("");
   const [open, setOpen] = useState("");
   const [close, setClose] = useState("");
@@ -109,22 +111,51 @@ export function SaturdaySheet() {
         <p className="mt-1 text-sm font-semibold">
           The list is the job. Buy only the missing two things.
         </p>
-        <label className="mt-3 grid gap-1 font-semibold">
-          Have
-          <input
-            value={have}
-            onChange={(event) => setHave(event.target.value)}
-            className="h-12 rounded-2xl bg-cream px-4 font-semibold outline-none"
-          />
-        </label>
-        <label className="mt-3 grid gap-1 font-semibold">
-          Need
-          <input
-            value={need}
-            onChange={(event) => setNeed(event.target.value)}
-            className="h-12 rounded-2xl bg-cream px-4 font-semibold outline-none"
-          />
-        </label>
+        {job === "Lemonade Stand" ? (
+          <ul className="mt-3 grid gap-2">
+            {LEMON_SUPPLIES.map((item) => {
+              const on = packed.includes(item.id);
+              return (
+                <li key={item.id}>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setPacked((current) =>
+                        on ? current.filter((id) => id !== item.id) : [...current, item.id],
+                      )
+                    }
+                    className={cn(
+                      "tap flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left font-extrabold",
+                      on ? "bg-ink text-cream" : "bg-cream text-ink",
+                    )}
+                  >
+                    <span aria-hidden>{on ? "✓" : "○"}</span>
+                    {item.name}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <>
+            <label className="mt-3 grid gap-1 font-semibold">
+              Have
+              <input
+                value={have}
+                onChange={(event) => setHave(event.target.value)}
+                className="h-12 rounded-2xl bg-cream px-4 font-semibold outline-none"
+              />
+            </label>
+            <label className="mt-3 grid gap-1 font-semibold">
+              Need
+              <input
+                value={need}
+                onChange={(event) => setNeed(event.target.value)}
+                className="h-12 rounded-2xl bg-cream px-4 font-semibold outline-none"
+              />
+            </label>
+          </>
+        )}
       </section>
 
       <section className="rounded-[1.6rem] bg-lemonade p-5 text-ink">

@@ -5,6 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-
 import { COLORS, LEMON_SUPPLIES, MENU_CAP, PITCHERS, SUBTITLE, TEMPLATES } from "@/brand";
 import { Hint } from "@/components/hint";
 import { JobChrome } from "@/components/job-chrome";
+import { StandMark } from "@/components/stand-mark";
 import { money, snapPrice, useStand } from "@/store";
 
 function inventHint(args: {
@@ -49,6 +50,10 @@ export default function InventScreen() {
         />
 
         <Text style={styles.label}>Pick a field</Text>
+        <Text style={styles.help}>That&apos;s the mark. Three templates, not a blank canvas.</Text>
+        <View style={[styles.markCard, { backgroundColor: TEMPLATES.find((item) => item.id === stand.template)?.field }]}>
+          <StandMark template={stand.template} size={96} />
+        </View>
         <View style={styles.row}>
           {TEMPLATES.map((item) => {
             const on = stand.template === item.id;
@@ -195,6 +200,15 @@ const styles = StyleSheet.create({
     color: COLORS.ink,
   },
   row: { flexDirection: "row", gap: 8 },
+  markCard: {
+    borderRadius: 24,
+    borderWidth: 3,
+    borderColor: COLORS.ink,
+    minHeight: 140,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 16,
+  },
   swatch: { flex: 1, borderRadius: 16, paddingVertical: 16, alignItems: "center" },
   swatchOn: { borderWidth: 3, borderColor: COLORS.ink },
   swatchText: { fontFamily: "Nunito_800ExtraBold", fontSize: 14, color: COLORS.ink },
