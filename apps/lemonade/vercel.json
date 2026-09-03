@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npx expo export --platform web --output-dir dist",
+  "outputDirectory": "dist",
+  "framework": null,
+  "rewrites": [
+    { "source": "/setup", "destination": "/setup.html" },
+    { "source": "/invent", "destination": "/invent.html" },
+    { "source": "/print", "destination": "/print.html" },
+    { "source": "/open", "destination": "/open.html" },
+    { "source": "/parent", "destination": "/parent.html" }
+  ]
+}
