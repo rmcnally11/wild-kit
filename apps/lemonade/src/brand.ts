@@ -16,7 +16,6 @@ export const STEP_SPINE = "Invent. Make it real. Open.";
 
 export const SITE = "getwildkit.com";
 export const SITE_URL = "https://getwildkit.com";
-export const PAY_URL = "https://getwildkit.com/pay";
 export const SATURDAY_URL = "https://getwildkit.com/saturday";
 
 export const GROWN_UP_FIRST = "Grown-up first. Then you invent it.";

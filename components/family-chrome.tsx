@@ -46,12 +46,6 @@ export function FamilyChrome({
         </Link>
         <div className="flex items-center gap-2">
           <Link
-            href="/pay"
-            className="rounded-full bg-coral px-3 py-1.5 text-sm font-extrabold text-ink"
-          >
-            Pay
-          </Link>
-          <Link
             href="/stand/parent"
             className="rounded-full bg-secondary px-3 py-1.5 text-sm font-semibold"
           >

@@ -1,6 +1,6 @@
 # Lemonade Stand by Wild Kit
 
-This is the product. getwildkit.com is the listing, the brief, and pay.
+This is the product. getwildkit.com is the listing and the brief. Grown-up pays in the App Store.
 
 **Design. Print. Open the stand.**
 

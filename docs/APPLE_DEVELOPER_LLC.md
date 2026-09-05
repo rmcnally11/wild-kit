@@ -186,14 +186,14 @@ After purchase you should get a confirmation email. Sign in at [developer.apple.
 
 ### Agreements and money (do this even if the first app is free)
 
-The first listing is free. Print packs start on the website. When you want in-app print packs or a paid app, the Account Holder must sign the **Paid Apps Agreement**.
+The first listing is free. Grown-up pays in the App Store, not on the website. When you want in-app print packs or a paid app, the Account Holder must sign the **Paid Apps Agreement**.
 
 1. App Store Connect → **Business** → **Agreements**.
 2. Paid Apps row → **View and Agree to Terms**.
 3. Complete **tax** and **banking**:
    - US: W-9 in the LLC name / EIN
    - Bank account in the LLC name
-4. Complete any **tax category / nexus** questions honestly. Ask a CPA about sales tax on print packs (website Stripe and App Store IAP are different channels).
+4. Complete any **tax category / nexus** questions honestly. Ask a CPA about sales tax on App Store IAP.
 
 You cannot create some paid products until this agreement is Active.
 

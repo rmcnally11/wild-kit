@@ -39,7 +39,7 @@ Do not compete with babysitter TV. Do not become STEM homework.
 3. Open. Then leave the phone.
 
 First ship: Lemonade Stand by Wild Kit.
-First dollar: $9 print pack (PDF first).
+First dollar: App Store. Grown-up pays there. Not on the website.
 Family: $4.99 / mo or $29 / yr.
 App free. No ads. No Venmo. No kid payments.
 

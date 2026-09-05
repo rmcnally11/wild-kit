@@ -20,7 +20,7 @@ The poster is the product.
 | `/parents` | Grown-up account. Privacy. This / not this. |
 | `/privacy` | Parent-owned account. First name only. No kid inbox. |
 | `/kits/[id]` | Saturday brief. Print this Saturday. Not a playable app. |
-| `/pay` | Grown-up pays. Print pack $9. Quiet until the listing is real. |
+| `/pay` | Grown-up pays in the App Store. Not here. |
 
 ## This
 
@@ -74,7 +74,7 @@ Lift-ready. Do not rewrite.
 
 ## Money
 
-App free. No ads. Ever. First dollar is the print pack: $9 on `/pay`. Wild Kit Family: $4.99 / mo or $29 / yr. Grown-up pays on Stripe. No Venmo. No kid payments.
+App free. No ads. Ever. Grown-up pays in the App Store. Not on this website. No Venmo. No kid payments.
 
 ## What we will not do
 

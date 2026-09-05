@@ -45,8 +45,7 @@ Rascal stays grey / black / cream. Job color is the scarf or the field. Never th
 ## Money
 
 App free. No ads. Ever.
-First dollar is the print pack. $9.
-Wild Kit Family: $4.99 / mo or $29 / yr.
+Grown-up pays in the App Store. Not on the website.
 No Venmo. No kid payments. Grown-up pays.
 
 ## Legal

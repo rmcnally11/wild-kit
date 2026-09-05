@@ -88,23 +88,9 @@ export default function ParentPage() {
               className="h-12 rounded-2xl"
             />
           </label>
-          {isPaid ? (
-            <p className="rounded-3xl bg-secondary p-4 font-semibold">
-              Paid on this phone. Sharing is on. You hit print.
-            </p>
-          ) : (
-            <a
-              href="/pay"
-              className="tap rounded-[1.6rem] bg-lemonade p-5 text-ink"
-            >
-              <p className="text-sm font-extrabold tracking-wide uppercase">The first dollar</p>
-              <p className="font-display mt-1 text-3xl leading-none">Print pack $9</p>
-              <p className="mt-2 font-semibold">
-                Or Family $4.99 a month / $29 a year. Grown-up pays on Stripe. No fake unlock.
-              </p>
-              <p className="mt-4 text-sm font-extrabold">Pay →</p>
-            </a>
-          )}
+          <p className="rounded-3xl bg-secondary p-4 font-semibold">
+            Grown-up pays in the App Store. Not here. App free. No ads. Ever.
+          </p>
           <p className="text-sm leading-6 text-muted-foreground">
             Kids do not create social accounts in here. Share uses your Messages, Mail, or share
             sheet. Nothing leaves this phone unless a grown-up taps it. Read the{" "}
