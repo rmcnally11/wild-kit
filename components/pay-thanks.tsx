@@ -20,21 +20,21 @@ export function PayThanks({ plan }: { plan: "pack" | "family" }) {
       </h1>
       <p className="text-lg font-semibold">
         {plan === "family"
-          ? "Wild Kit Family is on this phone. You hit print. They invent it."
+          ? "Wild Kit Family is on this phone. They invent it. You make it real."
           : "The print pack is paid. Grown-up runs the printer. Tape it to the table."}
       </p>
       <div className="flex flex-col gap-3 sm:flex-row">
         <Link
-          href="/apps"
+          href="/kits/lemonade"
           className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 font-extrabold text-ink"
         >
-          Saturday Jobs
+          This Saturday
         </Link>
         <Link
           href="/saturday"
           className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 font-extrabold text-ink"
         >
-          This Saturday
+          Fill the sheet
         </Link>
       </div>
     </div>

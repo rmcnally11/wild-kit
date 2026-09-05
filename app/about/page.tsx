@@ -71,7 +71,7 @@ export default function AboutPage() {
               First job is {FIRST_APP}. {SUBTITLE}
             </p>
             <Link href="/kits/lemonade" className="mt-4 inline-block font-extrabold underline">
-              Read the brief →
+              This Saturday →
             </Link>
           </div>
         </section>
