@@ -25,6 +25,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.getwildkit.com"),
   title: {
     default: `Wild Kit — ${FACE_LINE}`,
     template: "%s · Wild Kit",
@@ -39,6 +40,15 @@ export const metadata: Metadata = {
     capable: true,
     title: "Wild Kit",
     statusBarStyle: "default",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Wild Kit",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
