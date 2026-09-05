@@ -2,17 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SiteChrome } from "@/components/site-chrome";
-import { APP_STORE, FIRST_APP, MASTER, STORE_DOOR, SUBTITLE } from "@/lib/brand";
-import { kitById } from "@/lib/kits";
+import {
+  APP_STORE,
+  FIRST_APP,
+  MASTER,
+  STEPS,
+  STORE_DOOR,
+  SUBTITLE,
+} from "@/lib/brand";
 
 export const metadata: Metadata = {
-  title: "The apps",
+  title: "The app",
   description: `${FIRST_APP}. ${SUBTITLE} ${MASTER}`,
 };
 
 export default function AppsPage() {
-  const lemonade = kitById("lemonade");
-
   return (
     <SiteChrome>
       <main className="bg-cream">
@@ -35,16 +39,32 @@ export default function AppsPage() {
             <p className="mt-3 font-semibold">
               {SUBTITLE} Lifestyle 4+. Not Kids. Free. The badge goes up when the listing is real.
             </p>
+          </section>
+          <section className="grid gap-3">
+            {STEPS.map((step) => (
+              <article
+                key={step.title}
+                className={`rounded-[1.4rem] px-5 py-4 ${step.bg} ${step.ink}`}
+              >
+                <p className="font-display text-2xl leading-none">{step.title}</p>
+                <p className="mt-1 font-semibold">{step.line}</p>
+              </article>
+            ))}
+          </section>
+          <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/kits/lemonade"
-              className="mt-5 inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 font-extrabold text-ink"
+              className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 font-extrabold text-ink"
             >
               This Saturday
             </Link>
-          </section>
-          {lemonade ? (
-            <p className="font-semibold text-muted-foreground">{lemonade.hours}</p>
-          ) : null}
+            <Link
+              href="/saturday"
+              className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 font-extrabold text-ink ring-1 ring-border"
+            >
+              {"What's next"}
+            </Link>
+          </div>
           <p className="font-semibold text-muted-foreground">
             The rest of the shelf waits. One job until one stand has opened.
           </p>

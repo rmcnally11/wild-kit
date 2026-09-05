@@ -46,34 +46,26 @@ export default function ParentsPage() {
             </ul>
           </section>
           <section className="rounded-[1.6rem] bg-ink p-6 text-cream">
-            <p className="font-display text-3xl leading-none">This Saturday</p>
+            <p className="font-display text-3xl leading-none">The app is the workshop</p>
             <p className="mt-3 font-semibold">
-              Five minutes. No obligation. You keep the sheet. If the sheet is empty, do not open
-              the app and wander. Fill the sheet first.
+              They invent the name, the poster, the prices in the app. You own the account. You
+              bring the missing piece. Then you go outside.
             </p>
             <p className="mt-3 font-semibold">
               {MONEY.firstDollar} {MONEY.app}
             </p>
-            <ol className="mt-4 grid gap-2 text-lg font-semibold">
-              <li>1. Circle the job.</li>
-              <li>2. First name only. Grown-up on the account.</li>
-              <li>3. Name the sign. Crooked is fine.</li>
-              <li>4. Print the poster, or hand-letter it.</li>
-              <li>5. Pack from the house. Buy only the missing two things.</li>
-              <li>6. Tape it. Then leave the phone.</li>
-            </ol>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
-                href="/pay"
+                href="/apps"
                 className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 text-lg font-extrabold text-ink"
               >
-                Pay the pack
+                The app
               </Link>
               <Link
-                href="/saturday"
+                href="/pay"
                 className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink ring-1 ring-border"
               >
-                Fill the sheet
+                Pay the pack
               </Link>
               <Link
                 href="/privacy"

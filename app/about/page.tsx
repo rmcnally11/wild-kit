@@ -70,8 +70,8 @@ export default function AboutPage() {
             <p className="mt-8 font-semibold">
               First job is {FIRST_APP}. {SUBTITLE}
             </p>
-            <Link href="/kits/lemonade" className="mt-4 inline-block font-extrabold underline">
-              This Saturday →
+            <Link href="/apps" className="mt-4 inline-block font-extrabold underline">
+              The app →
             </Link>
           </div>
         </section>
@@ -108,8 +108,11 @@ export default function AboutPage() {
 
         <section className="bg-cream">
           <div className="mx-auto flex w-full max-w-3xl flex-wrap gap-4 px-4 py-12 font-extrabold">
+            <Link href="/apps" className="underline">
+              The app
+            </Link>
             <Link href="/saturday" className="underline">
-              This Saturday
+              {"What's next"}
             </Link>
             <Link href="/parents" className="underline">
               Parents

@@ -4,15 +4,8 @@ import Link from "next/link";
 import { CrookedPoster } from "@/components/crooked-poster";
 import { SiteChrome } from "@/components/site-chrome";
 import { ThisNotThis } from "@/components/this-not-this";
-import {
-  FACE_LINE,
-  FIRST_APP,
-  MASTER,
-  MISSING_PIECE,
-  STEPS,
-  SUBTITLE,
-} from "@/lib/brand";
-import { kitById } from "@/lib/kits";
+import { WhatsNext } from "@/components/whats-next";
+import { FACE_LINE, MASTER, MISSING_PIECE, STEPS } from "@/lib/brand";
 import { Rascal } from "@/lib/rascal";
 
 export const metadata: Metadata = {
@@ -21,8 +14,6 @@ export const metadata: Metadata = {
 };
 
 export default function BrandPage() {
-  const lemonade = kitById("lemonade");
-
   return (
     <SiteChrome overlay>
       <main>
@@ -36,16 +27,16 @@ export default function BrandPage() {
               <p className="mt-4 max-w-lg text-lg font-semibold">{MISSING_PIECE}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/kits/lemonade"
+                  href="/apps"
                   className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-6 font-extrabold text-cream"
                 >
-                  This Saturday
+                  The app
                 </Link>
                 <Link
-                  href="/saturday"
+                  href="#next"
                   className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 font-extrabold text-ink"
                 >
-                  Fill the sheet
+                  {"What's next"}
                 </Link>
               </div>
               <p className="mt-4 text-sm font-extrabold tracking-wide text-ink/55 uppercase">
@@ -59,6 +50,9 @@ export default function BrandPage() {
               </div>
             </div>
           </div>
+          <p className="bg-ink px-4 py-2 text-center text-xs font-extrabold tracking-wide text-cream uppercase">
+            The app
+          </p>
           <div className="grid shrink-0 grid-cols-3">
             {STEPS.map((step) => (
               <article key={step.title} className={`${step.bg} ${step.ink} px-3 py-3 sm:px-5 sm:py-4`}>
@@ -75,37 +69,9 @@ export default function BrandPage() {
           </div>
         </section>
 
-        <section className="bg-cream pb-16">
-          <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 md:grid-cols-[1.2fr_1fr] md:items-start">
-            <div>
-              <p className="text-sm font-extrabold tracking-wide text-ink/70 uppercase">This Saturday</p>
-              <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">
-                {FIRST_APP}
-              </h2>
-              <p className="mt-3 text-lg font-semibold">{SUBTITLE}</p>
-              {lemonade ? <p className="mt-2 font-semibold text-muted-foreground">{lemonade.hours}</p> : null}
-              <p className="mt-4 max-w-xl font-semibold">
-                Name the stand. Draw the poster. Pack from the house. Then leave the phone.
-              </p>
-              <Link
-                href="/kits/lemonade"
-                className="tap mt-6 inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 font-extrabold text-ink"
-              >
-                This Saturday
-              </Link>
-            </div>
-            {lemonade ? (
-              <div>
-                <p className="text-sm font-extrabold tracking-wide text-ink/70 uppercase">From the house</p>
-                <ul className="mt-3 grid gap-2">
-                  {lemonade.need.map((item) => (
-                    <li key={item} className="rounded-2xl bg-card px-4 py-3 font-semibold ring-1 ring-border">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
+        <section id="next" className="bg-cream pb-16">
+          <div className="mx-auto w-full max-w-6xl px-4">
+            <WhatsNext />
           </div>
         </section>
       </main>

@@ -17,8 +17,8 @@ import {
   LEGAL_RULES,
   MASTER,
   PAY_URL,
-  SATURDAY_URL,
   SITE,
+  SITE_URL,
   isAdultYear,
   isEmail,
 } from "@/brand";
@@ -101,8 +101,8 @@ export default function ParentScreen() {
             <Pressable style={styles.main} onPress={() => Linking.openURL(PAY_URL)}>
               <Text style={styles.mainText}>Print pack · $9</Text>
             </Pressable>
-            <Pressable style={styles.ghost} onPress={() => Linking.openURL(SATURDAY_URL)}>
-              <Text style={styles.ghostText}>This Saturday · fill the sheet</Text>
+            <Pressable style={styles.ghost} onPress={() => Linking.openURL(SITE_URL)}>
+              <Text style={styles.ghostText}>The door · getwildkit.com</Text>
             </Pressable>
 
             <View style={styles.box}>

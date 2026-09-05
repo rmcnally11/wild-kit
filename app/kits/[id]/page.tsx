@@ -88,10 +88,10 @@ export default async function KitPage({ params }: Props) {
 
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/saturday"
-              className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-lemonade px-6 text-lg font-extrabold text-ink"
+              href="/apps"
+              className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-ink px-6 text-lg font-extrabold text-cream"
             >
-              This Saturday
+              The app
             </Link>
             {kit.id === "lemonade" ? (
               <Link

@@ -28,8 +28,11 @@ export function SiteChrome({
             <span className="font-display truncate text-xl leading-none">Wild Kit</span>
           </Link>
           <nav className="flex shrink-0 items-center gap-1 text-sm font-extrabold sm:gap-2">
+            <Link href="/apps" className="rounded-full px-3 py-2 hover:bg-white/40">
+              The app
+            </Link>
             <Link href="/saturday" className="rounded-full px-3 py-2 hover:bg-white/40">
-              Saturday
+              {"What's next"}
             </Link>
             <Link href="/parents" className="rounded-full px-3 py-2 hover:bg-white/40">
               Parents
@@ -42,8 +45,11 @@ export function SiteChrome({
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-6 text-sm font-semibold md:flex-row md:items-center md:justify-between">
           <p className="text-ink">Wild Kit Co. · getwildkit.com · {STUDIO}</p>
           <p className="flex flex-wrap gap-3">
+            <Link href="/apps" className="underline">
+              The app
+            </Link>
             <Link href="/saturday" className="underline">
-              Saturday
+              {"What's next"}
             </Link>
             <Link href="/parents" className="underline">
               Parents
