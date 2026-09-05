@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { PrintBrief } from "@/components/print-brief";
 import { SiteChrome } from "@/components/site-chrome";
+import { TellMe } from "@/components/tell-me";
 import { hueOf } from "@/lib/hues";
 import { kitById, KITS } from "@/lib/kits";
 
@@ -48,7 +50,7 @@ export default async function KitPage({ params }: Props) {
           </div>
         </section>
 
-        <div className="mx-auto grid w-full max-w-3xl gap-4 px-4 py-8">
+        <div id="saturday-brief" className="mx-auto grid w-full max-w-3xl gap-4 px-4 py-8">
           <section className="rounded-[1.6rem] bg-card p-5 ring-1 ring-border">
             <p className="text-sm font-extrabold uppercase">This Saturday</p>
             <p className="mt-2 text-lg leading-7">{kit.saturday}</p>
@@ -79,35 +81,19 @@ export default async function KitPage({ params }: Props) {
               <p className="mt-1 font-semibold">{kit.done}</p>
             </div>
           </section>
+        </div>
 
-          <p className="rounded-[1.4rem] bg-ink px-5 py-4 font-semibold text-cream">
-            {kit.id === "lemonade"
-              ? "App Store — coming. The badge goes up when the listing is real. Until then, the brief is the job."
-              : "Coming to the App Store. You do not need the buttons. The list is the job. Pack from the house. Then go."}
-          </p>
-
+        <div className="no-print mx-auto grid w-full max-w-3xl gap-4 px-4 pb-12">
           <div className="flex flex-col gap-3 sm:flex-row">
+            <PrintBrief />
             <Link
               href="/apps"
-              className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-ink px-6 text-lg font-extrabold text-cream"
+              className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-card px-6 text-lg font-extrabold text-ink ring-1 ring-border"
             >
               The app
             </Link>
-            {kit.id === "lemonade" ? (
-              <Link
-                href="/pay"
-                className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-card px-6 text-lg font-extrabold text-ink ring-1 ring-border"
-              >
-                Pay the pack
-              </Link>
-            ) : null}
           </div>
-
-          <p className="flex flex-wrap gap-4 font-extrabold">
-            <Link href="/parents" className="underline">
-              Parents
-            </Link>
-          </p>
+          {kit.id === "lemonade" ? <TellMe ink /> : null}
         </div>
       </main>
     </SiteChrome>

@@ -1,12 +1,13 @@
+import { existsSync } from "fs";
+import path from "path";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { CrookedPoster } from "@/components/crooked-poster";
+import { PhoneScreens } from "@/components/phone-screens";
 import { SiteChrome } from "@/components/site-chrome";
-import { ThisNotThis } from "@/components/this-not-this";
-import { WhatsNext } from "@/components/whats-next";
-import { FACE_LINE, MASTER, MISSING_PIECE, STEPS } from "@/lib/brand";
-import { Rascal } from "@/lib/rascal";
+import { StandTable } from "@/components/stand-table";
+import { TellMe } from "@/components/tell-me";
+import { FACE_LINE, IF_HE_ASKS, MASTER, ONE_JOB, STEPS, TELL_ME } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: `Wild Kit — ${FACE_LINE}`,
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 };
 
 export default function BrandPage() {
+  const photo = existsSync(path.join(process.cwd(), "public", "saturday.jpg"));
+
   return (
     <SiteChrome overlay>
       <main>
@@ -24,30 +27,37 @@ export default function BrandPage() {
               <h1 className="font-display mt-3 max-w-xl text-[clamp(2rem,6vw,3.35rem)] leading-[0.95]">
                 {MASTER}
               </h1>
-              <p className="mt-4 max-w-lg text-lg font-semibold">{MISSING_PIECE}</p>
+              <p className="mt-4 max-w-lg text-lg font-semibold">{IF_HE_ASKS}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/apps"
+                  href="/kits/lemonade"
                   className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-6 font-extrabold text-cream"
                 >
-                  The app
+                  This Saturday
                 </Link>
-                <Link
-                  href="#next"
+                <a
+                  href="#notify"
                   className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 font-extrabold text-ink"
                 >
-                  {"What's next"}
-                </Link>
+                  {TELL_ME}
+                </a>
               </div>
               <p className="mt-4 text-sm font-extrabold tracking-wide text-ink/55 uppercase">
                 App Store — coming
               </p>
             </div>
             <div className="relative mx-auto w-full max-w-md pb-16">
-              <CrookedPoster />
-              <div className="absolute -bottom-2 left-0 rounded-[1.4rem] bg-cream p-2 ring-1 ring-border sm:-left-4">
-                <Rascal pose="boss" size={112} line="" />
-              </div>
+              {photo ? (
+                <figure>
+                  <img
+                    src="/saturday.jpg"
+                    alt="A lemonade stand. Crooked poster. Pitcher on the table."
+                    className="w-full rounded-[1.6rem] ring-1 ring-ink/10"
+                  />
+                </figure>
+              ) : (
+                <StandTable />
+              )}
             </div>
           </div>
           <p className="bg-ink px-4 py-2 text-center text-xs font-extrabold tracking-wide text-cream uppercase">
@@ -64,14 +74,16 @@ export default function BrandPage() {
         </section>
 
         <section className="bg-cream">
-          <div className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-            <ThisNotThis />
-          </div>
-        </section>
-
-        <section id="next" className="bg-cream pb-16">
-          <div className="mx-auto w-full max-w-6xl px-4">
-            <WhatsNext />
+          <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 md:py-16">
+            <div>
+              <p className="text-sm font-extrabold tracking-wide text-ink/70 uppercase">On the phone</p>
+              <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">
+                Invent. Make it real. Open.
+              </h2>
+              <p className="mt-3 max-w-xl text-lg font-semibold">{ONE_JOB}</p>
+            </div>
+            <PhoneScreens />
+            <TellMe />
           </div>
         </section>
       </main>

@@ -14,14 +14,13 @@ The poster is the product.
 
 | Path | What it is |
 | --- | --- |
-| `/pay` | Grown-up pays. Print pack $9. Family $4.99 / $29. Stripe. |
-| `/` | Rascal, the poster, the app. Highlights. What's next. |
+| `/` | Picture of the Saturday. This Saturday. Tell me when it's on the store. |
 | `/apps` | First listing: Lemonade Stand by Wild Kit. App Store — coming. |
-| `/saturday` | What's next. The app now. Bake Sale after one opened stand. |
-| `/about` | What it is. How Saturday works. Rascal. The privacy line. |
-| `/parents` | Grown-up account. Pay. Privacy. |
+| `/about` | Who this is. Rascal. The privacy line. |
+| `/parents` | Grown-up account. Privacy. This / not this. |
 | `/privacy` | Parent-owned account. First name only. No kid inbox. |
-| `/kits/[id]` | Saturday brief for that job. Not a playable app. |
+| `/kits/[id]` | Saturday brief. Print this Saturday. Not a playable app. |
+| `/pay` | Grown-up pays. Print pack $9. Quiet until the listing is real. |
 
 ## This
 
@@ -41,7 +40,7 @@ The poster is the product.
 
 **Lemonade Stand by Wild Kit.** App Store — coming. Lifestyle 4+. Not Kids. The badge goes up when the listing is real. No fake App Store button.
 
-The live site does not host the kits. It is getwildkit.com: the listing, the Saturday brief, pay, and (later) the App Store badge. Inventing happens in the app.
+The live site does not host the kits. Inventing happens in the app. Until the badge is real, this Saturday's brief is the job. Drop a real photo at `public/saturday.jpg` and it becomes the homepage.
 
 ## Saturday Jobs
 
