@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SiteChrome } from "@/components/site-chrome";
+import { TellMe } from "@/components/tell-me";
 import { ThisNotThis } from "@/components/this-not-this";
 import {
   FIRST_NAME_ONLY,
@@ -9,7 +10,6 @@ import {
   IF_HE_ASKS,
   LEGAL_LINE,
   LEGAL_RULES,
-  MONEY,
   OPEN_WITH_SATURDAY,
   PARENT_OWNED,
 } from "@/lib/brand";
@@ -52,30 +52,14 @@ export default function ParentsPage() {
               They invent the name, the poster, the prices. You own the account. You bring the
               missing piece. Then you go outside.
             </p>
-            <p className="mt-3 font-semibold">
-              {MONEY.firstDollar} {MONEY.app}
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/apps"
-                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 text-lg font-extrabold text-ink"
-              >
-                The app
-              </Link>
-              <Link
-                href="/pay"
-                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink ring-1 ring-border"
-              >
-                Pay the pack
-              </Link>
-              <Link
-                href="/privacy"
-                className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-cream px-6 text-lg font-extrabold text-ink ring-1 ring-border"
-              >
-                Privacy
-              </Link>
-            </div>
+            <Link
+              href="/kits/lemonade"
+              className="tap mt-6 inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 text-lg font-extrabold text-ink"
+            >
+              This Saturday
+            </Link>
           </section>
+          <TellMe />
         </div>
       </main>
     </SiteChrome>

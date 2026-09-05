@@ -33,6 +33,9 @@ export const LISTING = "The badge goes up when the listing is real.";
 
 export const ONE_JOB = "One job until one stand has opened.";
 
+export const TELL_ME = "Tell me when it's on the store.";
+export const TELL_ME_LINE = "Grown-up email only. We'll send the listing. That's it.";
+
 export const NEXT_BEATS = [
   {
     when: "Now",
