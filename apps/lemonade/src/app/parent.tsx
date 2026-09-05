@@ -16,8 +16,6 @@ import {
   LEGAL,
   LEGAL_RULES,
   MASTER,
-  PAY_URL,
-  SITE,
   SITE_URL,
   isAdultYear,
   isEmail,
@@ -98,9 +96,6 @@ export default function ParentScreen() {
               <Text style={styles.err}>That needs to be a grown-up email.</Text>
             ) : null}
 
-            <Pressable style={styles.main} onPress={() => Linking.openURL(PAY_URL)}>
-              <Text style={styles.mainText}>Print pack · $9</Text>
-            </Pressable>
             <Pressable style={styles.ghost} onPress={() => Linking.openURL(SITE_URL)}>
               <Text style={styles.ghostText}>getwildkit.com</Text>
             </Pressable>
@@ -132,7 +127,7 @@ export default function ParentScreen() {
             )}
 
             <Text style={styles.quiet}>
-              {LEGAL}. App free. No ads. First dollar is the print pack on {SITE}. App Store — coming.
+              {LEGAL}. App free. No ads. Grown-up pays in the App Store. App Store — coming.
             </Text>
           </>
         )}

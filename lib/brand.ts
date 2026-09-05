@@ -47,7 +47,7 @@ export const NEXT_BEATS = [
   {
     when: "Until then",
     title: "This Saturday",
-    line: "Pack from the house. Pay the pack. Then go outside.",
+    line: "Pack from the house. Then go outside.",
     bg: "bg-sky",
     ink: "text-ink",
   },
@@ -156,8 +156,8 @@ export const APP_STORE = {
 
 export const MONEY = {
   app: "App free. No ads. Ever.",
-  firstDollar: "First dollar is the print pack. $9.",
-  family: "Wild Kit Family: $4.99 / mo or $29 / yr.",
+  firstDollar: "Grown-up pays in the App Store. Not here.",
+  family: "No Venmo. No kid payments.",
   noVenmo: "No Venmo. No kid payments.",
 };
 

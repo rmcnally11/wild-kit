@@ -84,7 +84,7 @@ Do not extract shared packages until the second job is real. One excellent lemon
 - Never the word “coon.” Never a trash-can joke for Rascal.
 - Lifestyle, 4+. Not Kids Category unless we enter it on purpose.
 
-Money: app is free. First dollar is the print pack on the website. In-app print packs come after the LLC is on App Store Connect and the Paid Apps Agreement is signed. See [APPLE_DEVELOPER_LLC.md](./APPLE_DEVELOPER_LLC.md).
+Money: app is free. Grown-up pays in the App Store. Not on the website. Sign the Paid Apps Agreement before any IAP. See [APPLE_DEVELOPER_LLC.md](./APPLE_DEVELOPER_LLC.md).
 
 ## How to work on Lemonade Stand
 
