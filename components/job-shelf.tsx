@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import { FIRST_APP, STORE_DOOR, SUBTITLE } from "@/lib/brand";
+import { FIRST_APP, LISTING, SUBTITLE } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
 import { KITS } from "@/lib/kits";
 
 export function JobShelf({
   heading = "The apps",
-  intro = STORE_DOOR,
+  intro = LISTING,
 }: {
   heading?: string;
   intro?: string;

@@ -3,11 +3,11 @@ import Link from "next/link";
 
 import { SiteChrome } from "@/components/site-chrome";
 import { WhatsNext } from "@/components/whats-next";
-import { APP_FIRST } from "@/lib/brand";
+import { ONE_JOB } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "What's next",
-  description: APP_FIRST,
+  description: ONE_JOB,
 };
 
 export default function SaturdayPage() {
@@ -18,11 +18,10 @@ export default function SaturdayPage() {
           <div className="mx-auto w-full max-w-3xl px-4 py-10 md:py-14">
             <p className="text-sm font-extrabold tracking-wide uppercase">{"What's next"}</p>
             <h1 className="font-display mt-2 text-[clamp(2.4rem,8vw,4rem)] leading-[0.92]">
-              {APP_FIRST}
+              {ONE_JOB}
             </h1>
             <p className="mt-4 text-lg font-semibold">
-              Inventing happens in the app. This site is the door: the brief, the print pack, privacy.
-              After one opened stand, the next job.
+              Lemonade Stand first. After one opened stand, Bake Sale. Not twelve apps.
             </p>
           </div>
         </section>

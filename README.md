@@ -15,7 +15,7 @@ The poster is the product.
 | Path | What it is |
 | --- | --- |
 | `/pay` | Grown-up pays. Print pack $9. Family $4.99 / $29. Stripe. |
-| `/` | The door. Rascal, the poster, the app. Highlights. What's next. |
+| `/` | Rascal, the poster, the app. Highlights. What's next. |
 | `/apps` | First listing: Lemonade Stand by Wild Kit. App Store — coming. |
 | `/saturday` | What's next. The app now. Bake Sale after one opened stand. |
 | `/about` | What it is. How Saturday works. Rascal. The privacy line. |
@@ -41,7 +41,7 @@ The poster is the product.
 
 **Lemonade Stand by Wild Kit.** App Store — coming. Lifestyle 4+. Not Kids. The badge goes up when the listing is real. No fake App Store button.
 
-The live site does not host the kits. It is the studio door: the app, the Saturday brief, pay, and (later) the App Store badge. Inventing happens in the app.
+The live site does not host the kits. It is getwildkit.com: the listing, the Saturday brief, pay, and (later) the App Store badge. Inventing happens in the app.
 
 ## Saturday Jobs
 
@@ -92,7 +92,7 @@ Copy `.env.example` to `.env.local` for Resend. Do not send Wild Kit mail from a
 
 ## The app
 
-Lemonade Stand lives in `apps/lemonade`. That is the product. This folder is the studio door.
+Lemonade Stand lives in `apps/lemonade`. That is the product. This folder is getwildkit.com.
 
 ```bash
 cd apps/lemonade

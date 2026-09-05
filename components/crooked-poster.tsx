@@ -1,4 +1,4 @@
-/** The artifact on the door. Show the poster. Do not say print in the company mouth. */
+/** The artifact on the homepage. Show the poster. Do not say print in the company mouth. */
 export function CrookedPoster() {
   return (
     <figure className="relative mx-auto w-full max-w-[22rem]">

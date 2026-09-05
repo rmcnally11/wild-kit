@@ -29,23 +29,22 @@ export const GROWN_UP_FIRST = "Grown-up first. Then you invent it.";
 export const FIRST_NAME_ONLY = "First name only. No kid inbox.";
 export const PARENT_OWNED = "Parent-owned account";
 
-export const STORE_DOOR =
-  "The kits live in the App Store. This site is the door and the Saturday briefs. The badge goes up when the listing is real.";
+export const LISTING = "The badge goes up when the listing is real.";
 
-export const APP_FIRST = "The app is the workshop. This site is the door.";
+export const ONE_JOB = "One job until one stand has opened.";
 
 export const NEXT_BEATS = [
   {
     when: "Now",
     title: FIRST_APP,
-    line: "The app. Invent. Make it real. Open. App Store — coming.",
+    line: "Invent. Make it real. Open. App Store — coming.",
     bg: "bg-lemonade",
     ink: "text-ink",
   },
   {
-    when: "On this site",
-    title: "The door",
-    line: "Saturday brief. $9 print pack. Privacy. Parent-owned account.",
+    when: "Until then",
+    title: "This Saturday",
+    line: "Pack from the house. Pay the pack. Then go outside.",
     bg: "bg-sky",
     ink: "text-ink",
   },
