@@ -5,9 +5,11 @@ import { SiteChrome } from "@/components/site-chrome";
 import {
   APP_STORE,
   FIRST_APP,
+  IF_HE_ASKS,
+  LISTING,
   MASTER,
+  ONE_JOB,
   STEPS,
-  STORE_DOOR,
   SUBTITLE,
 } from "@/lib/brand";
 
@@ -27,7 +29,7 @@ export default function AppsPage() {
               {APP_STORE.name}
             </h1>
             <p className="mt-3 text-lg font-semibold">{APP_STORE.subtitle}</p>
-            <p className="mt-2 max-w-2xl font-semibold">{STORE_DOOR}</p>
+            <p className="mt-2 max-w-2xl font-semibold">{IF_HE_ASKS}</p>
           </div>
         </section>
         <div className="mx-auto grid w-full max-w-3xl gap-6 px-4 py-12">
@@ -35,9 +37,9 @@ export default function AppsPage() {
             <p className="text-xs font-extrabold tracking-wide uppercase opacity-80">
               App Store — coming
             </p>
-            <p className="font-display mt-1 text-3xl leading-none">{FIRST_APP}</p>
+            <p className="font-display mt-2 text-3xl leading-none">{FIRST_APP}</p>
             <p className="mt-3 font-semibold">
-              {SUBTITLE} Lifestyle 4+. Not Kids. Free. The badge goes up when the listing is real.
+              {SUBTITLE} Lifestyle 4+. Not Kids. Free. {LISTING}
             </p>
           </section>
           <section className="grid gap-3">
@@ -66,7 +68,7 @@ export default function AppsPage() {
             </Link>
           </div>
           <p className="font-semibold text-muted-foreground">
-            The rest of the shelf waits. One job until one stand has opened.
+            The rest of the shelf waits. {ONE_JOB}
           </p>
         </div>
       </main>

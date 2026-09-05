@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { APP_FIRST, NEXT_BEATS, STORE_DOOR } from "@/lib/brand";
+import { NEXT_BEATS, ONE_JOB } from "@/lib/brand";
 
 export function WhatsNext({
   cta = true,
@@ -15,13 +15,10 @@ export function WhatsNext({
         <div>
           <p className="text-sm font-extrabold tracking-wide text-ink/70 uppercase">{"What's next"}</p>
           <h2 className="font-display mt-2 max-w-xl text-[clamp(2rem,5vw,3.5rem)] leading-none">
-            {APP_FIRST}
+            {ONE_JOB}
           </h2>
-          <p className="mt-3 max-w-xl text-lg font-semibold">{STORE_DOOR}</p>
         </div>
-      ) : (
-        <p className="max-w-xl text-lg font-semibold">{STORE_DOOR}</p>
-      )}
+      ) : null}
       <div className="grid gap-3 md:grid-cols-3">
         {NEXT_BEATS.map((beat) => (
           <article

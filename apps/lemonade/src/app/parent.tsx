@@ -102,7 +102,7 @@ export default function ParentScreen() {
               <Text style={styles.mainText}>Print pack · $9</Text>
             </Pressable>
             <Pressable style={styles.ghost} onPress={() => Linking.openURL(SITE_URL)}>
-              <Text style={styles.ghostText}>The door · getwildkit.com</Text>
+              <Text style={styles.ghostText}>getwildkit.com</Text>
             </Pressable>
 
             <View style={styles.box}>

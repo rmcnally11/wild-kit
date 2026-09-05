@@ -1,6 +1,6 @@
 # Lemonade Stand by Wild Kit
 
-This is the product. The website is the door.
+This is the product. getwildkit.com is the listing, the brief, and pay.
 
 **Design. Print. Open the stand.**
 

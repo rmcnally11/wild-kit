@@ -5,6 +5,7 @@ import { SiteChrome } from "@/components/site-chrome";
 import { ThisNotThis } from "@/components/this-not-this";
 import {
   FIRST_NAME_ONLY,
+  GROWN_UP_FIRST,
   IF_HE_ASKS,
   LEGAL_LINE,
   LEGAL_RULES,
@@ -46,10 +47,10 @@ export default function ParentsPage() {
             </ul>
           </section>
           <section className="rounded-[1.6rem] bg-ink p-6 text-cream">
-            <p className="font-display text-3xl leading-none">The app is the workshop</p>
+            <p className="font-display text-3xl leading-none">{GROWN_UP_FIRST}</p>
             <p className="mt-3 font-semibold">
-              They invent the name, the poster, the prices in the app. You own the account. You
-              bring the missing piece. Then you go outside.
+              They invent the name, the poster, the prices. You own the account. You bring the
+              missing piece. Then you go outside.
             </p>
             <p className="mt-3 font-semibold">
               {MONEY.firstDollar} {MONEY.app}
