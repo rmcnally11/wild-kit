@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { SaturdaySheet } from "@/components/saturday-sheet";
 import { SiteChrome } from "@/components/site-chrome";
+import { WhatsNext } from "@/components/whats-next";
+import { APP_FIRST } from "@/lib/brand";
 
 export const metadata: Metadata = {
-  title: "This Saturday",
-  description:
-    "Five minutes. No obligation. You keep the sheet. If the sheet is empty, do not open the app and wander.",
+  title: "What's next",
+  description: APP_FIRST,
 };
 
 export default function SaturdayPage() {
@@ -15,17 +16,33 @@ export default function SaturdayPage() {
       <main className="bg-cream">
         <section className="bg-coral text-ink">
           <div className="mx-auto w-full max-w-3xl px-4 py-10 md:py-14">
-            <p className="text-sm font-extrabold tracking-wide uppercase">This Saturday</p>
+            <p className="text-sm font-extrabold tracking-wide uppercase">{"What's next"}</p>
             <h1 className="font-display mt-2 text-[clamp(2.4rem,8vw,4rem)] leading-[0.92]">
-              Fill this in together.
+              {APP_FIRST}
             </h1>
             <p className="mt-4 text-lg font-semibold">
-              Five minutes. No obligation. You keep the sheet. If the sheet is empty, do not open
-              the app and wander. Fill the sheet first.
+              Inventing happens in the app. This site is the door: the brief, the print pack, privacy.
+              After one opened stand, the next job.
             </p>
           </div>
         </section>
-        <SaturdaySheet />
+        <div className="mx-auto w-full max-w-6xl px-4 py-12">
+          <WhatsNext cta={false} heading={false} />
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/apps"
+              className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-6 font-extrabold text-cream"
+            >
+              The app
+            </Link>
+            <Link
+              href="/kits/lemonade"
+              className="tap inline-flex h-12 items-center justify-center rounded-2xl bg-lemonade px-6 font-extrabold text-ink"
+            >
+              This Saturday
+            </Link>
+          </div>
+        </div>
       </main>
     </SiteChrome>
   );

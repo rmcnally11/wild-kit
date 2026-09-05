@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
       { source: "/bake", destination: "/kits/bake", permanent: false },
       { source: "/wash", destination: "/kits/wash", permanent: false },
       { source: "/fort", destination: "/kits/fort", permanent: false },
-      { source: "/app", destination: "/kits/lemonade", permanent: false },
+      { source: "/app", destination: "/apps", permanent: false },
       { source: "/setup", destination: "/parents", permanent: false },
       { source: "/menu", destination: "/kits/lemonade", permanent: false },
       { source: "/mix", destination: "/kits/lemonade", permanent: false },

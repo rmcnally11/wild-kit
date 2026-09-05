@@ -32,6 +32,32 @@ export const PARENT_OWNED = "Parent-owned account";
 export const STORE_DOOR =
   "The kits live in the App Store. This site is the door and the Saturday briefs. The badge goes up when the listing is real.";
 
+export const APP_FIRST = "The app is the workshop. This site is the door.";
+
+export const NEXT_BEATS = [
+  {
+    when: "Now",
+    title: FIRST_APP,
+    line: "The app. Invent. Make it real. Open. App Store — coming.",
+    bg: "bg-lemonade",
+    ink: "text-ink",
+  },
+  {
+    when: "On this site",
+    title: "The door",
+    line: "Saturday brief. $9 print pack. Privacy. Parent-owned account.",
+    bg: "bg-sky",
+    ink: "text-ink",
+  },
+  {
+    when: "After one opened stand",
+    title: "Bake Sale by Wild Kit",
+    line: "Not twelve apps. One Saturday first.",
+    bg: "bg-raspberry",
+    ink: "text-cream",
+  },
+] as const;
+
 export const STEPS = [
   {
     title: "Invent",
