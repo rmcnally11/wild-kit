@@ -37,7 +37,7 @@ export default function SaturdayJobsHub() {
           </p>
           <h2 className="font-display mt-1 text-4xl leading-none">Pick a job. Then go outside.</h2>
           <p className="mt-2 text-lg font-semibold">
-            {stand.kidName ? `${stand.kidName} invents it.` : "Kids invent it."} You hit print. Then
+            {stand.kidName ? `${stand.kidName} invents it.` : "Kids invent it."} You make it real. Then
             leave the phone.
           </p>
         </div>

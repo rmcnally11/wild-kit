@@ -41,7 +41,7 @@ export const STEPS = [
   },
   {
     title: "Make it real",
-    line: "Grown-up brings the missing piece. Changes by job.",
+    line: "Grown-up brings the missing piece. Something you can hold.",
     bg: "bg-leaf",
     ink: "text-cream",
   },
@@ -56,7 +56,7 @@ export const STEPS = [
 export const THIS = [
   "A Saturday job you finish",
   "Kid invents. Parent makes it real.",
-  "Then you leave the phone",
+  "The poster is the product",
   "No ads. First name only.",
 ];
 

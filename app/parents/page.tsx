@@ -8,6 +8,7 @@ import {
   IF_HE_ASKS,
   LEGAL_LINE,
   LEGAL_RULES,
+  MONEY,
   OPEN_WITH_SATURDAY,
   PARENT_OWNED,
 } from "@/lib/brand";
@@ -49,6 +50,9 @@ export default function ParentsPage() {
             <p className="mt-3 font-semibold">
               Five minutes. No obligation. You keep the sheet. If the sheet is empty, do not open
               the app and wander. Fill the sheet first.
+            </p>
+            <p className="mt-3 font-semibold">
+              {MONEY.firstDollar} {MONEY.app}
             </p>
             <ol className="mt-4 grid gap-2 text-lg font-semibold">
               <li>1. Circle the job.</li>

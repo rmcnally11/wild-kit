@@ -51,7 +51,7 @@ export function PayDesk() {
         <>
           {isPaid && (
             <p className="rounded-[1.4rem] bg-leaf px-5 py-4 font-semibold text-cream">
-              Paid on this phone. You hit print. They invent it.
+              Paid on this phone. They invent it. You make it real.
             </p>
           )}
           <div className="grid gap-3">

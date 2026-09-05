@@ -15,10 +15,10 @@ The poster is the product.
 | Path | What it is |
 | --- | --- |
 | `/pay` | Grown-up pays. Print pack $9. Family $4.99 / $29. Stripe. |
-| `/` | The door. Face, master, three bars. This / not this. Lemonade Stand. |
+| `/` | The door. Rascal, the poster, master, three bars. This / not this. One Saturday: Lemonade. |
 | `/saturday` | This Saturday. Fill the sheet together first. |
 | `/about` | What it is. How Saturday works. Rascal. The privacy line. |
-| `/apps` | Saturday Jobs catalog. Hidden from the nav until two listings exist. |
+| `/apps` | First listing only until two listings exist. |
 | `/parents` | They're already in the cabinets. This gives them a stand. |
 | `/privacy` | Parent-owned account. First name only. No kid inbox. |
 | `/kits/[id]` | Saturday brief for that job. Not a playable app. |
