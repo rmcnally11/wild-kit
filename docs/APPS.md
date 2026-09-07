@@ -9,7 +9,7 @@ The kits live in the App Store. This repo’s `apps/` folder is where we build t
 | # | Listing | Season | Status |
 | --- | --- | --- | --- |
 | 1 | Lemonade Stand by Wild Kit | Apr–Aug | First listing. Serious work starts here. |
-| 2 | Bake Sale by Wild Kit | Sep–Nov | Brief only |
+| 2 | Bake Sale by Wild Kit | Sep–Nov | Locked until a driveway photo exists. Not public. |
 | 3 | Car Wash by Wild Kit | Spring / warm | Brief only |
 | 4 | Blanket Fort by Wild Kit | Rain day | Brief only |
 | 5 | Birdhouse by Wild Kit | Spring | Brief only |
@@ -21,13 +21,14 @@ The kits live in the App Store. This repo’s `apps/` folder is where we build t
 | 11 | Puppet Theater by Wild Kit | Indoor | Brief only |
 | 12 | Backyard Olympics by Wild Kit | Summer | Brief only |
 
-Briefs stay on the website (`/kits/[id]`). Apps open in the App Store.
+The lemonade brief stays on `/kits/lemonade`. Do not publish a Bake Sale brief while `JOB_TWO_PUBLIC` is false. Apps open in the App Store.
 
 ## One loop. Every job.
 
 1. **Invent** — Kid designs the name, the mark, the menu, the prices. Three templates, not a blank canvas.
-2. **Print** — Grown-up runs the printer. Poster, menu, price cards. PDF first.
+2. **Print** — Grown-up runs the home printer. Letter 8½ × 11 first. Poster board is extra.
 3. **Open** — Tape it to the table. Then leave the phone.
+4. **After you opened** — One driveway photo. Grown-up. No kid face. That unlocks talk of Job 2.
 
 The poster is the product. The app is the missing piece that gets everybody outside.
 

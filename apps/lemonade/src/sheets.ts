@@ -158,7 +158,7 @@ export function buildSheet(kind: SheetKind, stand: Stand) {
 }
 
 export const SHEET_COPY: Record<SheetKind, { title: string; line: string }> = {
-  poster: { title: "Poster", line: "Draw it. Print it on poster board. Tape it to the table." },
+  poster: { title: "Poster", line: "Draw it. Print it at home. Tape it to the table." },
   menu: { title: "Menu", line: "What you sell. Prices the kid set." },
   cards: { title: "Price cards", line: "One card per cup. Crooked is fine." },
 };

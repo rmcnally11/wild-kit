@@ -21,6 +21,7 @@ export type Plan = "free" | "pack" | "family" | "season" | "lifetime";
 export type PaperId = "yellow" | "pink" | "lime" | "sky" | "cream";
 export type DecoId = "stars" | "suns" | "arrows" | "hearts" | "drips";
 export type SheetId = "letter" | "tabloid";
+export const SHEET_ORDER: SheetId[] = ["letter", "tabloid"];
 
 export type Poster = {
   paper: PaperId;
@@ -78,6 +79,8 @@ export type Stand = {
   supplies: string[];
   crew: CrewJob[];
   closedAt: string | null;
+  drivewayPhoto: string | null;
+  drivewayPhotoAt: string | null;
   bake: SideJob;
   wash: SideJob;
 };
@@ -181,7 +184,7 @@ export const SHEETS: Record<
   letter: {
     name: "Letter — 8½ × 11",
     short: "8½ × 11",
-    ask: "Ask for a letter-size (8½ by 11) color print. Fill the sheet. No extra white border.",
+    ask: "Home printer. Letter, 8½ by 11. Fill the sheet.",
     view: { w: 850, h: 1100 },
     inches: { w: 8.5, h: 11 },
     png: { width: 2550, height: 3300 },
@@ -190,7 +193,7 @@ export const SHEETS: Record<
   tabloid: {
     name: "Yard — 11 × 17",
     short: "11 × 17",
-    ask: "Ask for an 11 by 17 color poster. Fill the sheet. No extra white border.",
+    ask: "Optional. Shop print. 11 by 17 if you want the yard.",
     view: { w: 850, h: 1314 },
     inches: { w: 11, h: 17 },
     png: { width: 3300, height: 5100 },
@@ -203,7 +206,7 @@ export const DEFAULT_POSTER: Poster = {
   headline: "",
   subhead: "",
   deco: "stars",
-  sheet: "tabloid",
+  sheet: "letter",
 };
 
 export const DEFAULT_CAMP: Camp = {
@@ -227,6 +230,7 @@ export const LEMON_SUPPLIES = [
   { id: "marker", name: "A marker" },
   { id: "chair", name: "A chair" },
   { id: "jar", name: "A jar for cash" },
+  { id: "printer", name: "A home printer" },
 ];
 
 export const DEFAULT_BAKE: SideJob = {
@@ -319,6 +323,8 @@ export function emptyStand(): Stand {
     supplies: [],
     crew: DEFAULT_CREW.map((job) => ({ ...job })),
     closedAt: null,
+    drivewayPhoto: null,
+    drivewayPhotoAt: null,
     bake: emptySideJob(DEFAULT_BAKE),
     wash: emptySideJob(DEFAULT_WASH),
   };

@@ -38,7 +38,7 @@ export async function POST(request: Request) {
   }
 
   const standName = (body.standName || "Lemonade stand").trim();
-  const sheet: SheetId = body.sheet && body.sheet in SHEETS ? body.sheet : "tabloid";
+  const sheet: SheetId = body.sheet && body.sheet in SHEETS ? body.sheet : "letter";
   const text = printMailBody({
     standName,
     kidName: (body.kidName || "").trim(),

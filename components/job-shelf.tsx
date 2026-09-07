@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { FIRST_APP, LISTING, SUBTITLE } from "@/lib/brand";
+import { FIRST_APP, JOB_TWO_LOCKED, LISTING, ONE_JOB, SUBTITLE } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
-import { KITS } from "@/lib/kits";
+import { publicKits } from "@/lib/kits";
 
 export function JobShelf({
   heading = "The apps",
@@ -11,8 +11,9 @@ export function JobShelf({
   heading?: string;
   intro?: string;
 }) {
-  const first = KITS.find((kit) => kit.id === "lemonade");
-  const rest = KITS.filter((kit) => kit.id !== "lemonade");
+  const shelf = publicKits();
+  const first = shelf.find((kit) => kit.id === "lemonade");
+  const rest = shelf.filter((kit) => kit.id !== "lemonade");
 
   return (
     <div>
@@ -38,8 +39,7 @@ export function JobShelf({
 
       <p className="mt-8 text-sm font-extrabold tracking-wide text-leaf uppercase">Saturday briefs</p>
       <p className="mt-1 font-semibold text-muted-foreground">
-        The list is still the job. A marker and what is already in the house. The apps open in the
-        App Store, not here.
+        {ONE_JOB} {JOB_TWO_LOCKED} The apps open in the App Store, not here.
       </p>
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {rest.map((kit) => {

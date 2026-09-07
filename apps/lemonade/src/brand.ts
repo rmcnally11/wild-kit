@@ -20,6 +20,15 @@ export const SATURDAY_URL = "https://getwildkit.com/saturday";
 
 export const GROWN_UP_FIRST = "Grown-up first. Then you invent it.";
 export const FIRST_NAME_ONLY = "First name only. No kid inbox.";
+export const PARENT_OWNED = "Parent-owned account";
+
+/** Standing product rules. Do not walk these back. Print is a job verb. */
+export const HOME_PRINT = "Letter 8½ × 11 at home. Grown-up runs the printer.";
+export const POSTER_BOARD_OPTIONAL = "Poster board is extra if you want the yard.";
+export const DRIVEWAY_PHOTO = "After you opened: one driveway photo. Grown-up. No kid face.";
+export const DRIVEWAY_PHOTO_LINE = "The stand, the table, the sign. No kid face.";
+export const JOB_TWO_LOCKED = "Bake Sale stays in the drawer until a driveway photo exists.";
+export const ONE_JOB = "One job until one stand has opened.";
 
 export const COLORS = {
   lemonade: "#F5C518",
@@ -37,7 +46,7 @@ export const COLORS = {
 /** Lemonade job verbs. Print stays here. It does not go in the company mouth. */
 export const STEPS = [
   { title: "Invent", line: "Name, mark, menu, prices. Three templates, not a blank canvas." },
-  { title: "Print", line: "Grown-up runs the printer. Poster, menu, price cards." },
+  { title: "Print", line: "Grown-up runs the home printer. Letter first." },
   { title: "Open", line: "Tape it to the table. Then leave the phone." },
 ] as const;
 
@@ -65,6 +74,7 @@ export const LEMON_SUPPLIES = [
   { id: "marker", name: "A marker" },
   { id: "chair", name: "A chair" },
   { id: "jar", name: "A jar for cash" },
+  { id: "printer", name: "A home printer" },
 ] as const;
 
 export const DEFAULT_CREW = [

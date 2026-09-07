@@ -31,7 +31,7 @@ for kids. for children. STEM. interactive. Active Kids. users. platform. empower
 
 ## Later listings
 
-Bake Sale by Wild Kit — Design. Bake. Open the table.
+Bake Sale by Wild Kit — Design. Bake. Open the table. (Locked. Not public until a driveway photo exists.)
 Car Wash by Wild Kit — Design. Soap. Open the driveway.
 Blanket Fort by Wild Kit — Design. Build. Open the fort.
 

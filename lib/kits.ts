@@ -16,6 +16,8 @@ export type Kit = {
   done: string;
   href?: string;
   status: KitStatus;
+  /** False keeps Job 2 off public lists until a driveway photo exists. */
+  public?: boolean;
 };
 
 export const KITS: Kit[] = [
@@ -28,7 +30,7 @@ export const KITS: Kit[] = [
     hours: "A warm afternoon. Done by dinner.",
     line: "Design. Print. Open the stand.",
     saturday:
-      "Name the stand. Pick a field. Draw the poster. Pack from the house. Grown-up runs the printer — 14×22, 22×28, or 28×44 poster board. Tape it to the table. Then leave the phone.",
+      "Name the stand. Pick a field. Draw the poster. Pack from the house. Grown-up prints letter 8½ × 11 at home. Tape it to the table. Then leave the phone.",
     need: [
       "A table or a box",
       "A pitcher and cups",
@@ -37,11 +39,13 @@ export const KITS: Kit[] = [
       "A marker",
       "A chair",
       "A jar for cash",
+      "A home printer",
     ],
     kid: "You’re the boss of this stand. Make the sign. Set the price. Open.",
-    parent: "You make it real. Grown-up runs the printer. Ask for the whole board. Then you go outside.",
-    done: "You opened. That’s the whole point.",
+    parent: "You make it real. Grown-up runs the home printer. Letter first. Poster board if you want the yard. Then you go outside.",
+    done: "You opened. That’s the whole point. Then one driveway photo. Grown-up. No kid face.",
     status: "open",
+    public: true,
   },
   {
     id: "fort",
@@ -74,6 +78,7 @@ export const KITS: Kit[] = [
     parent: "The oven. The print. The yes on every recipe.",
     done: "The tray is empty or the sun is gone.",
     status: "next",
+    public: false,
   },
   {
     id: "wash",
@@ -225,4 +230,12 @@ export function kitById(id: string) {
   return KITS.find((kit) => kit.id === id);
 }
 
-export const OPEN_KITS = KITS.filter((kit) => kit.status === "open");
+export function kitIsPublic(kit: Kit) {
+  return kit.public !== false;
+}
+
+export function publicKits() {
+  return KITS.filter(kitIsPublic);
+}
+
+export const OPEN_KITS = KITS.filter((kit) => kit.status === "open" && kitIsPublic(kit));

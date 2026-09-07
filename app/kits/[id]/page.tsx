@@ -5,19 +5,20 @@ import { notFound } from "next/navigation";
 import { PrintBrief } from "@/components/print-brief";
 import { SiteChrome } from "@/components/site-chrome";
 import { TellMe } from "@/components/tell-me";
+import { JOB_TWO_LOCKED, ONE_JOB } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
-import { kitById, KITS } from "@/lib/kits";
+import { kitById, kitIsPublic, publicKits } from "@/lib/kits";
 
 type Props = { params: Promise<{ id: string }> };
 
 export function generateStaticParams() {
-  return KITS.map((kit) => ({ id: kit.id }));
+  return publicKits().map((kit) => ({ id: kit.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const kit = kitById(id);
-  if (!kit) return { title: "That Saturday" };
+  if (!kit || !kitIsPublic(kit)) return { title: "That Saturday" };
   return {
     title: kit.listing,
     description: kit.line,
@@ -28,6 +29,29 @@ export default async function KitPage({ params }: Props) {
   const { id } = await params;
   const kit = kitById(id);
   if (!kit) notFound();
+  if (!kitIsPublic(kit)) {
+    return (
+      <SiteChrome>
+        <main className="bg-cream">
+          <section className="bg-lemonade text-ink">
+            <div className="mx-auto w-full max-w-3xl px-4 py-12">
+              <p className="text-sm font-extrabold uppercase">One job</p>
+              <h1 className="font-display mt-2 text-[clamp(2.4rem,8vw,4rem)] leading-[0.92]">
+                {ONE_JOB}
+              </h1>
+              <p className="mt-4 text-lg font-semibold">{JOB_TWO_LOCKED}</p>
+              <Link
+                href="/kits/lemonade"
+                className="tap mt-6 inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-6 font-extrabold text-cream"
+              >
+                This Saturday
+              </Link>
+            </div>
+          </section>
+        </main>
+      </SiteChrome>
+    );
+  }
 
   const hue = hueOf(kit.id);
 

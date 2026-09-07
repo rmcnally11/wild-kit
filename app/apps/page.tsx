@@ -4,7 +4,17 @@ import Link from "next/link";
 import { PhoneScreens } from "@/components/phone-screens";
 import { SiteChrome } from "@/components/site-chrome";
 import { TellMe } from "@/components/tell-me";
-import { APP_STORE, FIRST_APP, IF_HE_ASKS, LISTING, MASTER, ONE_JOB, SUBTITLE } from "@/lib/brand";
+import {
+  APP_STORE,
+  FIRST_APP,
+  HOME_PRINT,
+  IF_HE_ASKS,
+  LISTING,
+  MASTER,
+  ONE_JOB,
+  POSTER_BOARD_OPTIONAL,
+  SUBTITLE,
+} from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "The app",
@@ -43,6 +53,9 @@ export default function AppsPage() {
           >
             This Saturday
           </Link>
+          <p className="font-semibold text-muted-foreground">
+            {HOME_PRINT} {POSTER_BOARD_OPTIONAL}
+          </p>
           <p className="font-semibold text-muted-foreground">
             The rest of the shelf waits. {ONE_JOB}
           </p>

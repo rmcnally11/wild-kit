@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { FamilyChrome } from "@/components/family-chrome";
+import { JOB_TWO_LOCKED, ONE_JOB, showJobTwo } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
-import { KITS, type Season } from "@/lib/kits";
+import { KITS, kitIsPublic, type Season } from "@/lib/kits";
 import { useStand } from "@/lib/stand-store";
 import { cn } from "@/lib/utils";
 
@@ -21,10 +22,10 @@ const FILTERS: { id: "all" | Season; label: string; on: string; ink: string }[] 
 export default function SaturdayJobsHub() {
   const { stand } = useStand();
   const [filter, setFilter] = useState<(typeof FILTERS)[number]["id"]>("all");
-  const visible = useMemo(
-    () => (filter === "all" ? KITS : KITS.filter((kit) => kit.season === filter)),
-    [filter],
-  );
+  const visible = useMemo(() => {
+    const shelf = KITS.filter((kit) => kitIsPublic(kit) || (kit.id === "bake" && showJobTwo(stand.drivewayPhoto)));
+    return filter === "all" ? shelf : shelf.filter((kit) => kit.season === filter);
+  }, [filter, stand.drivewayPhoto]);
   const open = visible.filter((kit) => kit.status === "open");
   const next = visible.filter((kit) => kit.status === "next");
 
@@ -38,7 +39,7 @@ export default function SaturdayJobsHub() {
           <h2 className="font-display mt-1 text-4xl leading-none">Pick a job. Then go outside.</h2>
           <p className="mt-2 text-lg font-semibold">
             {stand.kidName ? `${stand.kidName} invents it.` : "Kids invent it."} You make it real. Then
-            leave the phone.
+            leave the phone. {ONE_JOB} {showJobTwo(stand.drivewayPhoto) ? "" : JOB_TWO_LOCKED}
           </p>
         </div>
 

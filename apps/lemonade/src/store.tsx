@@ -44,6 +44,8 @@ export type Stand = {
   menu: MenuItem[];
   sales: Sale[];
   closedAt: string | null;
+  drivewayPhoto: string | null;
+  drivewayPhotoAt: string | null;
   todaysRecipe: string;
   supplies: string[];
   crew: CrewJob[];
@@ -61,6 +63,8 @@ export function emptyStand(): Stand {
     menu: DEFAULT_MENU.map((item) => ({ ...item })),
     sales: [],
     closedAt: null,
+    drivewayPhoto: null,
+    drivewayPhotoAt: null,
     todaysRecipe: "",
     supplies: [],
     crew: DEFAULT_CREW.map((job) => ({ ...job })),
@@ -107,6 +111,8 @@ function hydrate(raw: string): Stand {
     standName: String(parsed.standName ?? ""),
     todaysRecipe: String(parsed.todaysRecipe ?? ""),
     closedAt: parsed.closedAt ?? null,
+    drivewayPhoto: typeof parsed.drivewayPhoto === "string" ? parsed.drivewayPhoto : null,
+    drivewayPhotoAt: typeof parsed.drivewayPhotoAt === "string" ? parsed.drivewayPhotoAt : null,
     setupDone: Boolean(parsed.setupDone),
     poster: hydratePoster(parsed.poster),
   };

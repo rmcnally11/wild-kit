@@ -56,6 +56,8 @@ function readStored(): Stand {
       supplies: parsed.supplies ?? [],
       crew: parsed.crew?.length ? parsed.crew : DEFAULT_CREW.map((job) => ({ ...job })),
       closedAt: parsed.closedAt ?? null,
+      drivewayPhoto: parsed.drivewayPhoto ?? null,
+      drivewayPhotoAt: parsed.drivewayPhotoAt ?? null,
       bake: mergeSide(parsed.bake, DEFAULT_BAKE),
       wash: mergeSide(parsed.wash, DEFAULT_WASH),
     };

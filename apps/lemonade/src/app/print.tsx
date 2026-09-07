@@ -2,16 +2,18 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
-import { COLORS } from "@/brand";
+import { COLORS, HOME_PRINT, POSTER_BOARD_OPTIONAL } from "@/brand";
 import { Hint } from "@/components/hint";
 import { JobChrome } from "@/components/job-chrome";
 import { PosterCanvas } from "@/components/poster-canvas";
 import {
-  BOARD_ORDER,
   BOARDS,
+  HOME_BOARDS,
+  OPTIONAL_BOARDS,
   BRUSHES,
   PAINT_COLORS,
   STICKERS,
+  type BoardId,
   type StickerKind,
 } from "@/poster";
 import { printSheet, shareSheet } from "@/print";
@@ -123,22 +125,29 @@ export default function PrintScreen() {
           </View>
         )}
 
-        <Text style={styles.label}>The board</Text>
+        <Text style={styles.label}>Home printer</Text>
+        <Text style={styles.ask}>{HOME_PRINT}</Text>
+        <View style={styles.row}>
+          {HOME_BOARDS.map((id) => (
+            <BoardChip
+              key={id}
+              id={id}
+              on={stand.poster.board === id}
+              onPick={(next) => savePoster({ ...stand.poster, board: next })}
+            />
+          ))}
+        </View>
+        <Text style={styles.label}>Poster board · optional</Text>
+        <Text style={styles.ask}>{POSTER_BOARD_OPTIONAL}</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.row}>
-          {BOARD_ORDER.map((id) => {
-            const item = BOARDS[id];
-            const on = stand.poster.board === id;
-            return (
-              <Pressable
-                key={id}
-                onPress={() => savePoster({ ...stand.poster, board: id })}
-                style={[styles.board, on && styles.chipOn]}
-              >
-                <Text style={styles.boardName}>{item.name}</Text>
-                <Text style={styles.boardSize}>{item.short}</Text>
-              </Pressable>
-            );
-          })}
+          {OPTIONAL_BOARDS.map((id) => (
+            <BoardChip
+              key={id}
+              id={id}
+              on={stand.poster.board === id}
+              onPick={(next) => savePoster({ ...stand.poster, board: next })}
+            />
+          ))}
         </ScrollView>
         <Text style={styles.ask}>{board.ask}</Text>
 
@@ -169,6 +178,24 @@ export default function PrintScreen() {
         </Pressable>
       </View>
     </JobChrome>
+  );
+}
+
+function BoardChip({
+  id,
+  on,
+  onPick,
+}: {
+  id: BoardId;
+  on: boolean;
+  onPick: (id: BoardId) => void;
+}) {
+  const item = BOARDS[id];
+  return (
+    <Pressable onPress={() => onPick(id)} style={[styles.board, on && styles.chipOn]}>
+      <Text style={styles.boardName}>{item.name}</Text>
+      <Text style={styles.boardSize}>{item.short}</Text>
+    </Pressable>
   );
 }
 

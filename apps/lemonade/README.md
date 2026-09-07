@@ -10,8 +10,9 @@ Serious work on the first Saturday Job happens here. The old web prototype in `a
 
 1. **Setup** — Grown-up first. Birth year 18+. Parent email. Then first name only.
 2. **Invent** — Name, field, menu, one pitcher, pack from the house, crew.
-3. **Print** — Draw the poster like a paint board. Stickers. Print on 14×22, 22×28, or 28×44 poster board — or letter at home.
+3. **Print** — Draw the poster like a paint board. Stickers. Home letter 8½ × 11 first. Poster board (14×22, 22×28, 28×44) if you want the yard.
 4. **Open** — Tap what they bought. Then leave the phone.
+5. **After you opened** — One driveway photo. Grown-up. No kid face.
 
 Parent desk stays a grown-up room. Pay and the Saturday sheet live on getwildkit.com. No ads. No kid inbox. No zip.
 
@@ -45,4 +46,4 @@ Do not rewrite those lines. Locked mouth lives in `src/brand.ts` and must match 
 ## Not yet
 
 - TestFlight via EAS once the LLC account is live
-- A second Saturday Job. Next listing gets its own `apps/<job>/`.
+- A second Saturday Job. Bake Sale stays locked until a driveway photo exists. Next listing gets its own `apps/<job>/`.

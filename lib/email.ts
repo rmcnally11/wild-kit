@@ -13,7 +13,7 @@ export function printMailBody(input: {
   sheet?: SheetId;
 }) {
   const where = input.city && input.state ? `${input.city}, ${input.state}` : "your zip";
-  const sheet = input.sheet && input.sheet in SHEETS ? input.sheet : "tabloid";
+  const sheet = input.sheet && input.sheet in SHEETS ? input.sheet : "letter";
   const list = input.shops
     .map((shop, index) => `${index + 1}. ${shop.name} — ${shop.address}`)
     .join("\n");

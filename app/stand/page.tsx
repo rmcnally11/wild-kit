@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { CloseDay } from "@/components/close-day";
+import { DrivewayPhoto } from "@/components/driveway-photo";
 import { PackList } from "@/components/pack-list";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -195,6 +196,18 @@ export default function SellPage() {
         onChange={(closedAt) => save({ closedAt })}
         done="You opened the stand. That's the whole point."
       />
+
+      {closed ? (
+        <DrivewayPhoto
+          photo={stand.drivewayPhoto}
+          onChange={(drivewayPhoto) =>
+            save({
+              drivewayPhoto,
+              drivewayPhotoAt: drivewayPhoto ? new Date().toISOString() : null,
+            })
+          }
+        />
+      ) : null}
     </div>
   );
 }

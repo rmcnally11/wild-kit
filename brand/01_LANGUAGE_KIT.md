@@ -36,6 +36,9 @@ Open it. Then leave the phone.
 Invent. Make it real. Open.
 The list is the job.
 Ask for the whole sheet.
+Home letter first. Poster board if you want the yard.
+After you opened: one driveway photo. Grown-up. No kid face.
+Bake Sale stays in the drawer until a driveway photo exists.
 Cash is perfect.
 
 ## Who is speaking
