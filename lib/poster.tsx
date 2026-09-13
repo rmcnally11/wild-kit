@@ -26,7 +26,7 @@ type Props = {
 };
 
 export const StandPoster = forwardRef<SVGSVGElement, Props>(function StandPoster(
-  { name, kidName, headline, subhead, paper, deco, sheet = "tabloid", corner, venmo, menu },
+  { name, kidName, headline, subhead, paper, deco, sheet = "letter", corner, venmo, menu },
   ref,
 ) {
   const colors = PAPERS[paper];

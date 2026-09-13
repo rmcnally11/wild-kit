@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/stand", destination: "/kits/lemonade", permanent: false },
       { source: "/stand/:path*", destination: "/kits/lemonade", permanent: false },
-      { source: "/bake", destination: "/kits/bake", permanent: false },
+      { source: "/bake", destination: "/kits/lemonade", permanent: false },
+      { source: "/kits/bake", destination: "/kits/lemonade", permanent: false },
       { source: "/wash", destination: "/kits/wash", permanent: false },
       { source: "/fort", destination: "/kits/fort", permanent: false },
       { source: "/saturday", destination: "/kits/lemonade", permanent: false },

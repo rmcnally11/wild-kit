@@ -20,6 +20,10 @@ Read `lib/brand.ts` first. Import locked lines. Do not rewrite them. Do not inve
 Print / bake / hose are job verbs. Not company verbs.
 Retired: Kids invent it. Parents print it. Saturday happens.
 
+Letter 8½×11 at home is the default print path. Poster board is extra.
+After you opened: one driveway photo. Grown-up. No kid face.
+No public Bake Sale until that photo exists.
+
 ## Do
 
 Import from `@/lib/brand`.

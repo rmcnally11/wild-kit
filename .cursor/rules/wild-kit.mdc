@@ -27,6 +27,12 @@ The parent contribution changes by kit. Printer, oven, hose, blankets. "Make it 
 
 Retired. Do not restore: Kids invent it. Parents print it. Saturday happens.
 
+## Standing product rules
+
+- Letter 8½×11 home print is the default first-Saturday path. Poster board is optional.
+- After “You opened,” one grown-up driveway photo. No kid face. Parent-owned. First name only.
+- No public Bake Sale / Job-2 surface until that photo exists. `JOB_TWO_PUBLIC` stays false. Import `JOB_TWO_LOCKED`.
+
 ## App Store
 
 Lifestyle 4+. Not Kids Category unless the founder enters it on purpose. Do not write "for kids" or "for children" in the name, subtitle, or keywords.

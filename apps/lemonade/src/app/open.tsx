@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { COLORS } from "@/brand";
+import { DrivewayPhoto } from "@/components/driveway-photo";
 import { Hint } from "@/components/hint";
 import { JobChrome } from "@/components/job-chrome";
 import { money, useStand } from "@/store";
@@ -23,7 +24,9 @@ export default function OpenScreen() {
   }
 
   const hint = closed
-    ? "You opened. That's the whole point."
+    ? stand.drivewayPhoto
+      ? "You opened. That's the whole point."
+      : "You opened. Then one driveway photo. No kid face."
     : todayCups === 0
       ? "Tape it to the table. Then leave the phone."
       : "Another cup. Go.";
@@ -84,6 +87,18 @@ export default function OpenScreen() {
             <Text style={styles.ghostText}>{closed ? "Open again" : "Close the day"}</Text>
           </Pressable>
         </View>
+
+        {closed ? (
+          <DrivewayPhoto
+            photo={stand.drivewayPhoto}
+            onChange={(drivewayPhoto) =>
+              save({
+                drivewayPhoto,
+                drivewayPhotoAt: drivewayPhoto ? new Date().toISOString() : null,
+              })
+            }
+          />
+        ) : null}
       </ScrollView>
     </JobChrome>
   );

@@ -33,6 +33,16 @@ export const LISTING = "The badge goes up when the listing is real.";
 
 export const ONE_JOB = "One job until one stand has opened.";
 
+/** Standing product rules. Do not walk these back. Print is a job verb. */
+export const HOME_PRINT = "Letter 8½ × 11 at home. Grown-up runs the printer.";
+export const POSTER_BOARD_OPTIONAL = "Poster board is extra if you want the yard.";
+export const DRIVEWAY_PHOTO = "After you opened: one driveway photo. Grown-up. No kid face.";
+export const DRIVEWAY_PHOTO_LINE = "The stand, the table, the sign. No kid face.";
+export const JOB_TWO = "Bake Sale by Wild Kit";
+/** Public marketing stays one job until a driveway photo exists. */
+export const JOB_TWO_PUBLIC = false;
+export const JOB_TWO_LOCKED = "Bake Sale stays in the drawer until a driveway photo exists.";
+
 export const TELL_ME = "Tell me when it's on the store.";
 export const TELL_ME_LINE = "Grown-up email only. We'll send the listing. That's it.";
 
@@ -47,14 +57,14 @@ export const NEXT_BEATS = [
   {
     when: "Until then",
     title: "This Saturday",
-    line: "Pack from the house. Then go outside.",
+    line: "Home letter. Pack from the house. Then go outside.",
     bg: "bg-sky",
     ink: "text-ink",
   },
   {
-    when: "After one opened stand",
-    title: "Bake Sale by Wild Kit",
-    line: "Not twelve apps. One Saturday first.",
+    when: "After you opened",
+    title: "One driveway photo",
+    line: "Grown-up takes it. No kid face. That's the fuel.",
     bg: "bg-raspberry",
     ink: "text-cream",
   },
@@ -143,14 +153,15 @@ export const APP_STORE = {
   rating: "4+",
   price: "Free · print packs extra later",
   description:
-    "Wild Kit turns Saturday energy into a real project. Kids design the logo, build the menu, and set the prices. Parents handle the account and send the poster to print. Then you go outside and open the stand. No ads. Parent-owned account. Made for families to use together.",
+    "Wild Kit turns Saturday energy into a real project. Kids design the logo, build the menu, and set the prices. Parents handle the account and print the poster at home. Then you go outside and open the stand. No ads. Parent-owned account. Made for families to use together.",
   captions: [
     "Tape it to the table.",
     "You set the price.",
     "Grown-up runs the printer.",
-    "Pack from the house.",
+    "Letter first. Poster board if you want the yard.",
     "Open it. Then leave the phone.",
     "You opened. That's the whole point.",
+    "Then one driveway photo. No kid face.",
   ],
 } as const;
 
@@ -185,3 +196,10 @@ export const SATURDAY_JOBS = [
   "Blanket Fort",
   "Other",
 ] as const;
+
+/** Live public shelf. Do not add Job 2 while JOB_TWO_PUBLIC is false. */
+export const PUBLIC_JOBS = ["Lemonade Stand"] as const;
+
+export function showJobTwo(photo?: string | null) {
+  return JOB_TWO_PUBLIC && Boolean(photo);
+}

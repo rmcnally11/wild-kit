@@ -20,6 +20,9 @@ Print / bake / hose are job verbs. They do not go in the company mouth.
 Lemonade subtitle stays: Design. Print. Open the stand.
 Import from `lib/brand.ts`. Do not hardcode a second MASTER.
 Do not invent a fourth slogan.
+Letter 8½×11 at home is the default print path. Poster board is extra.
+After you opened: one driveway photo. Grown-up. No kid face.
+No public Bake Sale until that photo exists. Do not flip `JOB_TWO_PUBLIC` early.
 Lifestyle 4+. Never “for kids” in App Store metadata.
 Rascal stays grey / black / cream. Crooked mask stays crooked.
 Different company from Waterdog, Dock Posted, On This Water. Do not cross-sell.

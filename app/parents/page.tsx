@@ -5,8 +5,10 @@ import { SiteChrome } from "@/components/site-chrome";
 import { TellMe } from "@/components/tell-me";
 import { ThisNotThis } from "@/components/this-not-this";
 import {
+  DRIVEWAY_PHOTO,
   FIRST_NAME_ONLY,
   GROWN_UP_FIRST,
+  HOME_PRINT,
   IF_HE_ASKS,
   LEGAL_LINE,
   LEGAL_RULES,
@@ -49,8 +51,8 @@ export default function ParentsPage() {
           <section className="rounded-[1.6rem] bg-ink p-6 text-cream">
             <p className="font-display text-3xl leading-none">{GROWN_UP_FIRST}</p>
             <p className="mt-3 font-semibold">
-              They invent the name, the poster, the prices. You own the account. You bring the
-              missing piece. Then you go outside.
+              They invent the name, the poster, the prices. You own the account. {HOME_PRINT}{" "}
+              {DRIVEWAY_PHOTO} Then you go outside.
             </p>
             <Link
               href="/kits/lemonade"

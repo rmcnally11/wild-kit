@@ -74,6 +74,7 @@ export function FamilyChrome({
                 : pathname === "/wash"
                   ? isClosedToday(stand.wash?.closedAt)
                   : isClosedToday(stand.closedAt),
+            hasPhoto: Boolean(stand.drivewayPhoto),
           }}
         />
       )}

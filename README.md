@@ -44,20 +44,13 @@ The live site does not host the kits. Inventing happens in the app. Until the ba
 
 ## Saturday Jobs
 
-1. Lemonade Stand
-2. Bake Sale
-3. Car Wash
-4. Blanket Fort
-5. Birdhouse
-6. Garden Box
-7. Neighborhood Newspaper
-8. Pet Parade
-9. Treasure Map
-10. Garage Sale
-11. Puppet Theater
-12. Backyard Olympics
+One job until one stand has opened: **Lemonade Stand by Wild Kit**.
 
-The list is the job. Briefs are on `/kits`. The apps open in the App Store, not here.
+The rest of the shelf waits. Bake Sale stays in the drawer until a driveway photo exists. Do not put Job 2 on a public page early.
+
+Studio list (not live): Car Wash, Blanket Fort, Birdhouse, Garden Box, Neighborhood Newspaper, Pet Parade, Treasure Map, Garage Sale, Puppet Theater, Backyard Olympics.
+
+The lemonade brief is on `/kits/lemonade`. The apps open in the App Store, not here.
 
 ## App Store
 
@@ -85,7 +78,9 @@ App free. No ads. Ever. Grown-up pays in the App Store. Not on this website. No 
 
 ## Print
 
-Grown-up runs the printer. Poster, menu, price cards. PDF first. Letter or 11×17, fill the sheet.
+Letter 8½ × 11 at home is the first-Saturday path. Grown-up runs the printer. Poster board (14×22, 22×28, 28×44) and 11×17 are extra if you want the yard. PDF first. Fill the sheet.
+
+After you opened: one driveway photo. Grown-up. The stand, the table, the sign. No kid face. That photo is App Store fuel and the lock on Job 2.
 
 Copy `.env.example` to `.env.local` for Resend. Do not send Wild Kit mail from another company’s domain.
 

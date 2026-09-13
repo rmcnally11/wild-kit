@@ -11,7 +11,8 @@ import { StandPoster } from "@/lib/poster";
 import { isZip, type PrintShop } from "@/lib/shops";
 import { usePrintMode } from "@/lib/print-mode";
 import { useStand } from "@/lib/stand-store";
-import { DECO_LABELS, PAPERS, SHEETS, type DecoId, type PaperId, type SheetId } from "@/lib/types";
+import { HOME_PRINT, POSTER_BOARD_OPTIONAL } from "@/lib/brand";
+import { DECO_LABELS, PAPERS, SHEET_ORDER, SHEETS, type DecoId, type PaperId, type SheetId } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export default function PosterPage() {
@@ -22,7 +23,7 @@ export default function PosterPage() {
   const [shops, setShops] = useState<PrintShop[]>([]);
   const [place, setPlace] = useState("");
   const poster = stand.poster;
-  const sheet = poster.sheet in SHEETS ? poster.sheet : "tabloid";
+  const sheet = poster.sheet in SHEETS ? poster.sheet : "letter";
   const spec = SHEETS[sheet];
   const canPrint = isEmail(stand.parentEmail) && isZip(stand.zip);
   usePrintMode("poster");
@@ -149,16 +150,16 @@ export default function PosterPage() {
     <div className="grid gap-4">
       <style>{`@media print { @page { size: ${spec.page}; margin: 0; } }`}</style>
       <div>
-        <h2 className="font-display text-3xl">The yard poster</h2>
+        <h2 className="font-display text-3xl">The poster</h2>
         <p className="mt-1 text-muted-foreground">
-          Marker board. Crooked tape. Sized to fill the sheet — home letter, or 11 by 17 at the shop.
+          {HOME_PRINT} {POSTER_BOARD_OPTIONAL}
         </p>
       </div>
 
       <div>
         <p className="mb-2 text-sm font-extrabold uppercase">Sheet</p>
         <div className="grid grid-cols-2 gap-2">
-          {(Object.keys(SHEETS) as SheetId[]).map((id) => (
+          {SHEET_ORDER.map((id: SheetId) => (
             <button
               key={id}
               type="button"
@@ -168,9 +169,11 @@ export default function PosterPage() {
                 sheet === id ? "bg-primary ring-foreground" : "bg-secondary ring-transparent",
               )}
             >
-              <span className="block text-sm font-extrabold">{SHEETS[id].name}</span>
+              <span className="block text-sm font-extrabold">
+                {id === "letter" ? "Home letter — 8½ × 11" : SHEETS[id].name}
+              </span>
               <span className="block text-xs font-semibold text-muted-foreground">
-                {id === "tabloid" ? "The yard sign. Shop print." : "Home printer. Fills the page."}
+                {id === "letter" ? "Default. Grown-up runs the printer at home." : "Optional. Shop print if you want the yard."}
               </span>
             </button>
           ))}

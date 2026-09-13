@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SiteChrome } from "@/components/site-chrome";
 import { WhatsNext } from "@/components/whats-next";
-import { ONE_JOB } from "@/lib/brand";
+import { JOB_TWO_LOCKED, ONE_JOB } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "What's next",
@@ -21,7 +21,7 @@ export default function SaturdayPage() {
               {ONE_JOB}
             </h1>
             <p className="mt-4 text-lg font-semibold">
-              Lemonade Stand first. After one opened stand, Bake Sale. Not twelve apps.
+              Lemonade Stand first. {JOB_TWO_LOCKED} Not twelve apps.
             </p>
           </div>
         </section>

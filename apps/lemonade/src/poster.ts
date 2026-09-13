@@ -29,14 +29,16 @@ export const BOARDS: Record<
   },
   letter: {
     id: "letter",
-    name: "Letter",
+    name: "Home letter",
     short: "8½ × 11",
     inches: { w: 8.5, h: 11 },
     ask: "Home printer. Letter, 8½ by 11. Fill the sheet.",
   },
 };
 
-export const BOARD_ORDER: BoardId[] = ["half", "standard", "large", "letter"];
+export const HOME_BOARDS: BoardId[] = ["letter"];
+export const OPTIONAL_BOARDS: BoardId[] = ["half", "standard", "large"];
+export const BOARD_ORDER: BoardId[] = [...HOME_BOARDS, ...OPTIONAL_BOARDS];
 
 export type Point = { x: number; y: number };
 
@@ -92,14 +94,14 @@ export const STICKERS: { id: StickerKind; name: string }[] = [
 ];
 
 export function emptyPoster(): Poster {
-  return { board: "standard", strokes: [], stickers: [], history: [] };
+  return { board: "letter", strokes: [], stickers: [], history: [] };
 }
 
 export function hydratePoster(raw: unknown): Poster {
   const base = emptyPoster();
   if (!raw || typeof raw !== "object") return base;
   const parsed = raw as Partial<Poster>;
-  const board = parsed.board && parsed.board in BOARDS ? parsed.board : "standard";
+  const board = parsed.board && parsed.board in BOARDS ? parsed.board : "letter";
   return {
     board,
     strokes: Array.isArray(parsed.strokes) ? parsed.strokes : [],

@@ -45,8 +45,9 @@ export default function PrivacyPage() {
             not a street address.
           </li>
           <li>
-            Sales, the menu, the logo, the poster, and the other jobs live in the phone&apos;s local
-            storage. Shop lookup uses the zip only.
+            Sales, the menu, the logo, the poster, and a grown-up driveway photo live in the
+            phone&apos;s local storage. The photo is the stand, not a kid face. Shop lookup uses
+            the zip only.
           </li>
           <li>
             Sharing uses the parent&apos;s own Messages, Mail, or share sheet. We do not post for

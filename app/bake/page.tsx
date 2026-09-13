@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { CloseDay } from "@/components/close-day";
 import { FamilyChrome } from "@/components/family-chrome";
 import { JobTill } from "@/components/job-till";
@@ -8,6 +10,7 @@ import { PriceCards } from "@/components/price-cards";
 import { SideMenu } from "@/components/side-menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { JOB_TWO_LOCKED, ONE_JOB, showJobTwo } from "@/lib/brand";
 import { usePrintMode } from "@/lib/print-mode";
 import { useStand } from "@/lib/stand-store";
 import { isClosedToday } from "@/lib/today";
@@ -24,6 +27,23 @@ export default function BakePage() {
       ? bake.packed.filter((item) => item !== id)
       : [...bake.packed, id];
     save({ bake: { ...bake, packed } });
+  }
+
+  if (!showJobTwo(stand.drivewayPhoto)) {
+    return (
+      <FamilyChrome eyebrow="Wild Kit" title="One job">
+        <div className="grid gap-4">
+          <p className="font-display text-3xl leading-none">{ONE_JOB}</p>
+          <p className="text-lg font-semibold">{JOB_TWO_LOCKED}</p>
+          <Link
+            href="/kits/lemonade"
+            className="tap inline-flex h-14 items-center justify-center rounded-2xl bg-lemonade px-6 text-lg font-extrabold text-ink"
+          >
+            This Saturday
+          </Link>
+        </div>
+      </FamilyChrome>
+    );
   }
 
   return (

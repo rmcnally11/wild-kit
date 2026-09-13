@@ -39,7 +39,14 @@
           "imageWidth": 76
         }
       ],
-      "expo-sharing"
+      "expo-sharing",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Grown-up takes one driveway photo of the stand. No kid face.",
+          "cameraPermission": "Grown-up takes one driveway photo of the stand. No kid face."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

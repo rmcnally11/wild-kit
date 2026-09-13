@@ -20,9 +20,9 @@ export function PhoneScreens() {
       </Phone>
       <Phone title="Open" kicker="3" field="bg-sky text-ink">
         <p className="font-display text-2xl leading-none">You opened.</p>
-        <p className="mt-2 text-sm font-semibold">That's the whole point.</p>
+        <p className="mt-2 text-sm font-semibold">That&apos;s the whole point.</p>
         <p className="mt-4 rounded-xl bg-ink px-3 py-3 text-sm font-extrabold text-cream">
-          Set it out. Then leave the phone.
+          Then one driveway photo. Grown-up. No kid face.
         </p>
       </Phone>
     </div>

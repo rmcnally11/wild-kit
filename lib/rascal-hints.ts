@@ -24,6 +24,7 @@ export type HintCtx = {
   lightsOut?: boolean;
   kitOpen?: boolean;
   closed?: boolean;
+  hasPhoto?: boolean;
 };
 
 const POOL: Record<RascalRoom, string[]> = {
@@ -83,7 +84,7 @@ const POOL: Record<RascalRoom, string[]> = {
   poster: [
     "Grown-up runs the printer.",
     "Big words. Then go outside.",
-    "Ask for the whole sheet.",
+    "Home letter first.",
     "The poster is the product.",
   ],
   fort: [
@@ -120,7 +121,9 @@ export function rascalPose(room: RascalRoom): "boss" | "scheme" | "done" {
 
 function priority(room: RascalRoom, ctx: HintCtx): string {
   if (ctx.closed && (room === "sell" || room === "bake" || room === "wash")) {
-    return "You opened. That's the whole point.";
+    return ctx.hasPhoto
+      ? "You opened. That's the whole point."
+      : "Then one driveway photo. Grown-up. No kid face.";
   }
   if (room === "sell") {
     if (!ctx.standName) return "The stand needs a name.";
