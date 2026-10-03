@@ -86,6 +86,7 @@ const POOL: Record<RascalRoom, string[]> = {
     "Big words. Then go outside.",
     "Home letter first.",
     "The poster is the product.",
+    "One sheet is enough.",
   ],
   fort: [
     "Pack from the house.",
