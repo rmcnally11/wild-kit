@@ -175,6 +175,7 @@ export const SHEETS: Record<
     name: string;
     short: string;
     ask: string;
+    tape: string;
     view: { w: number; h: number };
     inches: { w: number; h: number };
     png: { width: number; height: number };
@@ -185,6 +186,7 @@ export const SHEETS: Record<
     name: "Letter — 8½ × 11",
     short: "8½ × 11",
     ask: "Home printer. Letter, 8½ by 11. Fill the sheet.",
+    tape: "Tape it to the front of the table, or to a stake if you want the yard.",
     view: { w: 850, h: 1100 },
     inches: { w: 8.5, h: 11 },
     png: { width: 2550, height: 3300 },
@@ -194,6 +196,7 @@ export const SHEETS: Record<
     name: "Yard — 11 × 17",
     short: "11 × 17",
     ask: "Optional. Shop print. 11 by 17 if you want the yard.",
+    tape: "Tape it to a stake, or to the front of the table.",
     view: { w: 850, h: 1314 },
     inches: { w: 11, h: 17 },
     png: { width: 3300, height: 5100 },

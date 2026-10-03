@@ -26,6 +26,7 @@ export default function PosterPage() {
   const sheet = poster.sheet in SHEETS ? poster.sheet : "letter";
   const spec = SHEETS[sheet];
   const canPrint = isEmail(stand.parentEmail) && isZip(stand.zip);
+  const homeLetter = sheet === "letter";
   usePrintMode("poster");
 
   useEffect(() => {
@@ -257,6 +258,16 @@ export default function PosterPage() {
         </div>
       </div>
 
+      {homeLetter && (
+        <Button
+          type="button"
+          className="h-16 rounded-2xl text-xl font-extrabold"
+          onClick={() => window.print()}
+        >
+          Print this poster
+        </Button>
+      )}
+
       {canPrint ? (
         <div className="rounded-[1.6rem] bg-card p-4 ring-1 ring-border">
           <p className="font-extrabold">Print shop near {place || stand.zip}</p>
@@ -277,7 +288,9 @@ export default function PosterPage() {
         </div>
       ) : (
         <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">
-          A parent adds an email and a zip first. That&apos;s how the file leaves the phone.{" "}
+          {homeLetter
+            ? "Add a parent email and a zip if you want a shop to print it. "
+            : "A parent adds an email and a zip first. That's how the file leaves the phone. "}
           <Link href="/stand/parent" className="underline">
             Parents page
           </Link>
@@ -285,7 +298,13 @@ export default function PosterPage() {
         </p>
       )}
 
-      <Button className="h-16 rounded-2xl text-xl font-extrabold" disabled={busy || !canPrint} onClick={printIt}>
+      <Button
+        type="button"
+        variant={homeLetter ? "secondary" : "default"}
+        className={homeLetter ? "h-14 rounded-2xl text-lg font-extrabold" : "h-16 rounded-2xl text-xl font-extrabold"}
+        disabled={busy || !canPrint}
+        onClick={printIt}
+      >
         {busy ? "Sending…" : "Send to printer"}
       </Button>
       <Button
@@ -297,17 +316,19 @@ export default function PosterPage() {
       >
         Save the shop file
       </Button>
+      {!homeLetter && (
+        <Button
+          type="button"
+          variant="secondary"
+          className="h-14 rounded-2xl text-lg font-extrabold"
+          onClick={() => window.print()}
+        >
+          Print this poster
+        </Button>
+      )}
       {status && <p className="rounded-3xl bg-secondary p-4 text-sm font-semibold">{status}</p>}
-      <Button
-        type="button"
-        variant="secondary"
-        className="h-14 rounded-2xl text-lg font-extrabold"
-        onClick={() => window.print()}
-      >
-        Print this poster
-      </Button>
       <p className="text-center text-sm text-muted-foreground">
-        {spec.ask} Tape it to a stake, or to the front of the table.
+        {spec.ask} {spec.tape}
       </p>
     </div>
   );
