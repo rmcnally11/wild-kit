@@ -21,7 +21,7 @@ export function printMailBody(input: {
     `The ${input.standName || "lemonade"} poster is ready.`,
     input.kidName ? `${input.kidName} made it.` : "",
     SHEETS[sheet].ask,
-    `The file is a full-sheet PNG at 300 dpi. Tape it to a stake or the front of the table.`,
+    `The file is a full-sheet PNG at 300 dpi. ${SHEETS[sheet].tape}`,
     `Shops near ${where}:`,
     list || "Any copy shop, Staples, or the UPS Store.",
     `Attach the PNG if this draft did not keep the picture.`,
