@@ -172,6 +172,9 @@ export const MONEY = {
   noVenmo: "No Venmo. No kid payments.",
 };
 
+export const STAND_CASH =
+  "You don't send the kid's money through the app, and cash at the stand is enough.";
+
 export const LEGAL_LINE =
   "Telling a parent this is a Saturday project is a conversation. Collecting a child's name, photo, location, or email is a legal act.";
 

@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { PrintBrief } from "@/components/print-brief";
 import { SiteChrome } from "@/components/site-chrome";
 import { TellMe } from "@/components/tell-me";
-import { JOB_TWO_LOCKED, ONE_JOB } from "@/lib/brand";
+import { JOB_TWO_LOCKED, ONE_JOB, STAND_CASH } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
 import { kitById, kitIsPublic, publicKits } from "@/lib/kits";
 
@@ -99,6 +99,9 @@ export default async function KitPage({ params }: Props) {
             <div className="rounded-[1.4rem] bg-leaf p-4 text-cream">
               <p className="text-sm font-extrabold uppercase">The grown-up</p>
               <p className="mt-1 font-semibold">{kit.parent}</p>
+              {kit.id === "lemonade" ? (
+                <p className="no-print mt-2 font-semibold">{STAND_CASH}</p>
+              ) : null}
             </div>
             <div className="rounded-[1.4rem] bg-coral p-4 text-ink md:col-span-2">
               <p className="text-sm font-extrabold uppercase">You are done when</p>
