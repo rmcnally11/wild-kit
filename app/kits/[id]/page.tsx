@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { OpenSign } from "@/components/open-sign";
 import { PrintBrief } from "@/components/print-brief";
+import { PrintOpenSign } from "@/components/print-open-sign";
 import { SiteChrome } from "@/components/site-chrome";
 import { TellMe } from "@/components/tell-me";
-import { JOB_TWO_LOCKED, ONE_JOB, STAND_CASH } from "@/lib/brand";
+import { HOME_PRINT, JOB_TWO_LOCKED, ONE_JOB, STAND_CASH } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
 import { kitById, kitIsPublic, publicKits } from "@/lib/kits";
 
@@ -109,6 +111,27 @@ export default async function KitPage({ params }: Props) {
             </div>
           </section>
         </div>
+
+        {kit.id === "lemonade" ? (
+          <section className="no-print mx-auto w-full max-w-3xl px-4 pb-4" aria-labelledby="lemonade-print">
+            <div className="rounded-[1.6rem] bg-card p-5 ring-1 ring-border">
+              <h2 id="lemonade-print" className="text-sm font-extrabold uppercase">
+                Print
+              </h2>
+              <p className="mt-2 text-lg font-semibold leading-7">{HOME_PRINT}</p>
+              <div className="mt-5">
+                <p className="text-sm font-extrabold uppercase">Open sign</p>
+                <p className="mt-1 font-semibold">The top half prints upside down. It reads when you stand it up.</p>
+                <div className="open-sign-frame mt-3 overflow-hidden rounded-2xl ring-1 ring-ink/10">
+                  <OpenSign />
+                </div>
+                <div className="mt-4">
+                  <PrintOpenSign />
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <div className="no-print mx-auto grid w-full max-w-3xl gap-4 px-4 pb-12">
           <div className="flex flex-col gap-3 sm:flex-row">

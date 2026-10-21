@@ -1,4 +1,4 @@
-type Pose = "boss" | "scheme" | "done";
+type Pose = "boss" | "scheme" | "done" | "wave" | "nap";
 
 export function Rascal({
   pose = "boss",
@@ -15,7 +15,11 @@ export function Rascal({
       ? "Draw it however you want."
       : pose === "done"
         ? "Go outside."
-        : "You’re the boss of this stand.");
+        : pose === "wave"
+          ? "We’re open."
+          : pose === "nap"
+            ? "Back soon."
+            : "You’re the boss of this stand.");
 
   return (
     <figure className="grid justify-items-center gap-2">
@@ -63,16 +67,25 @@ export function RascalFace({ pose }: { pose: Pose }) {
       {/* Head */}
       <ellipse cx="58" cy="66" rx="36" ry="33" fill="#B7AFA6" stroke="#1C1A19" strokeWidth="4" />
       <ellipse cx="60" cy="78" rx="20" ry="16" fill="#FFF6E8" />
-      {/* Crooked mask, too-awake eyes */}
+      {/* Crooked mask. Awake, unless he is napping. */}
       <g transform="rotate(-16 60 58)">
         <path d="M22 56 Q 60 40 98 54 Q 98 74 60 72 Q 22 74 22 56 Z" fill="#1C1A19" />
-        <ellipse cx="44" cy="58" rx="12" ry="11" fill="#FFF6E8" />
-        <ellipse cx="76" cy="56" rx="10" ry="12" fill="#FFF6E8" />
-        <circle cx="46" cy="59" r="5.5" fill="#1C1A19" />
-        <circle cx="76" cy="57" r="4.6" fill="#1C1A19" />
-        <circle cx="43" cy="56" r="1.8" fill="#FFF6E8" />
-        <circle cx="73.5" cy="54.5" r="1.5" fill="#FFF6E8" />
-        <path d="M32 46 Q 44 40 52 46" fill="none" stroke="#1C1A19" strokeWidth="3" strokeLinecap="round" />
+        {pose === "nap" ? (
+          <>
+            <path d="M32 60 Q 44 50 55 60" fill="none" stroke="#FFF6E8" strokeWidth="3.5" strokeLinecap="round" />
+            <path d="M66 58 Q 77 48 87 58" fill="none" stroke="#FFF6E8" strokeWidth="3.5" strokeLinecap="round" />
+          </>
+        ) : (
+          <>
+            <ellipse cx="44" cy="58" rx="12" ry="11" fill="#FFF6E8" />
+            <ellipse cx="76" cy="56" rx="10" ry="12" fill="#FFF6E8" />
+            <circle cx="46" cy="59" r="5.5" fill="#1C1A19" />
+            <circle cx="76" cy="57" r="4.6" fill="#1C1A19" />
+            <circle cx="43" cy="56" r="1.8" fill="#FFF6E8" />
+            <circle cx="73.5" cy="54.5" r="1.5" fill="#FFF6E8" />
+            <path d="M32 46 Q 44 40 52 46" fill="none" stroke="#1C1A19" strokeWidth="3" strokeLinecap="round" />
+          </>
+        )}
       </g>
       <ellipse cx="61" cy="74" rx="5.5" ry="4" fill="#1C1A19" />
       {pose === "done" ? (
@@ -81,6 +94,8 @@ export function RascalFace({ pose }: { pose: Pose }) {
           <path d="M44 80 Q 48 86 52 80" fill="none" stroke="#E85D75" strokeWidth="3" strokeLinecap="round" />
           <path d="M68 80 Q 72 86 76 80" fill="none" stroke="#E85D75" strokeWidth="3" strokeLinecap="round" />
         </>
+      ) : pose === "nap" ? (
+        <path d="M50 84 Q 61 87 72 83" fill="none" stroke="#1C1A19" strokeWidth="3" strokeLinecap="round" />
       ) : (
         <path d="M48 82 Q 62 90 74 80" fill="none" stroke="#1C1A19" strokeWidth="3" strokeLinecap="round" />
       )}
@@ -98,6 +113,45 @@ export function RascalBadge({ size = 36 }: { size?: number }) {
       <g transform="translate(0 6) scale(0.96)">
         <RascalFace pose="boss" />
       </g>
+    </svg>
+  );
+}
+
+/** Head from the locked drawing, plus a paw or closed eyes for the tent sign. */
+export function RascalSign({ pose }: { pose: "wave" | "nap" }) {
+  const label = pose === "wave" ? "Rascal waving" : "Rascal napping";
+  if (pose === "nap") {
+    return (
+      <svg viewBox="6 2 108 116" role="img" aria-label={label} className="open-sign-mark">
+        <ellipse cx="60" cy="66" rx="50" ry="52" fill="#FFF6E8" />
+        <RascalFace pose="nap" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 168 124" role="img" aria-label={label} className="open-sign-mark">
+      <path
+        d="M78 98 C 58 90 36 72 30 52"
+        fill="none"
+        stroke="#1C1A19"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+      <path
+        d="M78 98 C 58 90 36 72 30 52"
+        fill="none"
+        stroke="#B7AFA6"
+        strokeWidth="10"
+        strokeLinecap="round"
+      />
+      <g transform="translate(48 2)">
+        <RascalFace pose="wave" />
+      </g>
+      <ellipse cx="16" cy="30" rx="5" ry="8" fill="#FFF6E8" stroke="#1C1A19" strokeWidth="3" transform="rotate(-32 16 30)" />
+      <ellipse cx="27" cy="20" rx="5" ry="8.5" fill="#FFF6E8" stroke="#1C1A19" strokeWidth="3" />
+      <ellipse cx="38" cy="27" rx="4.6" ry="7.2" fill="#FFF6E8" stroke="#1C1A19" strokeWidth="3" transform="rotate(28 38 27)" />
+      <ellipse cx="28" cy="42" rx="14" ry="13" fill="#B7AFA6" stroke="#1C1A19" strokeWidth="4" />
+      <ellipse cx="24" cy="39" rx="6.5" ry="5" fill="#FFF6E8" />
     </svg>
   );
 }

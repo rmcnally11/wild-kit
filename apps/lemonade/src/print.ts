@@ -50,6 +50,7 @@ const SHEET_FILE: Record<SheetKind, string> = {
   poster: "lemonade-poster.pdf",
   menu: "lemonade-menu.pdf",
   cards: "lemonade-cards.pdf",
+  sign: "lemonade-open-sign.pdf",
 };
 
 type WebWin = {
