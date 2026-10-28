@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Fredoka, Geist_Mono, Nunito } from "next/font/google";
 import type { ReactNode } from "react";
 
-import { FACE_LINE, MASTER, MISSING_PIECE } from "@/lib/brand";
+import { DEVELOPER, FACE_LINE, MASTER, MISSING_PIECE } from "@/lib/brand";
+import { HUES } from "@/lib/hues";
 import { StandProvider } from "@/lib/stand-store";
 
 import "./globals.css";
@@ -31,15 +32,19 @@ export const metadata: Metadata = {
     template: "%s · Wild Kit",
   },
   description: `${MASTER} ${MISSING_PIECE}`,
+  applicationName: DEVELOPER,
   manifest: "/manifest.webmanifest",
   icons: {
     icon: "/icon.svg",
-    apple: "/icon.svg",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   appleWebApp: {
     capable: true,
-    title: "Wild Kit",
+    title: DEVELOPER,
     statusBarStyle: "default",
+  },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
   },
   openGraph: {
     type: "website",
@@ -53,7 +58,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F5C518",
+  themeColor: HUES.lemonade.bg,
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
