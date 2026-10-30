@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { OpenSign } from "@/components/open-sign";
+import { PrintArrowSigns } from "@/components/print-arrow-signs";
 import { PrintBrief } from "@/components/print-brief";
 import { PrintOpenSign } from "@/components/print-open-sign";
 import { SiteChrome } from "@/components/site-chrome";
@@ -127,6 +129,31 @@ export default async function KitPage({ params }: Props) {
                 </div>
                 <div className="mt-4">
                   <PrintOpenSign />
+                </div>
+              </div>
+              <div className="mt-8">
+                <p className="text-sm font-extrabold uppercase">Arrow signs</p>
+                <p className="mt-1 font-semibold">
+                  Two letter sheets. One points left. One points right. Tape on the dashed line.
+                </p>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  <Image
+                    src="/print/arrow-signs-left.png"
+                    alt="Lemonade this way. The arrow points left. Tape on the dashed line."
+                    width={700}
+                    height={906}
+                    className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
+                  />
+                  <Image
+                    src="/print/arrow-signs-right.png"
+                    alt="Lemonade this way. The arrow points right. Tape on the dashed line."
+                    width={700}
+                    height={906}
+                    className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
+                  />
+                </div>
+                <div className="mt-4">
+                  <PrintArrowSigns />
                 </div>
               </div>
             </div>
