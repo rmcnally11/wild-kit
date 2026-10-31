@@ -9,20 +9,30 @@ import { PrintBrief } from "@/components/print-brief";
 import { PrintOpenSign } from "@/components/print-open-sign";
 import { SiteChrome } from "@/components/site-chrome";
 import { TellMe } from "@/components/tell-me";
-import { HOME_PRINT, JOB_TWO_LOCKED, ONE_JOB, STAND_CASH } from "@/lib/brand";
+import { HOME_PRINT, JOB_TWO_PUBLIC, STAND_CASH } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
-import { kitById, kitIsPublic, publicKits } from "@/lib/kits";
+import { kitIdForPublicSlug, publicKitSlugs } from "@/lib/kit-routes";
+import { kitById } from "@/lib/kits";
 
 type Props = { params: Promise<{ id: string }> };
 
+// Unknown slugs must 404 before the shell streams. notFound() alone was HTTP 200.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return publicKits().map((kit) => ({ id: kit.id }));
+  return publicKitSlugs(JOB_TWO_PUBLIC).map((id) => ({ id }));
+}
+
+function kitFromSlug(id: string) {
+  const kitId = kitIdForPublicSlug(id, JOB_TWO_PUBLIC);
+  if (!kitId) return undefined;
+  return kitById(kitId);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const kit = kitById(id);
-  if (!kit || !kitIsPublic(kit)) return { title: "That Saturday" };
+  const kit = kitFromSlug(id);
+  if (!kit) return { title: "That Saturday" };
   return {
     title: kit.listing,
     description: kit.line,
@@ -31,31 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function KitPage({ params }: Props) {
   const { id } = await params;
-  const kit = kitById(id);
+  const kit = kitFromSlug(id);
   if (!kit) notFound();
-  if (!kitIsPublic(kit)) {
-    return (
-      <SiteChrome>
-        <main className="bg-cream">
-          <section className="bg-lemonade text-ink">
-            <div className="mx-auto w-full max-w-3xl px-4 py-12">
-              <p className="text-sm font-extrabold uppercase">One job</p>
-              <h1 className="font-display mt-2 text-[clamp(2.4rem,8vw,4rem)] leading-[0.92]">
-                {ONE_JOB}
-              </h1>
-              <p className="mt-4 text-lg font-semibold">{JOB_TWO_LOCKED}</p>
-              <Link
-                href="/kits/lemonade"
-                className="tap mt-6 inline-flex h-12 items-center justify-center rounded-2xl bg-ink px-6 font-extrabold text-cream"
-              >
-                This Saturday
-              </Link>
-            </div>
-          </section>
-        </main>
-      </SiteChrome>
-    );
-  }
 
   const hue = hueOf(kit.id);
 

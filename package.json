@@ -6,7 +6,8 @@
     "dev": "next dev --port 43143 --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start --port 43143 --hostname 0.0.0.0",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/kit-routes.test.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
