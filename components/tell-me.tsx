@@ -78,7 +78,7 @@ export function TellMe({ ink = false }: { ink?: boolean }) {
       <p role="status" aria-live="polite" className={statusLine ? "mt-5 font-extrabold" : "sr-only"}>
         {status === "fail" ? (
           <>
-            Couldn't send. Email{" "}
+            Couldn&apos;t send. Email{" "}
             <a className="underline" href="mailto:parents@getwildkit.com">
               parents@getwildkit.com
             </a>

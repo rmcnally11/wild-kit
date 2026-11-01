@@ -81,7 +81,7 @@ export function DrivewayPhoto({
           Forget this photo
         </Button>
       ) : null}
-      {error ? <p className="mt-3 font-extrabold text-raspberry">{error}</p> : null}
+      {error ? <p className="mt-3 font-extrabold text-ink">{error}</p> : null}
     </section>
   );
 }

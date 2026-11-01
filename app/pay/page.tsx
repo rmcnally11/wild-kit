@@ -21,7 +21,7 @@ export default function PayPage() {
               {MONEY.firstDollar}
             </h1>
             <p className="mt-4 text-lg font-semibold">
-              {MONEY.app} {MONEY.noVenmo} The listing isn't real yet.
+              {MONEY.app} {MONEY.noVenmo} The listing isn&apos;t real yet.
             </p>
             <Link
               href="/kits/lemonade"
