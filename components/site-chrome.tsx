@@ -57,9 +57,7 @@ export function SiteChrome({
             <Link href="/privacy" className="underline">
               Privacy
             </Link>
-            <a href="https://x.com/getwildkit" className="underline">
-              {HANDLE}
-            </a>
+            <span>{HANDLE}</span>
           </p>
         </div>
       </footer>
