@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 export default function PayThanksPage() {
   return (
     <SiteChrome>
-      <main className="bg-leaf text-cream">
+      <main className="bg-leaf text-ink">
         <div className="mx-auto grid w-full max-w-3xl gap-4 px-4 py-14">
-          <p className="text-sm font-extrabold tracking-wide uppercase opacity-80">Not here</p>
+          <p className="text-sm font-extrabold tracking-wide uppercase">Not here</p>
           <h1 className="font-display text-[clamp(2.4rem,8vw,4rem)] leading-[0.92]">
             {MONEY.firstDollar}
           </h1>

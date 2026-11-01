@@ -66,7 +66,7 @@ export const NEXT_BEATS = [
     title: "One driveway photo",
     line: "Grown-up takes it. No kid face. That's the fuel.",
     bg: "bg-raspberry",
-    ink: "text-cream",
+    ink: "text-ink",
   },
 ] as const;
 
@@ -75,13 +75,13 @@ export const STEPS = [
     title: "Invent",
     line: "Kid designs the name, the logo, the menu, the prices. Three templates, not a blank canvas.",
     bg: "bg-raspberry",
-    ink: "text-cream",
+    ink: "text-ink",
   },
   {
     title: "Make it real",
     line: "Grown-up brings the missing piece. Something you can hold.",
     bg: "bg-leaf",
-    ink: "text-cream",
+    ink: "text-ink",
   },
   {
     title: "Open",

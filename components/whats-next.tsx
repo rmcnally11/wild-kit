@@ -25,7 +25,7 @@ export function WhatsNext({
             key={beat.when}
             className={`rounded-[1.6rem] px-5 py-6 ${beat.bg} ${beat.ink}`}
           >
-            <p className="text-xs font-extrabold tracking-wide uppercase opacity-80">{beat.when}</p>
+            <p className="text-xs font-extrabold tracking-wide uppercase">{beat.when}</p>
             <p className="font-display mt-2 text-2xl leading-none">{beat.title}</p>
             <p className="mt-3 font-semibold">{beat.line}</p>
           </article>

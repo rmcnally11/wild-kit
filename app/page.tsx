@@ -42,7 +42,7 @@ export default function BrandPage() {
                   {TELL_ME}
                 </a>
               </div>
-              <p className="mt-4 text-sm font-extrabold tracking-wide text-ink/55 uppercase">
+              <p className="mt-4 text-sm font-extrabold tracking-wide text-ink/80 uppercase">
                 App Store — coming
               </p>
             </div>

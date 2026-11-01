@@ -1,12 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 import { TELL_ME, TELL_ME_LINE } from "@/lib/brand";
 
 export function TellMe({ ink = false }: { ink?: boolean }) {
+  const emailId = useId();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "need" | "fail">("idle");
+  const statusLine =
+    status === "ok"
+      ? "You're on the list. We'll send the listing."
+      : status === "need"
+        ? "Need a grown-up email."
+        : status === "fail"
+          ? "Couldn't send. Email parents@getwildkit.com."
+          : "";
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -39,18 +48,16 @@ export function TellMe({ ink = false }: { ink?: boolean }) {
       onSubmit={submit}
       className={`rounded-[1.6rem] px-5 py-6 ${ink ? "bg-ink text-cream" : "bg-sky text-ink"}`}
     >
-      <p className="text-xs font-extrabold tracking-wide uppercase opacity-80">App Store — coming</p>
-      <p className="font-display mt-2 text-3xl leading-none">{TELL_ME}</p>
+      <p className="text-xs font-extrabold tracking-wide uppercase">App Store — coming</p>
+      <h2 className="font-display mt-2 text-3xl leading-none">{TELL_ME}</h2>
       <p className="mt-3 font-semibold">{TELL_ME_LINE}</p>
-      {status === "ok" ? (
-        <p className="mt-5 font-extrabold">You're on the list. We'll send the listing.</p>
-      ) : (
+      {status === "ok" ? null : (
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-          <label className="sr-only" htmlFor="parent-email">
+          <label className="sr-only" htmlFor={emailId}>
             Grown-up email
           </label>
           <input
-            id="parent-email"
+            id={emailId}
             type="email"
             autoComplete="email"
             inputMode="email"
@@ -68,18 +75,19 @@ export function TellMe({ ink = false }: { ink?: boolean }) {
           </button>
         </div>
       )}
-      {status === "need" ? (
-        <p className="mt-3 font-extrabold">Need a grown-up email.</p>
-      ) : null}
-      {status === "fail" ? (
-        <p className="mt-3 font-semibold">
-          Couldn't send. Email{" "}
-          <a className="underline" href="mailto:parents@getwildkit.com">
-            parents@getwildkit.com
-          </a>
-          .
-        </p>
-      ) : null}
+      <p role="status" aria-live="polite" className={statusLine ? "mt-5 font-extrabold" : "sr-only"}>
+        {status === "fail" ? (
+          <>
+            Couldn't send. Email{" "}
+            <a className="underline" href="mailto:parents@getwildkit.com">
+              parents@getwildkit.com
+            </a>
+            .
+          </>
+        ) : (
+          statusLine
+        )}
+      </p>
     </form>
   );
 }

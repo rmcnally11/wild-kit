@@ -39,7 +39,7 @@ export default function AboutPage() {
 
         <section className="bg-cream">
           <div className="mx-auto grid w-full max-w-3xl gap-6 px-4 py-12">
-            <p className="text-sm font-extrabold tracking-wide text-raspberry uppercase">Who this is</p>
+            <p className="text-sm font-extrabold tracking-wide text-ink uppercase">Who this is</p>
             <h2 className="font-display text-4xl leading-none">A small studio for one Saturday.</h2>
             <p className="text-lg font-semibold leading-7">
               First job is {FIRST_APP}. The kid invents the name, the mark, the prices. The grown-up
@@ -67,10 +67,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-raspberry text-cream">
+        <section className="bg-raspberry text-ink">
           <div className="mx-auto grid w-full max-w-3xl items-center gap-8 px-4 py-12 md:grid-cols-2">
             <div>
-              <p className="text-sm font-extrabold tracking-wide uppercase opacity-80">The face</p>
+              <p className="text-sm font-extrabold tracking-wide uppercase">The face</p>
               <h2 className="font-display mt-2 text-4xl leading-none">Rascal</h2>
               <p className="mt-4 text-lg font-semibold leading-7">{PROMO}</p>
             </div>
