@@ -2,7 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { JOB_TWO_PUBLIC } from "./brand.ts";
-import { BAKE_KIT_ID, BAKE_SALE_SLUG, kitIdForPublicSlug, publicKitSlugs } from "./kit-routes.ts";
+import {
+  BAKE_KIT_ID,
+  BAKE_SALE_SLUG,
+  kitIdForPublicSlug,
+  kitPath,
+  publicKitPages,
+  publicKitSlugs,
+} from "./kit-routes.ts";
 
 test("JOB_TWO_PUBLIC stays false until a driveway photo exists", () => {
   assert.equal(JOB_TWO_PUBLIC, false);
@@ -28,4 +35,14 @@ test("bake-sale is the Job 2 slug, and only after the flag is on", () => {
 test("the live flag matches the locked route list", () => {
   assert.deepEqual(publicKitSlugs(JOB_TWO_PUBLIC), ["lemonade"]);
   assert.equal(kitIdForPublicSlug(BAKE_SALE_SLUG, JOB_TWO_PUBLIC), undefined);
+  assert.deepEqual(publicKitPages(JOB_TWO_PUBLIC), [{ slug: "lemonade", id: "lemonade" }]);
+});
+
+test("public pages use the bake-sale slug for the bake kit", () => {
+  assert.deepEqual(publicKitPages(true), [
+    { slug: "lemonade", id: "lemonade" },
+    { slug: BAKE_SALE_SLUG, id: BAKE_KIT_ID },
+  ]);
+  assert.equal(kitPath("lemonade"), "/kits/lemonade");
+  assert.equal(kitPath(BAKE_SALE_SLUG), "/kits/bake-sale");
 });
