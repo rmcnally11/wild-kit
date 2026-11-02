@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start --port 43143 --hostname 0.0.0.0",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/kit-routes.test.ts"
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/kit-routes.test.ts lib/stand-map.test.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
