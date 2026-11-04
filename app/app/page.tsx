@@ -4,11 +4,19 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { FamilyChrome } from "@/components/family-chrome";
-import { JOB_TWO_LOCKED, ONE_JOB, showJobTwo } from "@/lib/brand";
+import { JOB_TWO_LOCKED, JOB_TWO_PUBLIC, ONE_JOB, showJobTwo } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
-import { KITS, kitIsPublic, type Season } from "@/lib/kits";
+import { publicKitPages } from "@/lib/kit-routes";
+import { KITS, type Season } from "@/lib/kits";
 import { useStand } from "@/lib/stand-store";
 import { cn } from "@/lib/utils";
+
+const PAGES = publicKitPages(JOB_TWO_PUBLIC);
+
+function hrefFor(id: string) {
+  const page = PAGES.find((item) => item.id === id);
+  return page ? `/kits/${page.slug}` : "/kits/lemonade";
+}
 
 const FILTERS: { id: "all" | Season; label: string; on: string; ink: string }[] = [
   { id: "all", label: "All", on: "#1C1A19", ink: "#FFF6E8" },
@@ -23,9 +31,10 @@ export default function SaturdayJobsHub() {
   const { stand } = useStand();
   const [filter, setFilter] = useState<(typeof FILTERS)[number]["id"]>("all");
   const visible = useMemo(() => {
-    const shelf = KITS.filter((kit) => kitIsPublic(kit) || (kit.id === "bake" && showJobTwo(stand.drivewayPhoto)));
+    const ids = new Set(PAGES.map((page) => page.id));
+    const shelf = KITS.filter((kit) => ids.has(kit.id));
     return filter === "all" ? shelf : shelf.filter((kit) => kit.season === filter);
-  }, [filter, stand.drivewayPhoto]);
+  }, [filter]);
   const open = visible.filter((kit) => kit.status === "open");
   const next = visible.filter((kit) => kit.status === "next");
 
@@ -68,7 +77,7 @@ export default function SaturdayJobsHub() {
             return (
               <Link
                 key={kit.id}
-                href={kit.href || `/kits/${kit.id}`}
+                href={hrefFor(kit.id)}
                 className="tap rounded-[1.8rem] px-5 py-5"
                 style={{ background: hue.bg, color: hue.ink }}
               >
@@ -82,27 +91,29 @@ export default function SaturdayJobsHub() {
           })}
         </section>
 
-        <section className="grid gap-3">
-          <p className="text-sm font-extrabold uppercase tracking-wide">The rest of the shelf</p>
-          <p className="text-sm text-muted-foreground">
-            You do not need the buttons. The list is the job. Print a brief and go.
-          </p>
-          {next.map((kit) => {
-            const hue = hueOf(kit.id);
-            return (
-              <Link
-                key={kit.id}
-                href={`/kits/${kit.id}`}
-                className="tap rounded-[1.6rem] px-5 py-4"
-                style={{ background: hue.bg, color: hue.ink }}
-              >
-                <p className="text-xs font-extrabold uppercase opacity-80">{kit.seasonLabel}</p>
-                <p className="font-display text-2xl leading-none">{kit.name}</p>
-                <p className="mt-1 text-sm font-semibold">{kit.line}</p>
-              </Link>
-            );
-          })}
-        </section>
+        {next.length > 0 ? (
+          <section className="grid gap-3">
+            <p className="text-sm font-extrabold uppercase tracking-wide">The rest of the shelf</p>
+            <p className="text-sm text-muted-foreground">
+              You do not need the buttons. The list is the job. Print a brief and go.
+            </p>
+            {next.map((kit) => {
+              const hue = hueOf(kit.id);
+              return (
+                <Link
+                  key={kit.id}
+                  href={hrefFor(kit.id)}
+                  className="tap rounded-[1.6rem] px-5 py-4"
+                  style={{ background: hue.bg, color: hue.ink }}
+                >
+                  <p className="text-xs font-extrabold uppercase">{kit.seasonLabel}</p>
+                  <p className="font-display text-2xl leading-none">{kit.name}</p>
+                  <p className="mt-1 text-sm font-semibold">{kit.line}</p>
+                </Link>
+              );
+            })}
+          </section>
+        ) : null}
       </div>
     </FamilyChrome>
   );

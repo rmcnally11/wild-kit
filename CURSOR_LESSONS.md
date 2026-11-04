@@ -23,6 +23,24 @@ The old non-public branch rendered a 200 "One job" screen. Replacing that branch
 
 Node's type strip can import `./brand.ts`. Next's typecheck reports TS5097 on that extension unless `allowImportingTsExtensions` is on. `**/*.test.ts` is excluded from `tsconfig.json` so `npm test` and `npm run build` both pass.
 
+## 2026-11-01 — Unpublished kit aliases must not 404
+
+`/fort`, `/wash`, `/camp`, and `/kits/camp` were redirects in `next.config.ts` onto `/kits/fort` and `/kits/wash`. Those briefs 404 while only lemonade is public. The aliases now go to `/kits/lemonade`, same as `/bake`. The list lives in `lib/redirects.ts`. `lib/redirects.test.ts` fails if a redirect destination is not a public kit, `/apps`, or `/parents`.
+
+`app/fort/page.tsx` and `app/wash/page.tsx` still build. The redirect runs first, so those screens are not the public URL. Do not point the aliases back at unpublished slugs, and do not remove the redirect just to expose the old screens.
+
+Check the status on a fresh `next start`. A long-lived `next dev` can keep old prerenders.
+
+## 2026-11-01 — Cream type fails on leaf and raspberry
+
+`#FFF6E8` on leaf `#3BAF6A` is about 2.6:1. On raspberry `#E85D75` it is about 3.1:1. Ink `#1C1A19` passes (about 6.2:1 and 5.2:1). `HUES.leaf.ink`, `HUES.raspberry.ink`, `STEPS`, and `NEXT_BEATS` use ink on those fields. Faded ink (`opacity-80`, `text-ink/55`) can drop under 4.5:1 on yellow, pink, or green. `lib/field-contrast.test.ts` locks the tokens.
+
+## 2026-11-01 — Dead X link, and which audit fixes to skip
+
+`https://x.com/getwildkit` showed "This account doesn't exist" on 2026-11-01. `HANDLE` stays in `lib/brand.ts`. The footer does not link it until the account is real.
+
+`npm audit fix` without `--force` cleared the critical and high advisories. Next.js 16.3.4 → 16.4.3 is the security line: the SVG image-optimization fix starts at 16.4.1, not a 16.3 patch. What remains needs a major (`eslint` 4, and `shadcn` 1.0.0 for `deepmerge`). Do not `--force` those. A Next.js security release was scheduled for 2026-11-03. Check it on the next sweep.
+
 ## 2026-11-02 — Stand map text is inside a compressed stream
 
 The arrow-sign PDF has no generator in the repo. ReportLab stores the words in an ASCII85 + Flate stream. A raw read of `stand-map-letter.pdf` finds `Saturday` in the title and misses `stand map`, `Our stand`, and the landmark blanks. The check has to read each `/Length`, skip the image stream, decode ASCII85, and inflate. Splitting the file on `stream` breaks, because those bytes also appear inside the image.

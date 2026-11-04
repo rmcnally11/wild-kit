@@ -40,7 +40,7 @@ export default function ParentsPage() {
         <div className="mx-auto grid w-full max-w-3xl gap-3 px-4 py-8">
           <ThisNotThis />
           <section className="rounded-[1.6rem] bg-lemonade p-6 text-ink">
-            <p className="font-display text-3xl leading-none">The line, and it matters</p>
+            <h2 className="font-display text-3xl leading-none">The line, and it matters</h2>
             <p className="mt-3 font-semibold leading-7">{LEGAL_LINE}</p>
             <ul className="mt-4 grid gap-2 font-semibold">
               {LEGAL_RULES.map((line) => (
@@ -49,7 +49,7 @@ export default function ParentsPage() {
             </ul>
           </section>
           <section className="rounded-[1.6rem] bg-ink p-6 text-cream">
-            <p className="font-display text-3xl leading-none">{GROWN_UP_FIRST}</p>
+            <h2 className="font-display text-3xl leading-none">{GROWN_UP_FIRST}</h2>
             <p className="mt-3 font-semibold">
               They invent the name, the poster, the prices. You own the account. {HOME_PRINT}{" "}
               {DRIVEWAY_PHOTO} Then you go outside.

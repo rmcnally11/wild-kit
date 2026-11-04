@@ -68,12 +68,12 @@ export default async function KitPage({ params }: Props) {
 
         <div id="saturday-brief" className="mx-auto grid w-full max-w-3xl gap-4 px-4 py-8">
           <section className="rounded-[1.6rem] bg-card p-5 ring-1 ring-border">
-            <p className="text-sm font-extrabold uppercase">This Saturday</p>
+            <h2 className="font-sans text-sm font-extrabold uppercase">This Saturday</h2>
             <p className="mt-2 text-lg leading-7">{kit.saturday}</p>
           </section>
 
           <section>
-            <p className="mb-2 text-sm font-extrabold uppercase">From the house</p>
+            <h2 className="mb-2 font-sans text-sm font-extrabold uppercase">From the house</h2>
             <ul className="grid gap-2">
               {kit.need.map((item) => (
                 <li key={item} className="rounded-2xl bg-lemonade px-4 py-3 font-semibold text-ink">
@@ -85,18 +85,18 @@ export default async function KitPage({ params }: Props) {
 
           <section className="grid gap-3 md:grid-cols-2">
             <div className="rounded-[1.4rem] bg-sky p-4 text-ink">
-              <p className="text-sm font-extrabold uppercase">The kid</p>
+              <h3 className="font-sans text-sm font-extrabold uppercase">The kid</h3>
               <p className="mt-1 font-semibold">{kit.kid}</p>
             </div>
-            <div className="rounded-[1.4rem] bg-leaf p-4 text-cream">
-              <p className="text-sm font-extrabold uppercase">The grown-up</p>
+            <div className="rounded-[1.4rem] bg-leaf p-4 text-ink">
+              <h3 className="font-sans text-sm font-extrabold uppercase">The grown-up</h3>
               <p className="mt-1 font-semibold">{kit.parent}</p>
               {kit.id === "lemonade" ? (
                 <p className="no-print mt-2 font-semibold">{STAND_CASH}</p>
               ) : null}
             </div>
             <div className="rounded-[1.4rem] bg-coral p-4 text-ink md:col-span-2">
-              <p className="text-sm font-extrabold uppercase">You are done when</p>
+              <h3 className="font-sans text-sm font-extrabold uppercase">You are done when</h3>
               <p className="mt-1 font-semibold">{kit.done}</p>
             </div>
           </section>
@@ -110,7 +110,7 @@ export default async function KitPage({ params }: Props) {
               </h2>
               <p className="mt-2 text-lg font-semibold leading-7">{HOME_PRINT}</p>
               <div className="mt-5">
-                <p className="text-sm font-extrabold uppercase">Open sign</p>
+                <h3 className="font-sans text-sm font-extrabold uppercase">Open sign</h3>
                 <p className="mt-1 font-semibold">The top half prints upside down. It reads when you stand it up.</p>
                 <div className="open-sign-frame mt-3 overflow-hidden rounded-2xl ring-1 ring-ink/10">
                   <OpenSign />
@@ -120,7 +120,7 @@ export default async function KitPage({ params }: Props) {
                 </div>
               </div>
               <div className="mt-8">
-                <p className="text-sm font-extrabold uppercase">Arrow signs</p>
+                <h3 className="font-sans text-sm font-extrabold uppercase">Arrow signs</h3>
                 <p className="mt-1 font-semibold">
                   Two letter sheets. One points left. One points right. Tape on the dashed line.
                 </p>
@@ -130,6 +130,7 @@ export default async function KitPage({ params }: Props) {
                     alt="Lemonade this way. The arrow points left. Tape on the dashed line."
                     width={700}
                     height={906}
+                    sizes="(min-width: 640px) 340px, 100vw"
                     className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
                   />
                   <Image
@@ -137,6 +138,7 @@ export default async function KitPage({ params }: Props) {
                     alt="Lemonade this way. The arrow points right. Tape on the dashed line."
                     width={700}
                     height={906}
+                    sizes="(min-width: 640px) 340px, 100vw"
                     className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
                   />
                 </div>

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <SiteChrome>
+      <main>
       <div className="grid h-2 grid-cols-5">
         <span className="bg-lemonade" />
         <span className="bg-raspberry" />
@@ -20,7 +21,7 @@ export default function PrivacyPage() {
         <span className="bg-coral" />
       </div>
       <article className="mx-auto grid max-w-2xl gap-4 px-5 py-10">
-        <p className="text-sm font-extrabold text-leaf uppercase">{LEGAL}</p>
+        <p className="text-sm font-extrabold text-ink uppercase">{LEGAL}</p>
         <h1 className="font-display text-4xl">Privacy</h1>
         <p className="text-lg font-semibold">{LEGAL_LINE}</p>
         <p>
@@ -60,6 +61,7 @@ export default function PrivacyPage() {
           Back to Wild Kit
         </Link>
       </article>
+      </main>
     </SiteChrome>
   );
 }
