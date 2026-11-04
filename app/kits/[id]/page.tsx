@@ -7,6 +7,7 @@ import { OpenSign } from "@/components/open-sign";
 import { PrintArrowSigns } from "@/components/print-arrow-signs";
 import { PrintBrief } from "@/components/print-brief";
 import { PrintOpenSign } from "@/components/print-open-sign";
+import { PrintStandMap } from "@/components/print-stand-map";
 import { SiteChrome } from "@/components/site-chrome";
 import { TellMe } from "@/components/tell-me";
 import { HOME_PRINT, JOB_TWO_PUBLIC, STAND_CASH } from "@/lib/brand";
@@ -143,6 +144,24 @@ export default async function KitPage({ params }: Props) {
                 </div>
                 <div className="mt-4">
                   <PrintArrowSigns />
+                </div>
+              </div>
+              <div className="mt-8">
+                <p className="text-sm font-extrabold uppercase">Stand map</p>
+                <p className="mt-1 font-semibold">
+                  One letter sheet. A star for the stand. Blanks for the landmarks. Tape on the dashed line.
+                </p>
+                <div className="mt-3 sm:max-w-sm">
+                  <Image
+                    src="/print/stand-map-letter.png"
+                    alt="Saturday stand map. A star marks our stand. Blanks for near the big tree and by the stop sign."
+                    width={700}
+                    height={906}
+                    className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
+                  />
+                </div>
+                <div className="mt-4">
+                  <PrintStandMap />
                 </div>
               </div>
             </div>

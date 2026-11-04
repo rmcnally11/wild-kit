@@ -40,3 +40,13 @@ Check the status on a fresh `next start`. A long-lived `next dev` can keep old p
 `https://x.com/getwildkit` showed "This account doesn't exist" on 2026-11-01. `HANDLE` stays in `lib/brand.ts`. The footer does not link it until the account is real.
 
 `npm audit fix` without `--force` cleared the critical and high advisories. Next.js 16.3.4 → 16.4.3 is the security line: the SVG image-optimization fix starts at 16.4.1, not a 16.3 patch. What remains needs a major (`eslint` 4, and `shadcn` 1.0.0 for `deepmerge`). Do not `--force` those. A Next.js security release was scheduled for 2026-11-03. Check it on the next sweep.
+
+## 2026-11-02 — Stand map text is inside a compressed stream
+
+The arrow-sign PDF has no generator in the repo. ReportLab stores the words in an ASCII85 + Flate stream. A raw read of `stand-map-letter.pdf` finds `Saturday` in the title and misses `stand map`, `Our stand`, and the landmark blanks. The check has to read each `/Length`, skip the image stream, decode ASCII85, and inflate. Splitting the file on `stream` breaks, because those bytes also appear inside the image.
+
+`/fort`, `/wash`, and `/camp` still 307 to `/kits/fort` and `/kits/wash` on www.getwildkit.com and on this preview. Those kit pages 404. Leave them for PR #16.
+
+Preview hosts are behind Vercel authentication. A plain curl gets 302 to `vercel.com/sso-api`. The sweep needs a cookie from a short-lived share link on that deployment. The branch alias does not accept the deployment host's cookie.
+
+Chrome `--screenshot` writes the file and does not exit. A lazy `next/image` paints as an empty cream box until `naturalWidth` is set. Wait for that before calling the preview loaded.
