@@ -2,8 +2,8 @@ export type HueId = "lemonade" | "raspberry" | "leaf" | "sky" | "coral";
 
 export const HUES: Record<HueId, { bg: string; ink: string; name: string }> = {
   lemonade: { bg: "#F5C518", ink: "#1C1A19", name: "Lemonade" },
-  raspberry: { bg: "#E85D75", ink: "#FFF6E8", name: "Raspberry" },
-  leaf: { bg: "#3BAF6A", ink: "#FFF6E8", name: "Leaf" },
+  raspberry: { bg: "#E85D75", ink: "#1C1A19", name: "Raspberry" },
+  leaf: { bg: "#3BAF6A", ink: "#1C1A19", name: "Leaf" },
   sky: { bg: "#4EB3E8", ink: "#1C1A19", name: "Sky" },
   coral: { bg: "#FF7A59", ink: "#1C1A19", name: "Coral" },
 };

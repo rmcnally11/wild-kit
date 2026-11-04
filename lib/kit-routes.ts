@@ -19,3 +19,15 @@ export function kitIdForPublicSlug(slug: string, jobTwoPublic: boolean): string 
   if (slug === BAKE_SALE_SLUG && jobTwoPublic) return BAKE_KIT_ID;
   return undefined;
 }
+
+/** Public brief paths. The bake kit's URL is /kits/bake-sale, not /kits/bake. */
+export function publicKitPages(jobTwoPublic: boolean): { slug: string; id: string }[] {
+  return publicKitSlugs(jobTwoPublic).flatMap((slug) => {
+    const id = kitIdForPublicSlug(slug, jobTwoPublic);
+    return id ? [{ slug, id }] : [];
+  });
+}
+
+export function kitPath(slug: string) {
+  return `/kits/${slug}`;
+}

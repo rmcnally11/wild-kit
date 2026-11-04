@@ -1,8 +1,9 @@
 import Link from "next/link";
 
-import { FIRST_APP, JOB_TWO_LOCKED, LISTING, ONE_JOB, SUBTITLE } from "@/lib/brand";
+import { FIRST_APP, JOB_TWO_LOCKED, JOB_TWO_PUBLIC, LISTING, ONE_JOB, SUBTITLE } from "@/lib/brand";
 import { hueOf } from "@/lib/hues";
-import { publicKits } from "@/lib/kits";
+import { publicKitPages, kitPath } from "@/lib/kit-routes";
+import { kitById } from "@/lib/kits";
 
 export function JobShelf({
   heading = "The apps",
@@ -11,13 +12,16 @@ export function JobShelf({
   heading?: string;
   intro?: string;
 }) {
-  const shelf = publicKits();
-  const first = shelf.find((kit) => kit.id === "lemonade");
-  const rest = shelf.filter((kit) => kit.id !== "lemonade");
+  const shelf = publicKitPages(JOB_TWO_PUBLIC).flatMap((page) => {
+    const kit = kitById(page.id);
+    return kit ? [{ ...page, kit }] : [];
+  });
+  const first = shelf.find((page) => page.id === "lemonade");
+  const rest = shelf.filter((page) => page.id !== "lemonade");
 
   return (
     <div>
-      <p className="text-sm font-extrabold tracking-wide text-raspberry uppercase">
+      <p className="text-sm font-extrabold tracking-wide text-ink uppercase">
         Always titled [Job] by Wild Kit
       </p>
       <h2 className="font-display mt-2 text-[clamp(2rem,5vw,3.5rem)] leading-none">{heading}</h2>
@@ -31,36 +35,38 @@ export function JobShelf({
           Free. The badge goes up when the listing is real.
         </p>
         {first && (
-          <Link href={`/kits/${first.id}`} className="mt-4 inline-block font-extrabold underline">
+          <Link href={kitPath(first.slug)} className="mt-4 inline-block font-extrabold underline">
             Read the brief →
           </Link>
         )}
       </div>
 
-      <p className="mt-8 text-sm font-extrabold tracking-wide text-leaf uppercase">Saturday briefs</p>
+      <p className="mt-8 text-sm font-extrabold tracking-wide text-ink uppercase">Saturday briefs</p>
       <p className="mt-1 font-semibold text-muted-foreground">
         {ONE_JOB} {JOB_TWO_LOCKED} The apps open in the App Store, not here.
       </p>
-      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {rest.map((kit) => {
-          const hue = hueOf(kit.id);
-          return (
-            <Link
-              key={kit.id}
-              href={`/kits/${kit.id}`}
-              className="tap rounded-[1.3rem] px-4 py-4"
-              style={{ background: hue.bg, color: hue.ink }}
-            >
-              <p className="text-[10px] font-extrabold uppercase opacity-80">
-                {kit.seasonLabel} · App Store — coming
-              </p>
-              <p className="font-display text-xl leading-none">{kit.listing}</p>
-              <p className="mt-1 text-sm font-semibold">{kit.line}</p>
-              <p className="mt-3 text-sm font-extrabold">Read the brief →</p>
-            </Link>
-          );
-        })}
-      </div>
+      {rest.length > 0 ? (
+        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {rest.map((page) => {
+            const hue = hueOf(page.id);
+            return (
+              <Link
+                key={page.id}
+                href={kitPath(page.slug)}
+                className="tap rounded-[1.3rem] px-4 py-4"
+                style={{ background: hue.bg, color: hue.ink }}
+              >
+                <p className="text-[10px] font-extrabold uppercase">
+                  {page.kit.seasonLabel} · App Store — coming
+                </p>
+                <p className="font-display text-xl leading-none">{page.kit.listing}</p>
+                <p className="mt-1 text-sm font-semibold">{page.kit.line}</p>
+                <p className="mt-3 text-sm font-extrabold">Read the brief →</p>
+              </Link>
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 }
