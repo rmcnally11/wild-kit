@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { OpenSign } from "@/components/open-sign";
 import { PrintArrowSigns } from "@/components/print-arrow-signs";
 import { PrintBrief } from "@/components/print-brief";
+import { PrintCupTally } from "@/components/print-cup-tally";
 import { PrintOpenSign } from "@/components/print-open-sign";
 import { PrintStandMap } from "@/components/print-stand-map";
 import { SiteChrome } from "@/components/site-chrome";
@@ -162,6 +163,24 @@ export default async function KitPage({ params }: Props) {
                 </div>
                 <div className="mt-4">
                   <PrintStandMap />
+                </div>
+              </div>
+              <div className="mt-8">
+                <p className="text-sm font-extrabold uppercase">Cup tally</p>
+                <p className="mt-1 font-semibold">
+                  One letter sheet. Color one lemon for each cup. Write the total in the box.
+                </p>
+                <div className="mt-3 sm:max-w-sm">
+                  <Image
+                    src="/print/cup-tally-letter.png"
+                    alt="Count your cups. Lemon outlines to color, one for each cup sold, and a box for the total."
+                    width={700}
+                    height={906}
+                    className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
+                  />
+                </div>
+                <div className="mt-4">
+                  <PrintCupTally />
                 </div>
               </div>
             </div>
