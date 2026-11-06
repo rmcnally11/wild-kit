@@ -50,3 +50,13 @@ The arrow-sign PDF has no generator in the repo. ReportLab stores the words in a
 Preview hosts are behind Vercel authentication. A plain curl gets 302 to `vercel.com/sso-api`. The sweep needs a cookie from a short-lived share link on that deployment. The branch alias does not accept the deployment host's cookie.
 
 Chrome `--screenshot` writes the file and does not exit. A lazy `next/image` paints as an empty cream box until `naturalWidth` is set. Wait for that before calling the preview loaded.
+
+## 2026-11-04 — Cup tally text is in the same compressed stream
+
+The cup tally sheet is ReportLab, same as the stand map. `Count your cups` is in the title dictionary. `Color one lemon for each cup sold.` and `Cups sold today` are in the ASCII85 + Flate stream. Inflate that stream. The Rascal image has a soft-mask stream too. `/Length` on the image dictionary is not the last key, so a walker that looks for `/Length N >> stream` skips the picture and still reads the words.
+
+Words on the Leaf banner are ink. Cream on `#3BAF6A` is about 2.6:1.
+
+`/fort`, `/wash`, and `/camp` are 307 to `/kits/lemonade` on www.getwildkit.com and on this preview. `/kits/fort` and `/kits/wash` stay 404. The 2026-11-02 note described the preview from before that alias change. Do not point the aliases back at those briefs.
+
+A new commit gets a new deployment host. The share cookie from the previous host does not open it. Mint the share link on the host you sweep. Wait for every print image's `naturalWidth`, including the one above the new sheet. That one still paints as an empty cream box until it loads.
