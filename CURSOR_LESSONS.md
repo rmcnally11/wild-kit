@@ -60,3 +60,13 @@ Words on the Leaf banner are ink. Cream on `#3BAF6A` is about 2.6:1.
 `/fort`, `/wash`, and `/camp` are 307 to `/kits/lemonade` on www.getwildkit.com and on this preview. `/kits/fort` and `/kits/wash` stay 404. The 2026-11-02 note described the preview from before that alias change. Do not point the aliases back at those briefs.
 
 A new commit gets a new deployment host. The share cookie from the previous host does not open it. Mint the share link on the host you sweep. Wait for every print image's `naturalWidth`, including the one above the new sheet. That one still paints as an empty cream box until it loads.
+
+## 2026-11-12 — Come-again font maps match the length walker
+
+The come-again sheet is ReportLab, same family as the stand map and the cup tally. `Come-Again Stubs` is in the title dictionary. `Thanks for stopping!`, `Come again`, `Next stand:`, and `Your next cup's on us.` are in the ASCII85 + Flate content stream. On this file `/Length` is the last key of that stream, so the cup-tally walker finds the words.
+
+The ToUnicode maps also match `/Length N >> stream`. They are Flate only. ASCII85-decoding them throws. Skip a stream unless the dictionary says `ASCII85Decode`. The Rascal image still puts `/Length` before `/Subtype`, so that walker skips the picture.
+
+The banner is `#C43B62` (`.768627 .231373 .384314`), darker than brand raspberry `#E85D75`. Ink on this banner is about 3.4:1. The 28pt title clears large-text contrast. The 11pt "by Wild Kit" line does not clear 4.5:1. The sheet was supplied finished. Do not repaint it.
+
+The preview image is the attached 612 × 792 render, not a 700 × 906 export. It still needs `naturalWidth` before the shot, same as the sheets above it.
