@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { OpenSign } from "@/components/open-sign";
 import { PrintArrowSigns } from "@/components/print-arrow-signs";
 import { PrintBrief } from "@/components/print-brief";
+import { PrintComeAgainStubs } from "@/components/print-come-again-stubs";
 import { PrintCupTally } from "@/components/print-cup-tally";
 import { PrintOpenSign } from "@/components/print-open-sign";
 import { PrintStandMap } from "@/components/print-stand-map";
@@ -181,6 +182,24 @@ export default async function KitPage({ params }: Props) {
                 </div>
                 <div className="mt-4">
                   <PrintCupTally />
+                </div>
+              </div>
+              <div className="mt-8">
+                <p className="text-sm font-extrabold uppercase">Come-again stubs</p>
+                <p className="mt-1 font-semibold">
+                  One letter sheet. Cut on the dashed lines. Hand one stub with each cup.
+                </p>
+                <div className="mt-3 sm:max-w-sm">
+                  <Image
+                    src="/print/come-again-stubs-letter.png"
+                    alt="Come-again stubs. Thanks for stopping. A line for the next stand. Cut on the dashed line."
+                    width={612}
+                    height={792}
+                    className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
+                  />
+                </div>
+                <div className="mt-4">
+                  <PrintComeAgainStubs />
                 </div>
               </div>
             </div>
