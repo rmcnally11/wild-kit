@@ -70,3 +70,17 @@ The ToUnicode maps also match `/Length N >> stream`. They are Flate only. ASCII8
 The banner is `#C43B62` (`.768627 .231373 .384314`), darker than brand raspberry `#E85D75`. Ink on this banner is about 3.4:1. The 28pt title clears large-text contrast. The 11pt "by Wild Kit" line does not clear 4.5:1. The sheet was supplied finished. Do not repaint it.
 
 The preview image is the attached 612 × 792 render, not a 700 × 906 export. It still needs `naturalWidth` before the shot, same as the sheets above it.
+
+## 2026-11-14 — Cooler labels use brand sky, and the print heading is not the section
+
+The cooler labels sheet is ReportLab, same family as the come-again stubs. `Cooler Labels` is in the title dictionary. `Still ice cold.`, `Fresh squeezed`, `this morning.`, `Rascal checked:`, and `brrr.` are in the ASCII85 + Flate content stream. On this file `/Length` is the last key of that stream, so the come-again walker finds the words.
+
+Two Flate-only streams also match `/Length N >> stream`. They are font maps. ASCII85-decoding them throws. Skip a stream unless the dictionary says `ASCII85Decode`. The Rascal image still puts `/Length` before `/Subtype`, so that walker skips the picture.
+
+The banner is brand sky `#4EB3E8` (`.305882 .701961 .909804`), the same field as `HUES.sky`. Ink on it is about 7.4:1. The 28pt title and the 11pt "by Wild Kit" line both clear contrast. Cream on that banner is about 2.2:1 and is the page field, not the type. The sheet was supplied finished. Do not repaint it.
+
+The preview image is the attached 1224 × 1584 render, not a 612 × 792 export. It still needs `naturalWidth` before the shot, same as the sheets above it.
+
+`#lemonade-print` is the heading, about twenty pixels tall. The sheets live in `section[aria-labelledby="lemonade-print"]`. A screenshot of the id is a cream strip that says Print. Lazy images below the fold stay empty cream boxes until each one is scrolled into view and `naturalWidth` is set.
+
+A new commit gets a new deployment host. Mint the share link on the host you sweep.
