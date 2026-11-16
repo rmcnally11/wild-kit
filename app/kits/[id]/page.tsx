@@ -7,6 +7,7 @@ import { OpenSign } from "@/components/open-sign";
 import { PrintArrowSigns } from "@/components/print-arrow-signs";
 import { PrintBrief } from "@/components/print-brief";
 import { PrintComeAgainStubs } from "@/components/print-come-again-stubs";
+import { PrintCoolerLabels } from "@/components/print-cooler-labels";
 import { PrintCupTally } from "@/components/print-cup-tally";
 import { PrintOpenSign } from "@/components/print-open-sign";
 import { PrintStandMap } from "@/components/print-stand-map";
@@ -200,6 +201,24 @@ export default async function KitPage({ params }: Props) {
                 </div>
                 <div className="mt-4">
                   <PrintComeAgainStubs />
+                </div>
+              </div>
+              <div className="mt-8">
+                <p className="text-sm font-extrabold uppercase">Cooler labels</p>
+                <p className="mt-1 font-semibold">
+                  One letter sheet. Cut on the dashed lines. Tape one on the pitcher or cooler.
+                </p>
+                <div className="mt-3 sm:max-w-sm">
+                  <Image
+                    src="/print/cooler-labels-letter.png"
+                    alt="Cooler labels. Still ice cold. Fresh squeezed this morning. Rascal checked. Cut on the dashed line."
+                    width={1224}
+                    height={1584}
+                    className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
+                  />
+                </div>
+                <div className="mt-4">
+                  <PrintCoolerLabels />
                 </div>
               </div>
             </div>
