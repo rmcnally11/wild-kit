@@ -10,6 +10,7 @@ import { PrintComeAgainStubs } from "@/components/print-come-again-stubs";
 import { PrintCoolerLabels } from "@/components/print-cooler-labels";
 import { PrintCupTally } from "@/components/print-cup-tally";
 import { PrintOpenSign } from "@/components/print-open-sign";
+import { PrintPricesMenuCard } from "@/components/print-prices-menu-card";
 import { PrintStandMap } from "@/components/print-stand-map";
 import { SiteChrome } from "@/components/site-chrome";
 import { TellMe } from "@/components/tell-me";
@@ -219,6 +220,24 @@ export default async function KitPage({ params }: Props) {
                 </div>
                 <div className="mt-4">
                   <PrintCoolerLabels />
+                </div>
+              </div>
+              <div className="mt-8">
+                <p className="text-sm font-extrabold uppercase">Menu card</p>
+                <p className="mt-1 font-semibold">
+                  {"One letter sheet. Write today's prices, set the card on the table."}
+                </p>
+                <div className="mt-3 sm:max-w-sm">
+                  <Image
+                    src="/print/prices-menu-card-letter.png"
+                    alt="Today's prices. Cup, big cup, and pitcher, with a blank for each price. Rascal says ask about refills."
+                    width={1224}
+                    height={1584}
+                    className="h-auto w-full rounded-2xl ring-1 ring-ink/10"
+                  />
+                </div>
+                <div className="mt-4">
+                  <PrintPricesMenuCard />
                 </div>
               </div>
             </div>
