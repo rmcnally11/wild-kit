@@ -84,3 +84,17 @@ The preview image is the attached 1224 × 1584 render, not a 612 × 792 export. 
 `#lemonade-print` is the heading, about twenty pixels tall. The sheets live in `section[aria-labelledby="lemonade-print"]`. A screenshot of the id is a cream strip that says Print. Lazy images below the fold stay empty cream boxes until each one is scrolled into view and `naturalWidth` is set.
 
 A new commit gets a new deployment host. Mint the share link on the host you sweep.
+
+## 2026-11-23 — Menu card gold is darker than lemonade, and the section labels sit under 4.5:1
+
+The prices menu card is ReportLab, same family as the cooler labels. `Today's Prices` is in the title dictionary. `by Wild Kit`, `Write today's prices. Set the card on the table.`, `LEMONADE`, `Cup`, `Big cup`, `Pitcher`, `ADD-ONS`, `Rascal says: ask about refills.`, and `Lemonade Stand by Wild Kit` are in the ASCII85 + Flate content stream. On this file `/Length` is the last key of that stream, so the cooler-labels walker finds the words. Five `($)` blanks are in that same stream.
+
+Two Flate-only streams also match `/Length N >> stream`. They are font maps. ASCII85-decoding them throws. Skip a stream unless the dictionary says `ASCII85Decode`. The Rascal image still puts `/Length` before `/Subtype`, so that walker skips the picture.
+
+The banner is supplied gold `#E0A01A` (`.878431 .627451 .101961`), darker than brand lemonade `#F5C518`. Ink on it is about 7.6:1. The 28pt title and the 11pt "by Wild Kit" line both clear contrast. Cream on that banner is about 2.1:1 and is the page field, not the type.
+
+`LEMONADE` and `ADD-ONS` are 11pt in a darker gold `#B07C10` (`.690196 .486275 .062745`) on the inner cream card. That pair is about 3.6:1. It does not clear 4.5:1. The sheet was supplied finished. Do not repaint it.
+
+The preview image is the attached 1224 × 1584 render. It still needs `naturalWidth` before the shot, same as the sheets above it.
+
+A new commit gets a new deployment host. Mint the share link on the host you sweep.
