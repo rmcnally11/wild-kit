@@ -225,7 +225,7 @@ export default async function KitPage({ params }: Props) {
               <div className="mt-8">
                 <p className="text-sm font-extrabold uppercase">Menu card</p>
                 <p className="mt-1 font-semibold">
-                  One letter sheet. Write today's prices, set the card on the table.
+                  {"One letter sheet. Write today's prices, set the card on the table."}
                 </p>
                 <div className="mt-3 sm:max-w-sm">
                   <Image
