@@ -98,3 +98,23 @@ The banner is supplied gold `#E0A01A` (`.878431 .627451 .101961`), darker than b
 The preview image is the attached 1224 × 1584 render. It still needs `naturalWidth` before the shot, same as the sheets above it.
 
 A new commit gets a new deployment host. Mint the share link on the host you sweep.
+
+## 2026-11-23 — Next 16.4.3 is inside the November advisories
+
+`npm audit` on next 16.4.3 reports seven moderate advisories. Every range ends at 16.4.4. The patched release is 16.4.5. The latest patch on the 16.4 line is 16.4.6, and that is the version `npm audit` names as the fix. 16.4.6 is a backport of bug fixes. It does not pull 16.5.
+
+The pin in `package.json` is exact. `npm audit fix` will not move it. `npm audit fix --force` would install `next@16.4.6`, and it would also install `shadcn@1.0.0`. Install `next@16.4.6` by itself. `@next/env` and the `@next/swc-*` packages move with it. `eslint-config-next` does not peer-depend on `next`, so it stays on 16.4.3.
+
+The seven advisories are GHSA-mfr8-8qww-v76h, GHSA-vc7v-qv4w-wrv8, GHSA-7qx7-33qx-rqx2, GHSA-f3mh-rxg3-f5g2, GHSA-pc58-hwjq-p385, GHSA-rhh4-g77r-r9qj, and GHSA-vvgp-ww4w-46vf. After 16.4.6, `npm audit` no longer lists `next`. What remains is minimatch through shadcn and typescript-eslint. Do not `--force` those.
+
+A new commit gets a new deployment host. Mint the share link on the host you sweep.
+
+## 2026-11-23 — Next 16.4.3 is inside the November advisories
+
+`npm audit` on next 16.4.3 reports seven moderate advisories. Every range ends at 16.4.4. The patched release is 16.4.5. The latest patch on the 16.4 line is 16.4.6, and that is the version `npm audit` names as the fix. 16.4.6 is a backport of bug fixes. It does not pull 16.5.
+
+The pin in `package.json` is exact. `npm audit fix` will not move it. `npm audit fix --force` would install `next@16.4.6`, and it would also install `shadcn@1.0.0`. Install `next@16.4.6` by itself. `@next/env` and the `@next/swc-*` packages move with it. `eslint-config-next` does not peer-depend on `next`, so it stays on 16.4.3.
+
+The seven advisories are GHSA-mfr8-8qww-v76h, GHSA-vc7v-qv4w-wrv8, GHSA-7qx7-33qx-rqx2, GHSA-f3mh-rxg3-f5g2, GHSA-pc58-hwjq-p385, GHSA-rhh4-g77r-r9qj, and GHSA-vvgp-ww4w-46vf. After 16.4.6, `npm audit` no longer lists `next`. What remains is minimatch through shadcn and typescript-eslint. Do not `--force` those.
+
+A new commit gets a new deployment host. Mint the share link on the host you sweep.
