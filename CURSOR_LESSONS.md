@@ -109,12 +109,12 @@ The seven advisories are GHSA-mfr8-8qww-v76h, GHSA-vc7v-qv4w-wrv8, GHSA-7qx7-33q
 
 A new commit gets a new deployment host. Mint the share link on the host you sweep.
 
-## 2026-11-23 — Next 16.4.3 is inside the November advisories
+## 2026-11-27 — CI builds without a Resend key
 
-`npm audit` on next 16.4.3 reports seven moderate advisories. Every range ends at 16.4.4. The patched release is 16.4.5. The latest patch on the 16.4 line is 16.4.6, and that is the version `npm audit` names as the fix. 16.4.6 is a backport of bug fixes. It does not pull 16.5.
+`RESEND_API_KEY` and `RESEND_FROM` are read inside the POST handlers for the poster mail and the waitlist. `next build` finishes with those variables unset. The workflow does not stub a key.
 
-The pin in `package.json` is exact. `npm audit fix` will not move it. `npm audit fix --force` would install `next@16.4.6`, and it would also install `shadcn@1.0.0`. Install `next@16.4.6` by itself. `@next/env` and the `@next/swc-*` packages move with it. `eslint-config-next` does not peer-depend on `next`, so it stays on 16.4.3.
+`eslint-config-next` does not peer-depend on `next`, so the 16.4.6 pin left the config on 16.4.3. `npm install` after editing that one pin moves `eslint-config-next` and `@next/eslint-plugin-next` only.
 
-The seven advisories are GHSA-mfr8-8qww-v76h, GHSA-vc7v-qv4w-wrv8, GHSA-7qx7-33qx-rqx2, GHSA-f3mh-rxg3-f5g2, GHSA-pc58-hwjq-p385, GHSA-rhh4-g77r-r9qj, and GHSA-vvgp-ww4w-46vf. After 16.4.6, `npm audit` no longer lists `next`. What remains is minimatch through shadcn and typescript-eslint. Do not `--force` those.
+`actions/setup-node` with `cache: npm` needs `cache-dependency-path: package-lock.json`. The Expo app keeps a second lockfile at `apps/lemonade/package-lock.json`. The root lockfile is the one the Next build installs. Dependabot npm is the repo root, weekly on Monday, minor and patch in one group, three open pull requests. GitHub Actions updates are monthly. The workflow token is `contents: read`.
 
-A new commit gets a new deployment host. Mint the share link on the host you sweep.
+`**/*.test.ts` stays out of `tsconfig.json`. `JOB_TWO_PUBLIC` stays false. The build still emits only `/kits/lemonade`.
